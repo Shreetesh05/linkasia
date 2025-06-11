@@ -46,7 +46,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button";
 
 // ✅ Navbar Component
-const navItems = ["Home", "Destinations", "Tours", "Blog", "Contact"];
+const navItems = ["Home", "About us" ,"Destinations", "Tours", "Blog", "Contact"];
 
 const tourDropdownItems = [
   { label: "Adventure Tours", href: "#adventure" },
@@ -147,9 +147,9 @@ const Navbar: React.FC = () => {
                 {item}
               </a>
             ))}
-            <Button className="mt-4 bg-yellow-400 text-black hover:bg-yellow-300 transition">
+            {/* <Button className="mt-4 bg-yellow-400 text-black hover:bg-yellow-300 transition">
               Book Now
-            </Button>
+            </Button> */}
           </div>
         </motion.div>
       )}
