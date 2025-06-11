@@ -82,24 +82,33 @@
 // export default Home;
 
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, type MotionProps } from "framer-motion";
 import { ArrowRight, Globe, Sparkles, MapPin, Star } from "lucide-react";
 
 // === Local utility ===
 const cn = (...classes: (string | false | undefined | null)[]) =>
   classes.filter(Boolean).join(" ");
 
-// === Local Button component ===
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+// === Fixed Button component ===
+interface ButtonProps extends MotionProps {
   variant?: "default" | "outline" | "glow";
   size?: "sm" | "md" | "lg";
+  children?: React.ReactNode;
+  className?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "default", size = "md", children, ...props }, ref) => {
-    const base =
-      "inline-flex items-center justify-center rounded-full font-medium transition-all focus:outline-none disabled:opacity-50 disabled:pointer-events-none";
-
+  (props, ref) => {
+    const { 
+      className, 
+      variant = "default", 
+      size = "md", 
+      children,
+      ...rest 
+    } = props;
+    
+    const base = "inline-flex items-center justify-center rounded-full font-medium transition-all focus:outline-none disabled:opacity-50 disabled:pointer-events-none";
+    
     const variantClasses = {
       default: "bg-yellow-400 text-black hover:bg-yellow-300 shadow-lg",
       outline: "border-2 border-white/30 text-white bg-black/20 hover:bg-white/10 backdrop-blur-sm",
@@ -118,7 +127,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(base, variantClasses[variant], sizeClasses[size], className)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        {...props}
+        {...rest}
       >
         {children}
       </motion.button>
@@ -292,7 +301,7 @@ const Home: React.FC = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}>
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
               <span className="block">Discover the World</span>
-              <span className="text-yellow-400 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-500">
+              <span className="text-yellow-400 bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500">
                 Beyond Boundaries
               </span>
             </h1>
