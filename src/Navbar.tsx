@@ -1,12 +1,12 @@
+// Navbar.tsx
 import React from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
-// ✅ Local utility to join classes
 const cn = (...classes: (string | undefined | false | null)[]) =>
   classes.filter(Boolean).join(" ");
 
-// ✅ Local Button component
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "default" | "outline" | "ghost" | "link" | "destructive";
   size?: "sm" | "md" | "lg";
@@ -45,13 +45,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
-// ✅ Navbar Component
-const navItems = ["Home", "About us" ,"Destinations", "Tours", "Blog", "Contact"];
+const navItems = [
+  { label: "Home", path: "/" },
+  { label: "About us", path: "/about" },
+  { label: "Destinations", path: "/destinations" },
+  { label: "Tours", path: "/tours" },
+  { label: "Blog", path: "/blog" },
+  { label: "Contact", path: "/contact" },
+];
 
 const tourDropdownItems = [
-  { label: "Adventure Tours", href: "#adventure" },
-  { label: "Cultural Tours", href: "#cultural" },
-  { label: "Luxury Tours", href: "#luxury" },
+  { label: "Adventure Tours", path: "/tours#adventure" },
+  { label: "Korea Tours", path: "/korea#tour" },
 ];
 
 const Navbar: React.FC = () => {
@@ -66,22 +71,22 @@ const Navbar: React.FC = () => {
       className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-indigo-900 via-purple-800 to-pink-700 text-white shadow-2xl"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <a href="/" className="flex items-center space-x-2">
+        <Link to="/" className="flex items-center space-x-2">
           <img src="logo.png" alt="Link Asia Tours" className="h-12 w-auto" />
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex space-x-6 items-center relative">
           {navItems.map((item) =>
-            item === "Tours" ? (
+            item.label === "Tours" ? (
               <div
-                key={item}
+                key={item.label}
                 onMouseEnter={() => setShowDropdown(true)}
                 onMouseLeave={() => setShowDropdown(false)}
                 className="relative"
               >
                 <button className="flex items-center space-x-1 hover:text-yellow-300 transition">
-                  <span>{item}</span>
+                  <span>{item.label}</span>
                   <ChevronDown size={16} />
                 </button>
 
@@ -94,26 +99,26 @@ const Navbar: React.FC = () => {
                       className="absolute top-full left-0 mt-2 w-48 rounded-xl bg-white text-gray-800 shadow-lg z-50"
                     >
                       {tourDropdownItems.map((tour) => (
-                        <a
+                        <Link
                           key={tour.label}
-                          href={tour.href}
+                          to={tour.path}
                           className="block px-4 py-3 hover:bg-yellow-100 transition"
                         >
                           {tour.label}
-                        </a>
+                        </Link>
                       ))}
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
             ) : (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+              <Link
+                key={item.label}
+                to={item.path}
                 className="hover:text-yellow-300 transition"
               >
-                {item}
-              </a>
+                {item.label}
+              </Link>
             )
           )}
           <Button className="bg-yellow-400 text-black hover:bg-yellow-300 transition">
@@ -139,17 +144,15 @@ const Navbar: React.FC = () => {
         >
           <div className="flex flex-col space-y-4">
             {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+              <Link
+                key={item.label}
+                to={item.path}
                 className="text-white hover:text-yellow-300 transition"
+                onClick={() => setIsOpen(false)}
               >
-                {item}
-              </a>
+                {item.label}
+              </Link>
             ))}
-            {/* <Button className="mt-4 bg-yellow-400 text-black hover:bg-yellow-300 transition">
-              Book Now
-            </Button> */}
           </div>
         </motion.div>
       )}

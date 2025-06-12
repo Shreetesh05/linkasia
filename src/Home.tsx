@@ -154,7 +154,7 @@ const Home: React.FC = () => {
 
     const interval = setInterval(() => {
       setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length);
-    }, 5000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [isHovered]);
@@ -171,7 +171,7 @@ const Home: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-screen  flex items-center justify-center overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
