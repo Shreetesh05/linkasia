@@ -121,9 +121,11 @@ const Navbar: React.FC = () => {
               </Link>
             )
           )}
+          <Link to="/form">
           <Button className="bg-yellow-400 text-black hover:bg-yellow-300 transition">
             Book Now
           </Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}

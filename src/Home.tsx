@@ -1,86 +1,3 @@
-// import React from "react";
-// import { motion } from "framer-motion";
-// import { ArrowRight } from "lucide-react";
-
-// // === Local utility ===
-// const cn = (...classes: (string | false | undefined | null)[]) =>
-//   classes.filter(Boolean).join(" ");
-
-// // === Local Button component ===
-// interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-//   variant?: "default" | "outline";
-//   size?: "sm" | "md" | "lg";
-// }
-
-// const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-//   ({ className, variant = "default", size = "md", ...props }, ref) => {
-//     const base =
-//       "inline-flex items-center justify-center rounded-full font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
-
-//     const variantClasses = {
-//       default: "bg-yellow-400 text-black hover:bg-yellow-300",
-//       outline: "border border-white text-white hover:bg-white/10",
-//     };
-
-//     const sizeClasses = {
-//       sm: "h-8 px-4 text-sm",
-//       md: "h-10 px-6 text-base",
-//       lg: "h-12 px-8 text-lg",
-//     };
-
-//     return (
-//       <button
-//         ref={ref}
-//         className={cn(base, variantClasses[variant], sizeClasses[size], className)}
-//         {...props}
-//       />
-//     );
-//   }
-// );
-// Button.displayName = "Button";
-
-// // === Main Home Component ===
-// const Home: React.FC = () => {
-//   return (
-//     <section
-//       id="home"
-//       className="relative h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700 text-white overflow-hidden"
-//     >
-//       {/* Background circles */}
-//       <div className="absolute inset-0 z-0 overflow-hidden">
-//         <div className="absolute w-96 h-96 bg-pink-500 opacity-30 rounded-full top-1/4 left-1/4 blur-3xl animate-pulse"></div>
-//         <div className="absolute w-96 h-96 bg-indigo-500 opacity-30 rounded-full bottom-1/4 right-1/4 blur-3xl animate-pulse delay-200"></div>
-//       </div>
-
-//       {/* Foreground content */}
-//       <motion.div
-//         className="z-10 text-center px-4 sm:px-8 max-w-3xl"
-//         initial={{ opacity: 0, y: 60 }}
-//         animate={{ opacity: 1, y: 0 }}
-//         transition={{ duration: 1.2, ease: "easeOut" }}
-//       >
-//         <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
-//           Discover the World <br />
-//           <span className="text-yellow-400">Beyond Boundaries</span>
-//         </h1>
-//         <p className="mt-6 text-lg sm:text-xl text-white/80">
-//          Link Asia Tours offers unforgettable travel experiences tailored to your dreams. Let's explore new horizons together.
-//         </p>
-//         <div className="mt-8 flex justify-center gap-4">
-//           <Button size="lg" variant="default" className="flex items-center gap-2">
-//             Get Started <ArrowRight className="w-5 h-5" />
-//           </Button>
-//           <Button size="lg" variant="outline">
-//             Learn More
-//           </Button>
-//         </div>
-//       </motion.div>
-//     </section>
-//   );
-// };
-
-// export default Home;
-
 import React, { useState, useEffect } from "react";
 import { motion, type MotionProps } from "framer-motion";
 import { ArrowRight, Globe, Sparkles, MapPin, Star } from "lucide-react";
@@ -356,7 +273,60 @@ const Home: React.FC = () => {
           ))}
         </div>
       </motion.div>
-    </section>
+      <section className="py-16 px-6 bg-gradient-to-br from-cyan-900 to-gray-950">
+  <div className="max-w-7xl mx-auto">
+    <h2 className="text-4xl font-bold text-white mb-12 text-center">
+      🌍 Explore Our Top Destinations
+    </h2>
+
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {[
+        {
+          title: "Mystic Mountains",
+          image: "/images/mountains.jpg",
+          description: "Adventure into snow-capped beauty and local culture.",
+        },
+        {
+          title: "Island Escape",
+          image: "/images/island.jpg",
+          description: "Relax under palm trees with turquoise water views.",
+        },
+        {
+          title: "Cultural Odyssey",
+          image: "/images/culture.jpg",
+          description: "Dive deep into heritage, rituals, and flavors.",
+        },
+      ].map((card, i) => (
+        <div
+          key={i}
+          className="group relative bg-white/5 border border-cyan-700 rounded-2xl overflow-hidden shadow-xl hover:shadow-cyan-500/30 transition-all duration-300 backdrop-blur"
+        >
+          <img
+            src={card.image}
+            alt={card.title}
+            className="h-52 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div className="p-6">
+            <h3 className="text-xl font-semibold text-white mb-2">
+              {card.title}
+            </h3>
+            <p className="text-sm text-cyan-100">{card.description}</p>
+            <button className="mt-4 px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg shadow-lg transition">
+              Discover More →
+            </button>
+          </div>
+          <div className="absolute -inset-px z-[-1] bg-gradient-to-tr from-cyan-700 to-cyan-500 blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+        </div>
+        
+      ))}
+    </div>
+    
+  </div>
+  
+</section>
+
+ </section>
+    
   );
 };
 

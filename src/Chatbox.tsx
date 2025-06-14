@@ -4,13 +4,18 @@ import { MessageCircle, X } from "lucide-react";
 
 const ChatBox: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<string[]>([]);
   const [input, setInput] = useState("");
 
   const sendMessage = () => {
     if (!input.trim()) return;
-    setMessages([...messages, input]);
-    setInput("");
+
+    const phoneNumber = "9779768367873"; // 👈 Replace with your WhatsApp number
+    const message = encodeURIComponent(input);
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappUrl, "_blank");
+
+    setInput(""); // Clear input after sending
   };
 
   return (
@@ -25,17 +30,11 @@ const ChatBox: React.FC = () => {
             </button>
           </div>
 
-          {/* Messages */}
+          {/* Body */}
           <div className="flex-1 p-3 overflow-y-auto space-y-2">
-            {messages.length === 0 ? (
-              <p className="text-gray-500 text-sm text-center">No messages yet.</p>
-            ) : (
-              messages.map((msg, idx) => (
-                <div key={idx} className="bg-gray-100 p-2 rounded-md text-sm">
-                  {msg}
-                </div>
-              ))
-            )}
+            <p className="text-gray-500 text-sm text-center">
+              Send your message via WhatsApp
+            </p>
           </div>
 
           {/* Input */}

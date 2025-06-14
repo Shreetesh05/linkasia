@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // Team member interface
 interface TeamMember {
@@ -23,32 +24,25 @@ const AboutUsPage = () => {
   const teamMembers: TeamMember[] = [
     {
       id: 1,
-      name: "Sarah Lim",
-      position: "Founder & CEO",
+      name: "Mr. RP Devkota",
+      position: "Chairman & Founder",
       bio: "Travel industry veteran with 15+ years of experience",
       expertise: ["Cultural Tourism", "Sustainable Travel"]
     },
     {
       id: 2,
-      name: "Rajiv Sharma",
-      position: "Tech Director",
+      name: "Netra Poudel",
+      position: "Managing Director",
       bio: "Digital transformation specialist",
       expertise: ["VR Experiences", "Travel Tech"]
     },
     {
       id: 3,
-      name: "Mika Tanaka",
-      position: "Experience Designer",
+      name: "Sangita poudel Devkota",
+      position: "Executive Director",
       bio: "Crafting immersive journeys since 2015",
       expertise: ["Augmented Reality", "Cultural Immersion"]
     },
-    {
-      id: 4,
-      name: "David Chen",
-      position: "Sustainability Lead",
-      bio: "Eco-tourism advocate and researcher",
-      expertise: ["Carbon Neutral", "Community Tourism"]
-    }
   ];
 
   // Milestones data
@@ -75,6 +69,7 @@ const AboutUsPage = () => {
     }
   ];
 
+
   return (
     <div className="bg-gradient-to-br from-slate-900 to-indigo-900 text-white">
       {/* Hero Section */}
@@ -93,9 +88,11 @@ const AboutUsPage = () => {
             <p className="text-xl text-cyan-100 mb-8">
               Where cutting-edge technology meets authentic cultural experiences
             </p>
-            <button className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-bold hover:scale-105 transition-transform duration-300">
-              Explore Our Journeys
-            </button>
+            <Link to="/explore">
+      <button className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-bold hover:scale-105 transition-transform duration-300">
+        Explore Our Journeys
+      </button>
+    </Link>
           </div>
         </div>
       </section>
@@ -126,29 +123,31 @@ const AboutUsPage = () => {
             </button>
           </div>
           
-          <div className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-xl border border-indigo-500/30">
-            {activeTab === 'mission' ? (
-              <div className="animate-fadeIn">
-                <h3 className="text-2xl font-bold mb-4 text-cyan-300">Transformative Journeys</h3>
-                <p className="mb-4">
-                  To leverage technology that deepens cultural understanding while preserving heritage and ecosystems across Asia.
-                </p>
-                <p>
-                  We create immersive experiences using AR, VR, and AI that connect travelers with local communities in meaningful ways.
-                </p>
-              </div>
-            ) : (
-              <div className="animate-fadeIn">
-                <h3 className="text-2xl font-bold mb-4 text-cyan-300">The Future of Exploration</h3>
-                <p className="mb-4">
-                  To become Asia's premier tech-enabled sustainable tour operator by 2030.
-                </p>
-                <p>
-                  We envision travel where every journey contributes to conservation efforts and cultural preservation through blockchain-verified impact tracking.
-                </p>
-              </div>
-            )}
-          </div>
+          <div className="relative overflow-hidden bg-slate-800/50 backdrop-blur-sm p-8 rounded-xl border border-indigo-500/30">
+      {activeTab === 'mission' ? (
+        <div className="animate-slideUpSlow">
+          <h3 className="text-2xl font-bold mb-4 text-cyan-300">Transformative Journeys</h3>
+          <p className="mb-4">
+            To leverage technology that deepens cultural understanding while preserving heritage and ecosystems across Asia.
+          </p>
+          <p>
+            We create immersive experiences using AR, VR, and AI that connect travelers with local communities in meaningful ways.
+          </p>
+        </div>
+      ) : (
+        <div className="animate-slideUpSlow">
+          <h3 className="text-2xl font-bold mb-4 text-cyan-300">The Future of Exploration</h3>
+          <p className="mb-4">
+            To become Asia's premier tech-enabled sustainable tour operator by 2030.
+          </p>
+          <p>
+            We envision travel where every journey contributes to conservation efforts and cultural preservation through blockchain-verified impact tracking.
+          </p>
+        </div>
+      )}
+
+      {/* Tabs or triggers to change activeTab here */}
+    </div>
         </div>
       </section>
 
@@ -166,23 +165,23 @@ const AboutUsPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { 
-                title: "AR Exploration", 
-                desc: "Augmented reality guides revealing hidden stories",
+                title: "User-Friendly Website", 
+                desc: "Book trips, hotels, and tickets with just a few click anytime, anywhere.",
                 icon: "🔍"
               },
               { 
-                title: "Eco-Footprint Tracker", 
-                desc: "Real-time carbon impact monitoring",
+                title: "Smart Travel Planning", 
+                desc: "Get personalized suggestions based on your preferences and travel history.",
                 icon: "🌱"
               },
               { 
-                title: "AI Travel Assistant", 
-                desc: "24/7 personalized journey companion",
+                title: "Real-Time Ticketing Systems", 
+                desc: "Integrated with leading GDS platforms like  and Sabre for accurate pricing and availability.",
                 icon: "🤖"
               },
               { 
-                title: "VR Previews", 
-                desc: "Immersive destination previews before travel",
+                title: "Online Payments", 
+                desc: "Secure, flexible payment options with instant confirmations.",
                 icon: "👓"
               }
             ].map((feature, index) => (
@@ -295,6 +294,7 @@ const AboutUsPage = () => {
           </div>
         </div>
       </section>
+      
     </div>
   );
 };
