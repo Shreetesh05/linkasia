@@ -299,6 +299,176 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+      {/* Nepal Tourism Board Section */}
+<section className="py-20 bg-gradient-to-b from-black to-gray-900">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="text-center mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="inline-block bg-gradient-to-r from-amber-600 to-orange-500 text-white px-6 py-2 rounded-full mb-4"
+      >
+        Official Partner
+      </motion.div>
+      <motion.h2 
+        className="text-4xl font-bold text-white"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        Nepal Tourism Board
+      </motion.h2>
+      <motion.p 
+        className="mt-4 text-xl text-amber-100 max-w-3xl mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        viewport={{ once: true }}
+      >
+        Discover the Land of Himalayas and Ancient Cultures
+      </motion.p>
+    </div>
+
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* Nepal Information */}
+      <motion.div
+        className="bg-gradient-to-br from-amber-900/30 to-amber-800/20 backdrop-blur rounded-3xl border border-amber-500/20 p-8"
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="flex items-center mb-6">
+          <div className="bg-gradient-to-r from-amber-500 to-orange-500 w-14 h-14 rounded-lg flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+              <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+            </svg>
+          </div>
+          <h3 className="text-2xl font-bold text-amber-400 ml-4">Nepal Tourism Board</h3>
+        </div>
+        
+        <p className="text-amber-100 mb-6">
+          Nepal Tourism Board (NTB) is the national tourism organization of Nepal established to promote and develop tourism in Nepal. 
+          NTB provides authentic information about Nepal's diverse attractions, cultural heritage, adventure opportunities, and travel services.
+        </p>
+        
+        <div className="grid grid-cols-2 gap-4 mb-6">
+          {[
+            { icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>, 
+              text: "Official Website", 
+              link: "https://www.welcomenepal.com" },
+            { icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>, 
+              text: "Bhimsen Tower, Kathmandu", 
+              link: "https://goo.gl/maps/example" },
+            { icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>, 
+              text: "info@ntb.org.np", 
+              link: "mailto:info@ntb.org.np" },
+            { icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>, 
+              text: "+977 1-4256909", 
+              link: "tel:+97714256909" },
+          ].map((contact, index) => (
+            <a 
+              key={index}
+              href={contact.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-amber-200 hover:text-amber-400 transition-colors"
+            >
+              <span className="mr-3 text-amber-500">{contact.icon}</span>
+              <span>{contact.text}</span>
+            </a>
+          ))}
+        </div>
+        
+        <div className="flex flex-wrap gap-3 mt-4">
+          {[
+            "#VisitNepal2025", 
+            "NepalNow", 
+            "MountEverest", 
+            "AnnapurnaCircuit",
+            "Pashupatinath",
+            "Lumbini"
+          ].map((tag, index) => (
+            <span key={index} className="px-3 py-1 bg-amber-900/50 text-amber-300 rounded-full text-sm">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </motion.div>
+      
+      {/* Nepal Highlights */}
+      <motion.div
+        className="space-y-8"
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="relative rounded-3xl overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1583454110551-21f7e1b35dce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
+            alt="Nepal Himalayas"
+            className="w-full h-64 object-cover"
+          />
+          <div className="absolute bottom-6 left-6 z-20">
+            <h3 className="text-2xl font-bold text-white">Himalayan Wonderland</h3>
+            <p className="text-amber-200">Home to 8 of the world's 10 highest peaks</p>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-2 gap-6">
+          {[
+            { 
+              title: "Cultural Heritage", 
+              description: "7 UNESCO World Heritage Sites", 
+              icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><circle cx="12" cy="12" r="4"></circle></svg>
+            },
+            { 
+              title: "Adventure Capital", 
+              description: "Trekking, rafting & mountaineering", 
+              icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><path d="M12 10V1"/><path d="m17 11-3.2 3.2"/><path d="M7 11l3.2 3.2"/></svg>
+            },
+            { 
+              title: "Wildlife", 
+              description: "12 National Parks & reserves", 
+              icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+            },
+            { 
+              title: "Spiritual Home", 
+              description: "Birthplace of Lord Buddha", 
+              icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            },
+          ].map((highlight, index) => (
+            <div 
+              key={index} 
+              className="bg-gradient-to-br from-amber-800/20 to-amber-900/30 backdrop-blur rounded-xl border border-amber-500/20 p-5"
+            >
+              <div className="flex items-center mb-3">
+                <span className="text-amber-500 mr-3">{highlight.icon}</span>
+                <h4 className="font-semibold text-amber-300">{highlight.title}</h4>
+              </div>
+              <p className="text-amber-100 text-sm">{highlight.description}</p>
+            </div>
+          ))}
+        </div>
+        
+        <div className="text-center">
+          <motion.button
+            className="inline-flex items-center justify-center rounded-full font-medium transition-all focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 h-12 px-8 text-lg mx-auto"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Explore Nepal Packages <ArrowRight className="ml-2" size={20} />
+          </motion.button>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</section>
 <section className="py-20 bg-gradient-to-b from-gray-900 to-gray-950">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
