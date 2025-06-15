@@ -31,14 +31,14 @@ const AboutUsPage = () => {
     },
     {
       id: 2,
-      name: "Netra Poudel",
+      name: "Mr.Netra Poudel",
       position: "Managing Director",
       bio: "Digital transformation specialist",
       expertise: ["VR Experiences", "Travel Tech"]
     },
     {
       id: 3,
-      name: "Sangita poudel Devkota",
+      name: "Ms.Sangita poudel Devkota",
       position: "Executive Director",
       bio: "Crafting immersive journeys since 2015",
       expertise: ["Augmented Reality", "Cultural Immersion"]

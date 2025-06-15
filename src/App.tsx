@@ -12,6 +12,7 @@ import ChatBox from "./Chatbox";
 import KoreaTourPage from "./korea";
 import Explore from "./Explore";
 import Form from "./Form";
+import Footer from "./Footer";
 
 const App: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ const App: React.FC = () => {
       <Navbar />
       
       <ChatBox />
-      <main className="pt-32 text-center text-3xl">
+      <main className="pt-20 text-center text-3xl">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/form" element={<Form/>}/>
@@ -32,6 +33,7 @@ const App: React.FC = () => {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
+      <Footer/>
     </Router>
   );
 };
