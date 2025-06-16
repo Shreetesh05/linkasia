@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-indigo-900 via-purple-800 to-pink-700 text-white shadow-2xl"
+      className="fixed top-0 left-0 w-full z-50 bg-white text-black shadow-2xl"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-2">
@@ -156,11 +156,13 @@ const Navbar: React.FC = () => {
               >
                 {item.label}
               </Link>
+              
             ))}
           </div>
         </motion.div>
       )}
     </motion.nav>
+    
   );
 };
 
