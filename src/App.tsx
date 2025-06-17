@@ -14,6 +14,9 @@ import Explore from "./Explore";
 import Form from "./Form";
 import Footer from "./Footer";
 import ExploreNepal from "./ExploreNepal";
+import TourPackages from "./Domestic";
+import NationalParksPage from "./NationalParks";
+
 
 const App: React.FC = () => {
   return (
@@ -30,7 +33,9 @@ const App: React.FC = () => {
           <Route path="/explore" element={<Explore/>}/>
           <Route path="/destinations" element={<Destinations />} />
           <Route path="/tours" element={<Tours />} />
+          <Route path="domestic" element={<TourPackages/>}/>
           <Route path="korea" element={<KoreaTourPage/>}/>
+          <Route path="nationalparks" element={<NationalParksPage/>}/>
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>

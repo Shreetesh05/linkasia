@@ -57,7 +57,7 @@ const navItems = [
 const tourDropdownItems = [
   { label: "Adventure Tours", path: "/tours#adventure" },
   { label: "Korea Tours", path: "/korea#tour" },
-  { label: "Domestic Tours", path: "/tours#adventure" },
+  { label: "Domestic Tours", path: "/domestic#tours" },
   { label: "International", path: "/international#tour" },
 ];
 

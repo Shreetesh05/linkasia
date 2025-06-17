@@ -1,5 +1,6 @@
 // explorenepal.tsx
 import  { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const ExploreNepal = () => {
   const [activeTab, setActiveTab] = useState('culture');
@@ -498,9 +499,11 @@ const ExploreNepal = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/30 flex flex-col items-center justify-center p-8 text-center">
               <h3 className="text-3xl font-bold mb-4">Wildlife Sanctuary</h3>
               <p className="text-xl max-w-2xl mb-8">Home to Bengal tigers, one-horned rhinos, and over 900 species of birds</p>
+              <Link to="/nationalparks">
               <button className="px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full font-medium text-lg">
                 Explore National Parks
               </button>
+              </Link>
             </div>
           </div>
         </section>

@@ -166,8 +166,8 @@ const ContactPage = () => {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-sm font-medium text-gray-900">Our Headquarters</h3>
-                    <p className="mt-1 text-gray-600">NeoCommerce Tower, Level 42</p>
-                    <p className="text-gray-600">Singapore 038987</p>
+                    <p className="mt-1 text-gray-600">Airport Gate, Ashram Marga, KTM-9, Hotel Namasker-5th Floor.</p>
+                    <p className="text-gray-600">Soth Korea S</p>
                   </div>
                 </div>
                 

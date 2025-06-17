@@ -105,7 +105,8 @@ const Home: React.FC = () => {
     />
   ))}
   {/* Reduced opacity of white overlay */}
-  <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/50 to-white/30" />
+  <div className="absolute inset-0 bg-gradient-to-br from-purple-900/50 via-indigo-900/40 to-pink-800/40" />
+  
 </div>
         {/* Foreground content */}
         <motion.div
@@ -115,7 +116,7 @@ const Home: React.FC = () => {
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <motion.div
-            className="relative bg-white/90 backdrop-blur-xl rounded-3xl border border-gray-200 p-8 sm:p-12 shadow-lg"
+            className="relative bg-white/50 backdrop-blur-xl rounded-3xl border border-gray-200 p-8 sm:p-12 shadow-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -183,12 +184,12 @@ const Home: React.FC = () => {
               },
               {
                 title: "Island Escape",
-                image: "/images/island.jpg",
+                image: "/images/Island.jpg",
                 description: "Relax under palm trees with turquoise water views.",
               },
               {
                 title: "Cultural Odyssey",
-                image: "/images/culture.jpg",
+                image: "/images/mtfuji.jpeg",
                 description: "Dive deep into heritage, rituals, and flavors.",
               },
             ].map((card, i) => (
@@ -206,13 +207,15 @@ const Home: React.FC = () => {
                     {card.title}
                   </h3>
                   <p className="text-sm text-gray-600">{card.description}</p>
-                  <button className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow-md transition">
-                    Discover More →
-                  </button>
                 </div>
               </div>
             ))}
           </div>
+          <Link to = "/destinations">
+          <button className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow-md transition">
+                    Discover More →
+                  </button>
+                  </Link>
         </div>
       </div>
 
