@@ -3,92 +3,144 @@ import React from "react";
 
 const packages = [
   {
-    title: "Gems of Nepal",
-    duration: "5N/6D",
-    places: "2N Kathmandu · 2N Pokhara · 1N Kathmandu",
+    title: "Bhaktapur - Kathmandu – Lalitpur Heritage Journey",
+    duration: "3N/4D",
+    places: "2N Kathmandu · 1N Nagarkot",
     highlights: [
-      "Round Trip Flights",
-      "4 Star, 3 Star Hotels",
-      "4 Activities",
-      "Intercity Car Transfers",
-      "Airport Transfers",
-      "Selected Meals",
+      "Comfortable Accommodation",
+      "Expert Trip Guide",
+      "Vegetarian Breakfast & Dinner",
+      "All Transportation",
+      "Heritage Site Entrances",
+      "Airport Transfers"
     ],
     visits: [
-      "Visit to Bhaktapur, Pashupatinath Temple, Boudhanath Stupa",
-      "Visit to Swayambhunath Temple, Phewa Lake, Sarangkot",
-      "Visit to Bindhyabasini Temple, Devi's Fall, Visit Gupteshwor Mahadev Cave",
+      "Pashupatinath Temple & Boudhanath Stupa",
+      "Swayambhunath & Patan Museum",
+      "Bhaktapur Durbar Square & 55 Window Palace",
+      "Sunrise at Nagarkot"
     ],
-    price: "Rs 44,264",
-    image: "/images/mountains.jpg",
-    tag: "Deal of the day",
+    price: "Rs 28,500",
+    image: "/images/kathmandu.jpg",
     gradient: "from-amber-600/10 to-orange-700/10",
   },
   {
-    title: "Kathmandu and Pokhara Delight",
-    duration: "4N/5D",
-    places: "1N Kathmandu · 2N Pokhara · 1N Kathmandu",
+    title: "Cultural Circuit: Kathmandu - Chitwan - Lumbini - Pokhara",
+    duration: "5N/6D",
+    places: "1N Kathmandu · 1N Chitwan · 1N Lumbini · 2N Pokhara",
     highlights: [
-      "Round Trip Flights",
-      "3 Star Hotels",
-      "4 Activities",
-      "Intercity Car Transfers",
-      "Airport Transfers",
-      "Selected Meals",
+      "Comfortable Accommodation",
+      "Expert Trip Guide",
+      "Vegetarian Breakfast & Dinner",
+      "All Transportation",
+      "Jungle Safari Activities",
+      "Airport Transfers"
     ],
     visits: [
-      "Visit to Boudhanath Stupa, Pashupatinath Temple, Phewa Lake",
-      "Visit to Bindhyabasini Temple, Devi's Fall, Swayambhunath Temple",
+      "Kathmandu & Patan Sightseeing",
+      "Chitwan Jungle Safari Experience",
+      "Lumbini - Birthplace of Buddha",
+      "Pokhara: Phewa Lake & Sarangkot Sunrise"
     ],
-    price: "Rs 36,719",
-    image: "/images/kathmandu.jpg",
-    gradient: "from-emerald-600/10 to-teal-700/10",
-  },
-  {
-    title: "Chitwan",
-    duration: "4N/5D",
-    places: "1N Kathmandu · 2N Pokhara · 1N Kathmandu",
-    highlights: [
-      "Round Trip Flights",
-      "3 Star Hotels",
-      "4 Activities",
-      "Intercity Car Transfers",
-      "Airport Transfers",
-      "Selected Meals",
-    ],
-    visits: [
-      "Visit to Boudhanath Stupa, Pashupatinath Temple, Phewa Lake",
-      "Visit to Bindhyabasini Temple, Devi's Fall, Swayambhunath Temple",
-    ],
-    price: "Rs 36,719",
+    price: "Rs 42,800",
     image: "/images/chitwan.jpg",
     gradient: "from-emerald-600/10 to-teal-700/10",
   },
   {
-    title: "Kalinchowk",
-    duration: "4N/5D",
-    places: "1N Kathmandu · 2N Pokhara · 1N Kathmandu",
+    title: "Mardi Himal Trekking Adventure",
+    duration: "5N/6D",
+    places: "1N Kathmandu · 1N Pokhara · 3N Trek",
     highlights: [
-      "Round Trip Flights",
-      "3 Star Hotels",
-      "4 Activities",
-      "Intercity Car Transfers",
-      "Airport Transfers",
-      "Selected Meals",
+      "Mountain Lodge Accommodation",
+      "Expert Trekking Guide",
+      "Vegetarian Breakfast & Dinner",
+      "All Transportation",
+      "Trekking Permits",
+      "Airport Transfers"
     ],
     visits: [
-      "Visit to Boudhanath Stupa, Pashupatinath Temple, Phewa Lake",
-      "Visit to Bindhyabasini Temple, Devi's Fall, Swayambhunath Temple",
+      "Pokhara Sightseeing",
+      "Rhododendron Forests Trek",
+      "Mardi Himal Base Camp",
+      "Panoramic Himalayan Views"
     ],
-    price: "Rs 36,719",
+    price: "Rs 36,900",
+    image: "/images/mountains.jpg",
+    tag: "Adventure Special",
+    gradient: "from-cyan-600/10 to-blue-700/10",
+  },
+  {
+    title: "Himalayan Borders: Darjeeling & Sikkim Discovery",
+    duration: "5N/6D",
+    places: "1N Kathmandu · 1N Darjeeling · 2N Gangtok · 1N Birtamode",
+    highlights: [
+      "Comfortable Accommodation",
+      "Expert Trip Guide",
+      "Vegetarian Breakfast & Dinner",
+      "All Transportation",
+      "Border Permits",
+      "Airport Transfers"
+    ],
+    visits: [
+      "Darjeeling Tea Gardens & Toy Train",
+      "Gangtok Monasteries",
+      "Kanchenjunga Views",
+      "Cross-Border Cultural Experience"
+    ],
+    price: "Rs 38,750",
     image: "/images/lumbini.jpg",
-    gradient: "from-emerald-600/10 to-teal-700/10",
+    gradient: "from-purple-600/10 to-indigo-700/10",
+  },
+  {
+    title: "Eastern Escape: Ilam - Taplejung - Pathivara",
+    duration: "5N/6D",
+    places: "1N Kathmandu · 2N Ilam · 2N Taplejung",
+    highlights: [
+      "Comfortable Accommodation",
+      "Expert Trip Guide",
+      "Vegetarian Breakfast & Dinner",
+      "All Transportation",
+      "Temple Visits",
+      "Airport Transfers"
+    ],
+    visits: [
+      "Ilam Tea Garden Exploration",
+      "Sacred Pathivara Temple",
+      "Eastern Hill Country Views",
+      "Ethnic Cultural Experience"
+    ],
+    price: "Rs 32,400",
+    image: "/images/mountains.jpg",
+    gradient: "from-rose-600/10 to-pink-700/10",
+  },
+  {
+    title: "Kalinchowk Snow & Spiritual Getaway",
+    duration: "3N/4D",
+    places: "2N Kathmandu · 1N Kuri Village",
+    highlights: [
+      "Comfortable Accommodation",
+      "Expert Trip Guide",
+      "Vegetarian Breakfast & Dinner",
+      "All Transportation",
+      "Temple Visit",
+      "Airport Transfers"
+    ],
+    visits: [
+      "Kalinchowk Bhagawati Temple",
+      "Snow Adventures (Winter)",
+      "Mountain Hiking",
+      "Panoramic Himalayan Views"
+    ],
+    price: "Rs 24,900",
+    image: "/images/kathmandu.jpg",
+    tag: "Family Friendly",
+    gradient: "from-sky-600/10 to-cyan-700/10",
   },
 ];
 
 const TourPackages: React.FC = () => {
   return (
-    <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-pink-800 text-white sm:px-12  overflow-hiddenmax-w-6xl mx-auto px-4 py-12 relative z-10">
+    <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-pink-800 text-white sm:px-12 overflow-hidden max-w-6xl mx-auto px-4 py-12 relative z-10">
       <div className="text-center mb-16">
         <motion.div 
           className="h-1 w-24 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto mb-4"
@@ -104,7 +156,7 @@ const TourPackages: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Discover Our Best Tour Packages
+          Discover Nepal's Best Tour Packages
         </motion.h2>
         <motion.p
           className="text-lg text-white/80 max-w-2xl mx-auto"
@@ -113,7 +165,7 @@ const TourPackages: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          Curated experiences with premium amenities for the discerning traveler
+          Curated cultural, adventure and spiritual experiences with authentic Nepalese hospitality
         </motion.p>
       </div>
 
@@ -190,7 +242,7 @@ const TourPackages: React.FC = () => {
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-emerald-400" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                       </svg>
-                      Places to Visit
+                      Key Experiences
                     </h4>
                     <ul className="text-sm text-emerald-200 space-y-1">
                       {pkg.visits.map((v, i) => (

@@ -167,7 +167,7 @@ const ContactPage = () => {
                   <div className="ml-4">
                     <h3 className="text-sm font-medium text-gray-900">Our Headquarters</h3>
                     <p className="mt-1 text-gray-600">Airport Gate, Ashram Marga, KTM-9, Hotel Namasker-5th Floor.</p>
-                    <p className="text-gray-600">Soth Korea S</p>
+                    <p className="text-gray-600">suwon station gate-10, south korea</p>
                   </div>
                 </div>
                 
@@ -181,9 +181,10 @@ const ContactPage = () => {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-sm font-medium text-gray-900">Contact Channels</h3>
-                    <p className="mt-1 text-gray-600">+65 6123 4567</p>
-                    <p className="text-gray-600">contact@linkasiatours.com</p>
-                    <p className="text-gray-600">24/7 Support: +65 9876 5432</p>
+                    <p className="mt-1 text-gray-600"> +977-9856082660 / +977-9841431584 / +977-01-5912660</p>
+                    <p className="mt-1 text-gray-600"> <b>Korea:</b>+82-010-5877-5512</p>
+                    <p className="text-gray-600"> linkasia.nepal@gmail.com </p>
+                    <p className="text-gray-600">24/7 Support</p>
                   </div>
                 </div>
                 
@@ -197,8 +198,8 @@ const ContactPage = () => {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-sm font-medium text-gray-900">Operating Hours</h3>
-                    <p className="mt-1 text-gray-600">Monday - Friday: 8:00 AM - 10:00 PM (SGT)</p>
-                    <p className="text-gray-600">Saturday - Sunday: 9:00 AM - 8:00 PM (SGT)</p>
+                    <p className="mt-1 text-gray-600">Sunday - Friday: 8:00 AM - 10:00 PM </p>
+                    <p className="text-gray-600">Saturday - Sunday: 9:00 AM - 8:00 PM </p>
                   </div>
                 </div>
               </div>
@@ -216,8 +217,8 @@ const ContactPage = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                       </svg>
                     </div>
-                    <h3 className="font-medium text-gray-800 mb-1">Singapore Office</h3>
-                    <p className="text-sm text-gray-600">NeoCommerce Tower, Level 42</p>
+                    <h3 className="font-medium text-gray-800 mb-1">Korea Office </h3>
+                    <p className="text-sm text-gray-600">suwon station gate-10s</p>
                   </div>
                 </div>
                 <div className="absolute top-4 right-4 bg-white px-3 py-2 rounded-lg shadow-sm text-sm font-medium text-cyan-600">

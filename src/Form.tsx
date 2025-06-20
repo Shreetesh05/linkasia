@@ -57,7 +57,6 @@ const TravelForm: React.FC = () => {
     const newErrors: Partial<Record<FormField, string>> = {};
     const requiredFields: FormField[] = [
       "firstName",
-      "middleName",
       "lastName",
       "dob",
       "age",
@@ -102,7 +101,7 @@ const TravelForm: React.FC = () => {
       toast.success("Submitted Successfully ✅", { id: toastId });
       setFormData({
         firstName: "",
-        middleName: "",
+        middleName: "hhhhhhhhh",
         lastName: "",
         dob: "",
         age: "",
