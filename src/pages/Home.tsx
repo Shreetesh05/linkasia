@@ -1,0 +1,526 @@
+import React, { useState, useEffect } from "react";
+import { motion, type MotionProps } from "framer-motion";
+import { ArrowRight, Globe, Sparkles, MapPin, Star } from "lucide-react";
+import { Link } from "react-router-dom";
+
+// === Local utility ===
+const cn = (...classes: (string | false | undefined | null)[]) =>
+  classes.filter(Boolean).join(" ");
+
+// === Button component ===
+interface ButtonProps extends MotionProps {
+  variant?: "default" | "outline" | "glow";
+  size?: "sm" | "md" | "lg";
+  children?: React.ReactNode;
+  className?: string;
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref) => {
+    const {
+      className,
+      variant = "default",
+      size = "md",
+      children,
+      ...rest
+    } = props;
+
+    const base =
+      "inline-flex items-center justify-center rounded-full font-medium transition-all focus:outline-none disabled:opacity-50 disabled:pointer-events-none";
+
+    const variantClasses = {
+      default: "bg-blue-600 text-white hover:bg-blue-500 shadow-lg",
+      outline:
+        "border-2 border-blue-500 text-blue-600 bg-white hover:bg-blue-50",
+      glow: "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50",
+    };
+
+    const sizeClasses = {
+      sm: "h-8 px-4 text-sm",
+      md: "h-10 px-6 text-base",
+      lg: "h-12 px-8 text-lg",
+    };
+
+    return (
+      <motion.button
+        ref={ref}
+        className={cn(base, variantClasses[variant], sizeClasses[size], className)}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        {...rest}
+      >
+        {children}
+      </motion.button>
+    );
+  }
+);
+Button.displayName = "Button";
+
+// === Main Home Component ===
+const Home: React.FC = () => {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const backgroundImages = [
+    "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1968&q=80",
+    "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=2070&q=80",
+    "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?auto=format&fit=crop&w=2071&q=80",
+    "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2021&q=80",
+  ];
+
+  useEffect(() => {
+    if (isHovered) return;
+
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
+
+  return (
+    <>
+      {/* === HERO SECTION === */}
+      <section
+        id="home"
+        className="relative h-screen flex items-center justify-center overflow-hidden"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* Background slider */}
+        <div className="absolute inset-0 z-0">
+          {backgroundImages.map((img, index) => (
+            <motion.div
+              key={index}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${img})` }}
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: index === currentBgIndex ? 1 : 0,
+                scale: index === currentBgIndex ? 1 : 1.05,
+              }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+            />
+          ))}
+          {/* Light white overlay for clean look */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-white/40 to-white/20" />
+        </div>
+        
+        {/* Foreground content */}
+        <motion.div
+          className="z-10 text-center px-4 sm:px-8 max-w-4xl relative"
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <motion.div
+            className="relative bg-white/90 backdrop-blur-xl rounded-3xl border border-gray-200 p-8 sm:p-12 shadow-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-gray-900">
+              <span className="block">Discover the World</span>
+              <span className="text-blue-600 bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
+                Beyond Boundaries
+              </span>
+            </h1>
+            <p className="mt-6 text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">
+              Unforgettable travel experiences tailored to your dreams. Let's explore new horizons together.
+            </p>
+            <div className="mt-8 flex justify-center gap-4 flex-wrap">
+              <Button size="lg" variant="glow" className="flex items-center gap-2">
+                Get Started <ArrowRight className="w-5 h-5" />
+              </Button>
+              <Button size="lg" variant="outline">Learn More</Button>
+            </div>
+
+            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+              {[
+                { icon: <Globe size={24} className="text-blue-600" />, text: "100+ Destinations" },
+                { icon: <Sparkles size={24} className="text-blue-600" />, text: "Premium Experiences" },
+                { icon: <MapPin size={24} className="text-blue-600" />, text: "Local Experts" },
+                { icon: <Star size={24} className="text-blue-600" />, text: "5-Star Reviews" },
+              ].map((feature, index) => (
+                <motion.div 
+                  key={index} 
+                  className="bg-blue-50 p-3 rounded-xl border border-blue-100 flex flex-col items-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7 + (index * 0.1) }}
+                >
+                  {feature.icon}
+                  <span className="text-sm mt-2 text-gray-700">{feature.text}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Slider control */}
+          <div className="flex justify-center mt-8 space-x-2">
+            {backgroundImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentBgIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all ${
+                  index === currentBgIndex ? "bg-blue-600 w-8" : "bg-gray-300"
+                }`}
+                aria-label={`Show background ${index + 1}`}
+              />
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* === DESTINATIONS SECTION === */}
+      <div className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2 
+            className="text-4xl font-bold text-gray-900 mb-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            🌍 Explore Our Top Destinations
+          </motion.h2>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title: "Mystic Mountains",
+                image: "/images/mountains.jpg",
+                description: "Adventure into snow-capped beauty and local culture.",
+              },
+              {
+                title: "Island Escape",
+                image: "/images/Island.jpg",
+                description: "Relax under palm trees with turquoise water views.",
+              },
+              {
+                title: "Cultural Odyssey",
+                image: "/images/mtfuji.jpeg",
+                description: "Dive deep into heritage, rituals, and flavors.",
+              },
+            ].map((card, i) => (
+              <motion.div
+                key={i}
+                className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="h-52 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {card.title}
+                  </h3>
+                  <p className="text-sm text-gray-600">{card.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link to="/destinations">
+              <Button variant="glow" className="mx-auto">
+                Discover More Destinations
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* === FEATURES SECTION === */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-full mb-4"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Why Choose Us
+            </motion.div>
+            <motion.h2 
+              className="text-4xl font-bold text-gray-900"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Premium Travel Experiences
+            </motion.h2>
+            <motion.p 
+              className="mt-4 text-xl text-gray-700 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              We craft journeys that create lifelong memories
+            </motion.p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Personalized Itineraries",
+                description: "Tailored experiences designed just for you",
+                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><circle cx="12" cy="12" r="4"></circle></svg>,
+                color: "bg-blue-100"
+              },
+              { 
+                title: "Local Experts", 
+                description: "Insider knowledge from passionate guides", 
+                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>,
+                color: "bg-blue-100"
+              },
+              { 
+                title: "Premium Comfort", 
+                description: "Handpicked accommodations for your comfort", 
+                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>,
+                color: "bg-blue-100"
+              },
+              { 
+                title: "24/7 Support", 
+                description: "Assistance whenever you need it", 
+                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>,
+                color: "bg-blue-100"
+              },
+            ].map((feature, index) => (
+              <motion.div 
+                key={index} 
+                className="bg-white rounded-2xl border border-gray-200 p-6 text-center shadow-sm hover:shadow-md transition-all"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className={`w-16 h-16 rounded-full ${feature.color} flex items-center justify-center mx-auto mb-5`}>
+                  <span className="text-blue-600">{feature.icon}</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-700">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === OFFERS SECTION === */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <motion.h2 
+              className="text-4xl font-bold text-gray-900"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Limited Time Offers
+            </motion.h2>
+            <motion.p 
+              className="mt-4 text-xl text-gray-700 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              Exclusive deals for your next adventure
+            </motion.p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            <motion.div 
+              className="relative rounded-3xl overflow-hidden border-2 border-blue-300"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70 z-10"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1569949380643-6e746ecaa3bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
+                alt="Japan Special"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-0 left-0 p-8 z-20">
+                <div className="bg-blue-600 text-white font-bold px-4 py-1 rounded-full inline-block mb-4">
+                  Save 25%
+                </div>
+                <h3 className="text-3xl font-bold text-white">Cultural Japan Experience</h3>
+                <p className="text-blue-100 mt-2">Spring 2024 - Cherry Blossom Season</p>
+                <Button className="mt-6" variant="glow" size="lg">
+                  Book Now <ArrowRight className="ml-2" size={20} />
+                </Button>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className="relative rounded-3xl overflow-hidden border-2 border-blue-300"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70 z-10"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1590523278191-995cbcda646b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80" 
+                alt="Bali Special"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-0 left-0 p-8 z-20">
+                <div className="bg-blue-600 text-white font-bold px-4 py-1 rounded-full inline-block mb-4">
+                  Save 30%
+                </div>
+                <h3 className="text-3xl font-bold text-white">Bali Wellness Retreat</h3>
+                <p className="text-blue-100 mt-2">Summer 2024 - Limited Spaces</p>
+                <Button className="mt-6" variant="glow" size="lg">
+                  Book Now <ArrowRight className="ml-2" size={20} />
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* === TESTIMONIALS SECTION === */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <motion.h2 
+              className="text-4xl font-bold text-gray-900"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Traveler Stories
+            </motion.h2>
+            <motion.p 
+              className="mt-4 text-xl text-gray-700 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              Hear from our satisfied travelers
+            </motion.p>
+          </motion.div>
+
+          <div className="space-y-8">
+            {[
+              {
+                name: "Alex Johnson",
+                location: "Bali Adventure",
+                text: "The attention to detail was incredible. Every aspect of our trip was perfectly planned, allowing us to truly relax and enjoy the experience.",
+                rating: 5
+              },
+              {
+                name: "Sarah Williams",
+                location: "Japan Cultural Tour",
+                text: "Our guide was exceptional - knowledgeable, friendly, and always going the extra mile to make our trip memorable. We'll definitely be back!",
+                rating: 5
+              },
+              {
+                name: "Michael Chen",
+                location: "Mountain Expedition",
+                text: "The seamless experience from booking to the actual trip was impressive. Everything exceeded our expectations - a truly unforgettable journey.",
+                rating: 5
+              }
+            ].map((testimonial, index) => (
+              <motion.div
+                key={index}
+                className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-center mb-4">
+                  <div className="flex text-yellow-400">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} size={20} fill="currentColor" />
+                    ))}
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="font-bold text-gray-900">{testimonial.name}</h3>
+                    <p className="text-gray-600 text-sm">{testimonial.location}</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 italic">"{testimonial.text}"</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === CTA SECTION === */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.h2 
+            className="text-4xl font-bold mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Ready for Your Next Adventure?
+          </motion.h2>
+          <motion.p 
+            className="text-xl mb-10 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Let us craft your perfect journey. Contact us today to start planning.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Button 
+              size="lg" 
+              className="bg-white text-blue-700 hover:bg-gray-100"
+            >
+              Start Planning <ArrowRight className="ml-2" />
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+    </>
+
+  );
+};
+
+export default Home;
