@@ -1,21 +1,23 @@
 
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./pages/Navbar";
-import Home from "./pages/Home";
-import Destinations from "./Destination";
-import Tours from "./pages/Tours";
-import Blog from "./pages/Blog";
-import Contact from "./pages/Contact";
-import AboutUsPage from "./pages/About";
+import Navbar from "./Nav pages/Navbar";
+import Home from "./Nav pages/Home";
+import Destinations from "./Nav pages/Destination";
+import Tours from "./Nav pages/Tours";
+import Blog from "./Nav pages/Blog";
+import Contact from "./Nav pages/Contact";
+import AboutUsPage from "./Nav pages/About";
 import ChatBox from "./componentes/Chatbox";
-import KoreaTourPage from "./korea";
-import Explore from "./Explore";
+import KoreaTourPage from "./Nav pages/korea";
+import Explore from "./pages/Explore";
 import Form from "./componentes/Form";
-import Footer from "./pages/Footer";
-import ExploreNepal from "./ExploreNepal";
-import TourPackages from "./Domestic";
-import NationalParksPage from "./NationalParks";
+import Footer from "./Nav pages/Footer";
+import ExploreNepal from "./pages/ExploreNepal";
+import TourPackages from "./Nav pages/Domestic";
+import NationalParksPage from "./pages/NationalParks";
+import Explorektm from "./pages/Explorektm";
+import InternationalTours from "./Nav pages/International";
 
 
 const App: React.FC = () => {
@@ -34,6 +36,8 @@ const App: React.FC = () => {
           <Route path="/destinations" element={<Destinations />} />
           <Route path="/tours" element={<Tours />} />
           <Route path="domestic" element={<TourPackages/>}/>
+          <Route path="international" element={<InternationalTours/>}/>
+          <Route path="explorektm" element={<Explorektm/>}/>
           <Route path="korea" element={<KoreaTourPage/>}/>
           <Route path="nationalparks" element={<NationalParksPage/>}/>
           <Route path="/blog" element={<Blog />} />

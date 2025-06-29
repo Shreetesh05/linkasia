@@ -375,21 +375,24 @@ const App: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-indigo-950 to-black text-white overflow-hidden relative">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iNDAiIHkyPSI0MCIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4wNSkiIHN0cm9rZS13aWR0aD0iMSIvPgogIDxsaW5lIHgxPSI0MCIgeTE9IjAiIHgyPSIwIiB5Mj0iNDAiIHN0cm9rZT0icmdiYSg1NiwgMTg5LCAyNDgsIDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiLz4KPC9zdmc+')] opacity-10"></div>
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-purple-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse"></div>
-  
+    <div className="min-h-screen bg-white text-gray-900 overflow-hidden relative">
+      {/* Futuristic background elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-100"></div>
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+      
+      {/* Grid pattern background */}
+      <div className="absolute inset-0 opacity-10" style={{
+        backgroundImage: `linear-gradient(to right, #e5e7eb 1px, transparent 1px), linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)`,
+        backgroundSize: '40px 40px'
+      }}></div>
       
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-gray-900/95 backdrop-blur-sm z-50 flex flex-col items-center justify-center">
+        <div className="md:hidden fixed inset-0 bg-white/95 backdrop-blur-lg z-50 flex flex-col items-center justify-center">
           <button 
-            className="absolute top-6 right-6 text-cyan-200"
+            className="absolute top-6 right-6 text-cyan-600"
             onClick={() => setIsMenuOpen(false)}
           >
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -402,13 +405,13 @@ const App: React.FC = () => {
               <a 
                 key={item}
                 href="#" 
-                className="text-cyan-200 hover:text-white transition-colors"
+                className="text-cyan-600 hover:text-cyan-800 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item}
               </a>
             ))}
-            <button className="mt-6 px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-gray-900 font-bold hover:opacity-90 transition-opacity">
+            <button className="mt-6 px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold hover:opacity-90 transition-opacity shadow-lg">
               Book Now
             </button>
           </div>
@@ -419,40 +422,38 @@ const App: React.FC = () => {
         {/* Header */}
         <header className="text-center pt-8 md:pt-16">
           <div className="relative inline-block">
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500 animate-gradient">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 via-purple-600 to-pink-600 animate-gradient">
               FUTURE KOREA
             </h1>
-            <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 to-pink-500 rounded-full"></div>
+            <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"></div>
           </div>
           
           <p 
             ref={subtitleRef}
-            className="mt-6 text-lg md:text-xl text-cyan-100 opacity-0 max-w-2xl mx-auto transform translate-y-4 transition-all duration-700"
+            className="mt-6 text-lg md:text-xl text-gray-600 opacity-0 max-w-2xl mx-auto transform translate-y-4 transition-all duration-700"
           >
             Discover the fusion of ancient tradition and cutting-edge innovation across South Korea's most captivating destinations
           </p>
           
           <div className="mt-12 flex justify-center">
-            <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-lg blur opacity-75 animate-pulse"></div>
-              <button className="relative px-8 py-3 bg-gray-900 rounded-lg font-bold text-lg transition-all hover:bg-gray-800 hover:scale-105">
-                START YOUR JOURNEY
-              </button>
-            </div>
+            <button className="relative px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg font-bold text-lg text-white transition-all hover:opacity-90 shadow-lg hover:shadow-xl hover:shadow-cyan-500/30">
+              START YOUR JOURNEY
+              <span className="absolute inset-0 rounded-lg bg-white opacity-0 hover:opacity-10 transition-opacity"></span>
+            </button>
           </div>
         </header>
         
         <main className="mt-16">
           {/* Section Navigation */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
             {['culture', 'food', 'nature', 'adventure'].map(section => (
               <button
                 key={section}
                 onClick={() => setActiveSection(section)}
-                className={`px-6 py-2 rounded-full font-medium transition-all transform hover:scale-105 ${
+                className={`px-5 py-2.5 rounded-full font-medium transition-all transform hover:scale-105 ${
                   activeSection === section
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-gray-900 shadow-lg shadow-cyan-500/30'
-                    : 'bg-gray-800 text-cyan-100 hover:bg-gray-700'
+                    ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-md shadow-cyan-500/20'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -464,25 +465,25 @@ const App: React.FC = () => {
           {activeSection === 'culture' && (
             <section className="py-12">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">South Korean Culture: A Blend of Tradition and Modernity</h2>
-                <div className="h-1 w-32 bg-cyan-500 mx-auto mb-6"></div>
-                <p className="text-lg text-cyan-100 max-w-3xl mx-auto">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">South Korean Culture: A Blend of Tradition and Modernity</h2>
+                <div className="h-1 w-32 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto mb-6"></div>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                   Rooted in thousands of years of history, Korean culture blends deep traditional values with a highly modern lifestyle.
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {culturePoints.map((point, _index) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {culturePoints.map((point) => (
                   <div 
                     key={point.id}
-                    className="bg-gray-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-gray-700/50 hover:border-cyan-500/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-cyan-500/10"
+                    className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-cyan-300"
                   >
                     <div className="p-6">
-                      <div className="text-4xl mb-4">{point.icon}</div>
-                      <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-cyan-400 to-cyan-200 bg-clip-text text-transparent">
+                      <div className="text-4xl mb-4 text-cyan-600">{point.icon}</div>
+                      <h3 className="text-xl font-bold mb-3 text-gray-800">
                         {point.title}
                       </h3>
-                      <p className="text-cyan-100">{point.description}</p>
+                      <p className="text-gray-600">{point.description}</p>
                     </div>
                   </div>
                 ))}
@@ -494,18 +495,18 @@ const App: React.FC = () => {
           {activeSection === 'food' && (
             <section className="py-12">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">South Korean Food: Flavorful, Communal, and Full of Culture</h2>
-                <div className="h-1 w-32 bg-cyan-500 mx-auto mb-6"></div>
-                <p className="text-lg text-cyan-100 max-w-3xl mx-auto">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">South Korean Food: Flavorful, Communal, and Full of Culture</h2>
+                <div className="h-1 w-32 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto mb-6"></div>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                   Korean food is more than just something to eat—it's a deeply cultural experience.
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {foodItems.map((food) => (
                   <div 
                     key={food.id}
-                    className="bg-gray-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-gray-700/50 hover:border-cyan-500/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-cyan-500/10"
+                    className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 group"
                   >
                     <div className="relative h-56 overflow-hidden">
                       <img 
@@ -513,13 +514,13 @@ const App: React.FC = () => {
                         alt={food.title} 
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                      <h3 className="absolute bottom-4 left-4 text-xl font-bold bg-gradient-to-r from-cyan-400 to-cyan-200 bg-clip-text text-transparent">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                      <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
                         {food.title}
                       </h3>
                     </div>
                     <div className="p-6">
-                      <p className="text-cyan-100">{food.description}</p>
+                      <p className="text-gray-600">{food.description}</p>
                     </div>
                   </div>
                 ))}
@@ -531,64 +532,64 @@ const App: React.FC = () => {
           {activeSection === 'nature' && (
             <section className="py-12">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Nature of South Korea: Mountains, Islands & Harmony with the Earth</h2>
-                <div className="h-1 w-32 bg-cyan-500 mx-auto mb-6"></div>
-                <p className="text-lg text-cyan-100 max-w-3xl mx-auto">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Nature of South Korea: Mountains, Islands & Harmony with the Earth</h2>
+                <div className="h-1 w-32 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto mb-6"></div>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                   South Korea may be famous for its cities and culture, but what truly takes your breath away is its diverse and peaceful natural landscapes.
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-gray-800/50 backdrop-blur-lg rounded-xl p-6 border border-gray-700/50 shadow-xl">
-                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-cyan-200 bg-clip-text text-transparent">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
+                  <h3 className="text-xl font-bold mb-4 text-gray-800">
                     Mountain Ranges and National Parks
                   </h3>
-                  <p className="text-cyan-100 mb-4">
+                  <p className="text-gray-600 mb-4">
                     About 70% of Korea is mountainous, making it a paradise for hikers, nature photographers, and anyone seeking peaceful views.
                   </p>
-                  <ul className="list-disc list-inside text-cyan-100 space-y-2">
+                  <ul className="list-disc list-inside text-gray-600 space-y-2">
                     <li>Seoraksan National Park in Gangwon Province is the most iconic</li>
                     <li>Bukhansan, just outside Seoul, is perfect for day hikes</li>
                     <li>Jirisan, Songnisan, and Hallasan offer unique plants and wildlife</li>
                   </ul>
                 </div>
                 
-                <div className="bg-gray-800/50 backdrop-blur-lg rounded-xl p-6 border border-gray-700/50 shadow-xl">
-                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-cyan-200 bg-clip-text text-transparent">
+                <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
+                  <h3 className="text-xl font-bold mb-4 text-gray-800">
                     Jeju Island – Nature's Gift
                   </h3>
-                  <p className="text-cyan-100 mb-4">
+                  <p className="text-gray-600 mb-4">
                     Jeju-do is a volcanic island off the southern coast, known for its lava tubes, waterfalls, beaches, and Mount Hallasan—the tallest mountain in South Korea.
                   </p>
-                  <ul className="list-disc list-inside text-cyan-100 space-y-2">
+                  <ul className="list-disc list-inside text-gray-600 space-y-2">
                     <li>UNESCO-listed sites like Manjanggul Cave</li>
                     <li>Seongsan Ilchulbong (Sunrise Peak)</li>
                     <li>Gotjawal forests and Olle Trails</li>
                   </ul>
                 </div>
                 
-                <div className="bg-gray-800/50 backdrop-blur-lg rounded-xl p-6 border border-gray-700/50 shadow-xl">
-                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-cyan-200 bg-clip-text text-transparent">
+                <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
+                  <h3 className="text-xl font-bold mb-4 text-gray-800">
                     Beautiful Beaches and Coastal Scenery
                   </h3>
-                  <p className="text-cyan-100 mb-4">
+                  <p className="text-gray-600 mb-4">
                     Busan is Korea's beach city, with Haeundae and Gwangalli Beach offering sun, sand, and sea—with the city skyline in view.
                   </p>
-                  <ul className="list-disc list-inside text-cyan-100 space-y-2">
+                  <ul className="list-disc list-inside text-gray-600 space-y-2">
                     <li>Eastern coast has clear blue water and calm beaches</li>
                     <li>Southern coast has quiet bays and seafood villages</li>
                     <li>Perfect for relaxing and trying fresh catch</li>
                   </ul>
                 </div>
                 
-                <div className="bg-gray-800/50 backdrop-blur-lg rounded-xl p-6 border border-gray-700/50 shadow-xl">
-                  <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-cyan-200 bg-clip-text text-transparent">
+                <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
+                  <h3 className="text-xl font-bold mb-4 text-gray-800">
                     Wildlife and Eco-Parks
                   </h3>
-                  <p className="text-cyan-100 mb-4">
+                  <p className="text-gray-600 mb-4">
                     Despite its size, Korea is home to rare species, birds, and plants. The Demilitarized Zone (DMZ) has become a haven for wildlife due to its untouched nature.
                   </p>
-                  <ul className="list-disc list-inside text-cyan-100 space-y-2">
+                  <ul className="list-disc list-inside text-gray-600 space-y-2">
                     <li>Wetlands like Suncheon Bay for birdwatching</li>
                     <li>Upo Wetlands for biking, walking, and photography</li>
                     <li>Forest bathing in Jangtaesan or Bijarim Forest</li>
@@ -602,23 +603,23 @@ const App: React.FC = () => {
           {activeSection === 'adventure' && (
             <section className="py-12">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Adventure Places in South Korea: Thrill, Nature, and Unforgettable Experiences</h2>
-                <div className="h-1 w-32 bg-cyan-500 mx-auto mb-6"></div>
-                <p className="text-lg text-cyan-100 max-w-3xl mx-auto">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Adventure Places in South Korea: Thrill, Nature, and Unforgettable Experiences</h2>
+                <div className="h-1 w-32 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto mb-6"></div>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                   South Korea is full of exciting places for every kind of traveler.
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {adventurePlaces.map((place, _index) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {adventurePlaces.map((place) => (
                   <div 
                     key={place.id}
-                    className="bg-gray-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-gray-700/50 hover:border-cyan-500/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-cyan-500/10 group"
+                    className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 group"
                   >
                     <div className="relative h-56 overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
                       <div className="absolute top-4 right-4 z-20">
-                        <span className="px-3 py-1 bg-gradient-to-r from-cyan-500 to-purple-500 text-gray-900 font-bold rounded-full text-sm">
+                        <span className="px-3 py-1 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold rounded-full text-xs">
                           {place.tagline}
                         </span>
                       </div>
@@ -630,17 +631,17 @@ const App: React.FC = () => {
                     </div>
                     
                     <div className="p-6">
-                      <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-cyan-200 bg-clip-text text-transparent">
+                      <h3 className="text-xl font-bold mb-2 text-gray-800">
                         {place.title}
                       </h3>
-                      <p className="text-cyan-100 mb-4">{place.description}</p>
+                      <p className="text-gray-600 mb-4">{place.description}</p>
                       
-                      <div className="mt-4 p-4 bg-gray-900/50 rounded-lg border-l-4 border-cyan-500">
-                        <h4 className="text-sm font-bold text-cyan-300 mb-2">KEY HIGHLIGHTS</h4>
+                      <div className="mt-4 p-4 bg-cyan-50 rounded-lg border-l-4 border-cyan-500">
+                        <h4 className="text-sm font-bold text-cyan-700 mb-2">KEY HIGHLIGHTS</h4>
                         <ul className="space-y-1">
                           {place.highlights.map((highlight, idx) => (
-                            <li key={idx} className="text-sm text-cyan-100 flex items-start">
-                              <span className="mr-2">•</span> {highlight}
+                            <li key={idx} className="text-sm text-gray-700 flex items-start">
+                              <span className="mr-2 text-cyan-500">•</span> {highlight}
                             </li>
                           ))}
                         </ul>
@@ -652,18 +653,19 @@ const App: React.FC = () => {
             </section>
           )}
         </main>
-      </div>
-      {/* Particles animation */}
+         </div>
+      
+      {/* Floating particles */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(15)].map((_, i) => (
           <div 
             key={i}
-            className="absolute rounded-full bg-cyan-500 opacity-20"
+            className="absolute rounded-full bg-cyan-500 opacity-10"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 10 + 2}px`,
-              height: `${Math.random() * 10 + 2}px`,
+              width: `${Math.random() * 8 + 2}px`,
+              height: `${Math.random() * 8 + 2}px`,
               animation: `float ${Math.random() * 10 + 10}s infinite ease-in-out`,
               animationDelay: `${Math.random() * 5}s`
             }}
@@ -672,45 +674,25 @@ const App: React.FC = () => {
       </div>
       
       {/* Custom styles */}
-      <style>{`
-        .animate-gradient {
-          background-size: 300% 300%;
-          animation: gradient-shift 8s ease infinite;
-        }
-        
+      <style >{`
         @keyframes gradient-shift {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
         
-        .animate-fade-in-up {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-        
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
         @keyframes float {
           0% {
             transform: translateY(0) translateX(0) rotate(0deg);
-            opacity: 0.2;
+            opacity: 0.1;
           }
           50% {
-            transform: translateY(-20px) translateX(10px) rotate(180deg);
-            opacity: 0.3;
+            transform: translateY(-15px) translateX(10px) rotate(180deg);
+            opacity: 0.2;
           }
           100% {
             transform: translateY(0) translateX(0) rotate(360deg);
-            opacity: 0.2;
+            opacity: 0.1;
           }
         }
       `}</style>

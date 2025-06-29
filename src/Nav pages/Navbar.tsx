@@ -1,4 +1,3 @@
-// Navbar.tsx
 import React from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -64,6 +63,75 @@ const tourDropdownItems = [
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [showDropdown, setShowDropdown] = React.useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = React.useState(false);
+
+  const renderNavItems = (isMobile = false) => (
+    <>
+      {navItems.map((item) =>
+        item.label === "Tours" ? (
+  <div
+    key={item.label}
+    className={cn("relative", isMobile ? "block" : "group")}
+    onMouseEnter={() => !isMobile && setShowDropdown(true)}
+    onMouseLeave={() => !isMobile && setShowDropdown(false)}
+  >
+    <button
+      onClick={() => {
+        if (isMobile) setMobileDropdownOpen(!mobileDropdownOpen);
+      }}
+      className="flex items-center space-x-1 hover:text-yellow-300 transition w-full"
+    >
+      <span>{item.label}</span>
+      <ChevronDown size={16} />
+    </button>
+
+    <AnimatePresence>
+      {(isMobile ? mobileDropdownOpen : showDropdown) && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className={cn(
+            "mt-2 rounded-xl bg-white text-gray-800 shadow-lg z-50",
+            isMobile ? "pl-4 pt-2" : "absolute top-full left-0 w-48"
+          )}
+        >
+          {tourDropdownItems.map((tour) => (
+            <Link
+              key={tour.label}
+              to={tour.path}
+              className="block px-4 py-3 hover:bg-yellow-100 transition"
+              onClick={() => {
+                if (isMobile) {
+                  setIsOpen(false);
+                  setMobileDropdownOpen(false);
+                }
+              }}
+            >
+              {tour.label}
+            </Link>
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+) : (
+  <Link
+    key={item.label}
+    to={item.path}
+    className={cn(
+      "hover:text-yellow-300 transition",
+      isMobile ? "text-white py-2" : ""
+    )}
+    onClick={() => isMobile && setIsOpen(false)}
+  >
+    {item.label}
+  </Link>
+)
+
+      )}
+    </>
+  );
 
   return (
     <motion.nav
@@ -79,58 +147,15 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex space-x-6 items-center relative">
-          {navItems.map((item) =>
-            item.label === "Tours" ? (
-              <div
-                key={item.label}
-                onMouseEnter={() => setShowDropdown(true)}
-                onMouseLeave={() => setShowDropdown(false)}
-                className="relative"
-              >
-                <button className="flex items-center space-x-1 hover:text-yellow-300 transition">
-                  <span>{item.label}</span>
-                  <ChevronDown size={16} />
-                </button>
-
-                <AnimatePresence>
-                  {showDropdown && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="absolute top-full left-0 mt-2 w-48 rounded-xl bg-white text-gray-800 shadow-lg z-50"
-                    >
-                      {tourDropdownItems.map((tour) => (
-                        <Link
-                          key={tour.label}
-                          to={tour.path}
-                          className="block px-4 py-3 hover:bg-yellow-100 transition"
-                        >
-                          {tour.label}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ) : (
-              <Link
-                key={item.label}
-                to={item.path}
-                className="hover:text-yellow-300 transition"
-              >
-                {item.label}
-              </Link>
-            )
-          )}
+          {renderNavItems(false)}
           <Link to="/form">
-          <Button className="bg-yellow-400 text-black hover:bg-yellow-300 transition">
-            Book Now
-          </Button>
+            <Button className="bg-yellow-400 text-black hover:bg-yellow-300 transition">
+              Book Now
+            </Button>
           </Link>
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Toggle */}
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -138,31 +163,28 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <motion.div
-          initial={{ height: 0 }}
-          animate={{ height: "auto" }}
-          transition={{ duration: 0.4 }}
-          className="md:hidden bg-indigo-950 px-6 pb-4"
-        >
-          <div className="flex flex-col space-y-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                to={item.path}
-                className="text-white hover:text-yellow-300 transition"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
+      {/* Mobile Nav */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: "auto" }}
+            exit={{ height: 0 }}
+            transition={{ duration: 0.4 }}
+            className="md:hidden bg-indigo-950 px-6 pb-4 overflow-hidden"
+          >
+            <div className="flex flex-col space-y-2 mt-4 text-white">
+              {renderNavItems(true)}
+              <Link to="/form">
+                <Button className="mt-4 bg-yellow-400 text-black hover:bg-yellow-300 transition w-full">
+                  Book Now
+                </Button>
               </Link>
-              
-            ))}
-          </div>
-        </motion.div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
-    
   );
 };
 
