@@ -105,33 +105,6 @@ const InternationalToursLight = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-blue-50 text-gray-900 py-16 px-4 sm:px-8">
-      {/* Animated Background */}
-      <div className="fixed inset-0 overflow-hidden z-0">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-blue-100"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 200 + 50}px`,
-              height: `${Math.random() * 200 + 50}px`,
-            }}
-            animate={{
-              y: [0, Math.random() * 100 - 50],
-              x: [0, Math.random() * 100 - 50],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 15,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
-      
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <motion.div 
@@ -435,32 +408,6 @@ const InternationalToursLight = () => {
           </motion.button>
           <p className="mt-4 text-gray-500">Flexible booking options • 24/7 customer support</p>
         </motion.div>
-      </div>
-      
-      {/* Floating Particles */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-cyan-200/50"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 10 + 2}px`,
-              height: `${Math.random() * 10 + 2}px`,
-            }}
-            animate={{
-              y: [0, Math.random() * 20 - 10],
-              x: [0, Math.random() * 20 - 10],
-            }}
-            transition={{
-              duration: Math.random() * 5 + 3,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
-          />
-        ))}
       </div>
     </div>
   );

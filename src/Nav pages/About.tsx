@@ -128,10 +128,7 @@ const AboutUsPage = () => {
               <div>
                 <h3 className="text-2xl font-bold mb-4 text-blue-600">Transformative Journeys</h3>
                 <p className="mb-4 text-gray-700">
-                  To leverage technology that deepens cultural understanding while preserving heritage and ecosystems across Asia.
-                </p>
-                <p className="text-gray-700">
-                  We create immersive experiences using AR, VR, and AI that connect travelers with local communities in meaningful ways.
+                  At Link Asia Tours, we make travel easy, personal, and memorable. Whether it's a short trip or a big adventure, we're here to plan it with care, honesty, and heart.
                 </p>
               </div>
             ) : (

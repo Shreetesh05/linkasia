@@ -18,6 +18,7 @@ import TourPackages from "./Nav pages/Domestic";
 import NationalParksPage from "./pages/NationalParks";
 import Explorektm from "./pages/Explorektm";
 import InternationalTours from "./Nav pages/International";
+import CustomizeTour from "./pages/CustomizeTours";
 
 
 const App: React.FC = () => {
@@ -37,6 +38,7 @@ const App: React.FC = () => {
           <Route path="/tours" element={<Tours />} />
           <Route path="domestic" element={<TourPackages/>}/>
           <Route path="international" element={<InternationalTours/>}/>
+          <Route path="customizetours" element={<CustomizeTour/>}/>
           <Route path="explorektm" element={<Explorektm/>}/>
           <Route path="korea" element={<KoreaTourPage/>}/>
           <Route path="nationalparks" element={<NationalParksPage/>}/>

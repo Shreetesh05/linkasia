@@ -1,6 +1,7 @@
 // src/components/NepalAdventures.tsx
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const NepalAdventures: React.FC = () => {
   const [activeTour, setActiveTour] = useState<number | null>(null);
@@ -180,12 +181,14 @@ const NepalAdventures: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
           >
+            <Link to="/customizetours">
             <button className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-bold text-lg shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105">
               Explore Adventures
             </button>
             <button className="px-8 py-3 bg-transparent border-2 border-cyan-400 rounded-full font-bold text-lg text-cyan-300 hover:bg-cyan-500/10 transition-all duration-300">
               Customize Tour
             </button>
+            </Link>
           </motion.div>
         </motion.div>
 
