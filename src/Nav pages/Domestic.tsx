@@ -196,7 +196,7 @@ const TourPackages: React.FC = () => {
                       <Car size={18} className="text-amber-500" />
                     </div>
                   </div>
-                  <Link to={`${tour.id}`}>
+                  <Link to={`/${tour.id}`}>
                     <motion.button
                       className="px-5 py-2.5 font-medium bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg hover:from-cyan-600 hover:to-blue-700 transition-all flex items-center gap-2 shadow-md hover:shadow-lg"
                       whileHover={{ scale: 1.05 }}

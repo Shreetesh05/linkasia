@@ -109,62 +109,73 @@ const Home: React.FC = () => {
         
         {/* Foreground content */}
         <motion.div
-          className="z-10 text-center px-4 sm:px-8 max-w-4xl relative"
+          className="z-10 text-center px-4 sm:px-8 max-w-4xl w-full relative"
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <motion.div
-            className="relative bg-white/90 backdrop-blur-xl rounded-3xl border border-gray-200 p-8 sm:p-12 shadow-lg"
+            className="relative bg-white/90 backdrop-blur-xl rounded-3xl border border-gray-200 p-6 sm:p-8 md:p-12 shadow-lg mx-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-gray-900">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-gray-900">
               <span className="block">Discover the World</span>
               <span className="text-blue-600 bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
                 Beyond Boundaries
               </span>
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
               Unforgettable travel experiences tailored to your dreams. Let's explore new horizons together.
             </p>
-            <div className="mt-8 flex justify-center gap-4 flex-wrap">
-              <Button size="lg" variant="glow" className="flex items-center gap-2">
-                Get Started <ArrowRight className="w-5 h-5" />
-              </Button>
-              <Button size="lg" variant="outline">Learn More</Button>
-            </div>
+           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+  <Button
+    size="lg"
+    variant="glow"
+    className="flex items-center justify-center gap-2 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
+  >
+    Get Started <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+  </Button>
+  <Button
+    size="lg"
+    variant="outline"
+    className="text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
+  >
+    Learn More
+  </Button>
+</div>
 
-            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+
+            <div className="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto">
               {[
-                { icon: <Globe size={24} className="text-blue-600" />, text: "100+ Destinations" },
-                { icon: <Sparkles size={24} className="text-blue-600" />, text: "Premium Experiences" },
-                { icon: <MapPin size={24} className="text-blue-600" />, text: "Local Experts" },
-                { icon: <Star size={24} className="text-blue-600" />, text: "5-Star Reviews" },
+                { icon: <Globe size={20} className="sm:w-6 sm:h-6 text-blue-600" />, text: "100+ Destinations" },
+                { icon: <Sparkles size={20} className="sm:w-6 sm:h-6 text-blue-600" />, text: "Premium Experiences" },
+                { icon: <MapPin size={20} className="sm:w-6 sm:h-6 text-blue-600" />, text: "Local Experts" },
+                { icon: <Star size={20} className="sm:w-6 sm:h-6 text-blue-600" />, text: "5-Star Reviews" },
               ].map((feature, index) => (
                 <motion.div 
                   key={index} 
-                  className="bg-blue-50 p-3 rounded-xl border border-blue-100 flex flex-col items-center"
+                  className="bg-blue-50 p-2 sm:p-3 rounded-xl border border-blue-100 flex flex-col items-center"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 + (index * 0.1) }}
                 >
                   {feature.icon}
-                  <span className="text-sm mt-2 text-gray-700">{feature.text}</span>
+                  <span className="text-xs sm:text-sm mt-1 sm:mt-2 text-gray-700 text-center">{feature.text}</span>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
           {/* Slider control */}
-          <div className="flex justify-center mt-8 space-x-2">
+          <div className="flex justify-center mt-6 sm:mt-8 space-x-2">
             {backgroundImages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentBgIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  index === currentBgIndex ? "bg-blue-600 w-8" : "bg-gray-300"
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
+                  index === currentBgIndex ? "bg-blue-600 w-6 sm:w-8" : "bg-gray-300"
                 }`}
                 aria-label={`Show background ${index + 1}`}
               />
@@ -174,10 +185,10 @@ const Home: React.FC = () => {
       </section>
 
       {/* === DESTINATIONS SECTION === */}
-      <div className="py-20 px-6 bg-white">
+      <div className="py-16 sm:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
-            className="text-4xl font-bold text-gray-900 mb-12 text-center"
+            className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 sm:mb-12 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -186,7 +197,7 @@ const Home: React.FC = () => {
             🌍 Explore Our Top Destinations
           </motion.h2>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 title: "Mystic Mountains",
@@ -215,20 +226,20 @@ const Home: React.FC = () => {
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="h-52 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="h-48 sm:h-52 w-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">
                     {card.title}
                   </h3>
-                  <p className="text-sm text-gray-600">{card.description}</p>
+                  <p className="text-xs sm:text-sm text-gray-600">{card.description}</p>
                 </div>
               </motion.div>
             ))}
           </div>
-          <div className="text-center mt-10">
+          <div className="text-center mt-8 sm:mt-10">
             <Link to="/destinations">
-              <Button variant="glow" className="mx-auto">
+              <Button variant="glow" className="mx-auto text-sm sm:text-base">
                 Discover More Destinations
               </Button>
             </Link>
@@ -237,17 +248,17 @@ const Home: React.FC = () => {
       </div>
 
       {/* === FEATURES SECTION === */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 sm:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
             <motion.div
-              className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-full mb-4"
+              className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 sm:px-6 py-1 sm:py-2 rounded-full mb-3 sm:mb-4 text-sm sm:text-base"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
@@ -256,7 +267,7 @@ const Home: React.FC = () => {
               Why Choose Us
             </motion.div>
             <motion.h2 
-              className="text-4xl font-bold text-gray-900"
+              className="text-3xl sm:text-4xl font-bold text-gray-900"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -265,7 +276,7 @@ const Home: React.FC = () => {
               Premium Travel Experiences
             </motion.h2>
             <motion.p 
-              className="mt-4 text-xl text-gray-700 max-w-3xl mx-auto"
+              className="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -275,7 +286,7 @@ const Home: React.FC = () => {
             </motion.p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               {
                 title: "Personalized Itineraries",
@@ -304,17 +315,17 @@ const Home: React.FC = () => {
             ].map((feature, index) => (
               <motion.div 
                 key={index} 
-                className="bg-white rounded-2xl border border-gray-200 p-6 text-center shadow-sm hover:shadow-md transition-all"
+                className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-6 text-center shadow-sm hover:shadow-md transition-all"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className={`w-16 h-16 rounded-full ${feature.color} flex items-center justify-center mx-auto mb-5`}>
+                <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full ${feature.color} flex items-center justify-center mx-auto mb-4 sm:mb-5`}>
                   <span className="text-blue-600">{feature.icon}</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-700">{feature.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{feature.title}</h3>
+                <p className="text-sm sm:text-base text-gray-700">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -322,17 +333,17 @@ const Home: React.FC = () => {
       </section>
 
       {/* === OFFERS SECTION === */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 sm:py-20 bg-white px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
             <motion.h2 
-              className="text-4xl font-bold text-gray-900"
+              className="text-3xl sm:text-4xl font-bold text-gray-900"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -341,7 +352,7 @@ const Home: React.FC = () => {
               Limited Time Offers
             </motion.h2>
             <motion.p 
-              className="mt-4 text-xl text-gray-700 max-w-3xl mx-auto"
+              className="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -351,9 +362,9 @@ const Home: React.FC = () => {
             </motion.p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             <motion.div 
-              className="relative rounded-3xl overflow-hidden border-2 border-blue-300"
+              className="relative rounded-3xl overflow-hidden border-2 border-blue-300 aspect-video"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
@@ -365,20 +376,26 @@ const Home: React.FC = () => {
                 alt="Japan Special"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-0 left-0 p-8 z-20">
-                <div className="bg-blue-600 text-white font-bold px-4 py-1 rounded-full inline-block mb-4">
+              <div className="absolute bottom-0 left-0 p-5 sm:p-6 md:p-8 z-20">
+                <div className="bg-blue-600 text-white font-bold px-3 py-1 rounded-full inline-block mb-2 sm:mb-3 text-xs sm:text-sm">
                   Save 25%
                 </div>
-                <h3 className="text-3xl font-bold text-white">Cultural Japan Experience</h3>
-                <p className="text-blue-100 mt-2">Spring 2024 - Cherry Blossom Season</p>
-                <Button className="mt-6" variant="glow" size="lg">
-                  Book Now <ArrowRight className="ml-2" size={20} />
-                </Button>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Cultural Japan Experience</h3>
+                <p className="text-blue-100 mt-1 sm:mt-2 text-sm sm:text-base">Spring 2024 - Cherry Blossom Season</p>
+                <Button
+  variant="glow"
+  size="lg"
+  className="mt-4 sm:mt-6 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
+>
+  Book Now
+  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+</Button>
+
               </div>
             </motion.div>
 
             <motion.div 
-              className="relative rounded-3xl overflow-hidden border-2 border-blue-300"
+              className="relative rounded-3xl overflow-hidden border-2 border-blue-300 aspect-video"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -390,15 +407,21 @@ const Home: React.FC = () => {
                 alt="Bali Special"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-0 left-0 p-8 z-20">
-                <div className="bg-blue-600 text-white font-bold px-4 py-1 rounded-full inline-block mb-4">
+              <div className="absolute bottom-0 left-0 p-5 sm:p-6 md:p-8 z-20">
+                <div className="bg-blue-600 text-white font-bold px-3 py-1 rounded-full inline-block mb-2 sm:mb-3 text-xs sm:text-sm">
                   Save 30%
                 </div>
-                <h3 className="text-3xl font-bold text-white">Bali Wellness Retreat</h3>
-                <p className="text-blue-100 mt-2">Summer 2024 - Limited Spaces</p>
-                <Button className="mt-6" variant="glow" size="lg">
-                  Book Now <ArrowRight className="ml-2" size={20} />
-                </Button>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Bali Wellness Retreat</h3>
+                <p className="text-blue-100 mt-1 sm:mt-2 text-sm sm:text-base">Summer 2024 - Limited Spaces</p>
+                <Button
+  variant="glow"
+  size="lg"
+  className="mt-4 sm:mt-6 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
+>
+  Book Now
+  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+</Button>
+
               </div>
             </motion.div>
           </div>
@@ -406,17 +429,17 @@ const Home: React.FC = () => {
       </section>
 
       {/* === TESTIMONIALS SECTION === */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6">
+      <section className="py-16 sm:py-20 bg-gray-50 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
             <motion.h2 
-              className="text-4xl font-bold text-gray-900"
+              className="text-3xl sm:text-4xl font-bold text-gray-900"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -425,7 +448,7 @@ const Home: React.FC = () => {
               Traveler Stories
             </motion.h2>
             <motion.p 
-              className="mt-4 text-xl text-gray-700 max-w-3xl mx-auto"
+              className="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -435,7 +458,7 @@ const Home: React.FC = () => {
             </motion.p>
           </motion.div>
 
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {[
               {
                 name: "Alex Johnson",
@@ -458,24 +481,29 @@ const Home: React.FC = () => {
             ].map((testimonial, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm"
+                className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-6 md:p-8 shadow-sm"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="flex items-center mb-4">
-                  <div className="flex text-yellow-400">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={20} fill="currentColor" />
-                    ))}
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="font-bold text-gray-900">{testimonial.name}</h3>
-                    <p className="text-gray-600 text-sm">{testimonial.location}</p>
+                <div className="flex items-center mb-3 sm:mb-4">
+                 <div className="flex text-yellow-400">
+  {[...Array(testimonial.rating)].map((_, i) => (
+    <Star
+      key={i}
+      className="w-4 h-4 sm:w-5 sm:h-5"
+      fill="currentColor"
+    />
+  ))}
+</div>
+
+                  <div className="ml-3">
+                    <h3 className="font-bold text-gray-900 text-sm sm:text-base">{testimonial.name}</h3>
+                    <p className="text-gray-600 text-xs sm:text-sm">{testimonial.location}</p>
                   </div>
                 </div>
-                <p className="text-gray-700 italic">"{testimonial.text}"</p>
+                <p className="text-gray-700 italic text-sm sm:text-base">"{testimonial.text}"</p>
               </motion.div>
             ))}
           </div>
@@ -483,10 +511,10 @@ const Home: React.FC = () => {
       </section>
 
       {/* === CTA SECTION === */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+      <section className="py-16 sm:py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.h2 
-            className="text-4xl font-bold mb-6"
+            className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -495,7 +523,7 @@ const Home: React.FC = () => {
             Ready for Your Next Adventure?
           </motion.h2>
           <motion.p 
-            className="text-xl mb-10 max-w-3xl mx-auto"
+            className="text-lg sm:text-xl mb-6 sm:mb-10 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -509,17 +537,18 @@ const Home: React.FC = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Button 
-              size="lg" 
-              className="bg-white text-blue-700 hover:bg-gray-100"
-            >
-              Start Planning <ArrowRight className="ml-2" />
-            </Button>
+            <Button
+  size="lg"
+  className="bg-white text-blue-700 hover:bg-gray-100 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
+>
+  Start Planning
+  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+</Button>
+
           </motion.div>
         </div>
       </section>
     </>
-
   );
 };
 

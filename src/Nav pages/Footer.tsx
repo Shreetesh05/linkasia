@@ -1,22 +1,20 @@
-import { ArrowRight, Globe, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-br from-gray-950 to-black border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12">
           {/* Brand Column */}
-          <div className="space-y-6">
+          <div className="space-y-6 sm:col-span-2 lg:col-span-1">
             <div className="flex items-center">
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-600 w-10 h-10 rounded-lg flex items-center justify-center">
-                <Globe className="text-white" size={24} />
-              </div>
+             <img src="logo.png" alt="logo"  width={72}/>
               <span className="ml-3 text-2xl font-bold text-white">
                 Link<span className="text-yellow-400">Asia</span>
               </span>
             </div>
-            <p className="text-gray-400 max-w-xs">
+            <p className="text-gray-400 max-w-xs text-sm sm:text-base">
               Crafting unforgettable journeys across Asia since 2010. Experience the world beyond boundaries.
             </p>
             <div className="flex space-x-4">
@@ -40,20 +38,17 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-6">Explore</h3>
-            <ul className="space-y-4">
+            <h3 className="text-lg font-semibold text-white mb-4 sm:mb-6">Explore</h3>
+            <ul className="space-y-3 sm:space-y-4">
               {[
-                { label: "Destinations", href: "#" },
-                { label: "Tour Packages", href: "#" },
-                { label: "Adventure Tours", href: "#" },
-                { label: "Cultural Experiences", href: "#" },
-                { label: "Luxury Getaways", href: "#" },
-                { label: "Group Tours", href: "#" },
+                { label: "Destinations", href: "/destinations" },
+                { label: "Tour Packages", href: "/tours" },
+                { label: "Adventure Tours", href: "/adventuretures" },
               ].map((link, index) => (
                 <li key={index}>
                   <a 
                     href={link.href} 
-                    className="text-gray-400 hover:text-cyan-400 transition-colors"
+                    className="text-gray-400 hover:text-cyan-400 transition-colors text-sm sm:text-base"
                   >
                     {link.label}
                   </a>
@@ -64,20 +59,16 @@ const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-6">Company</h3>
-            <ul className="space-y-4">
+            <h3 className="text-lg font-semibold text-white mb-4 sm:mb-6">Company</h3>
+            <ul className="space-y-3 sm:space-y-4">
               {[
-                { label: "About Us", href: "#" },
-                { label: "Our Team", href: "#" },
-                { label: "Careers", href: "#" },
-                { label: "Travel Blog", href: "#" },
-                { label: "Testimonials", href: "#" },
-                { label: "Contact Us", href: "#" },
+                { label: "About Us", href: "#about" },
+                { label: "Contact Us", href: "#contact" },
               ].map((link, index) => (
                 <li key={index}>
                   <a 
                     href={link.href} 
-                    className="text-gray-400 hover:text-cyan-400 transition-colors"
+                    className="text-gray-400 hover:text-cyan-400 transition-colors text-sm sm:text-base"
                   >
                     {link.label}
                   </a>
@@ -87,45 +78,39 @@ const Footer = () => {
           </div>
 
           {/* Contact & Newsletter */}
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-6">Contact Us</h3>
-            <ul className="space-y-4 mb-8">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h3 className="text-lg font-semibold text-white mb-4 sm:mb-6">Contact Us</h3>
+            <ul className="space-y-3 sm:space-y-4 mb-6">
               <li className="flex items-start">
                 <MapPin className="text-cyan-400 mt-1 mr-3 flex-shrink-0" size={20} />
-                <span className="text-gray-400">123 Adventure Street, Singapore 098765</span>
+                <span className="text-gray-400 text-sm sm:text-base"> Airport Gate, Ashram Marga, Hotel Namaskar(5th Floor) Kathmandu-09, Nepal</span>
+              </li>
+               <li className="flex items-start">
+                <MapPin className="text-cyan-400 mt-1 mr-3 flex-shrink-0" size={20} />
+                <span className="text-gray-400 text-sm sm:text-base">Suwon Station Gate-10, South Korea</span>
+              </li>
+               <li className="flex items-center">
+                <svg className="text-cyan-400 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span className="text-gray-400 text-sm sm:text-base"> +977-01-5912660, +977-9856082660, +977-9841431584</span>
               </li>
               <li className="flex items-center">
                 <svg className="text-cyan-400 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                <span className="text-gray-400">+65 1234 5678</span>
+                <span className="text-gray-400 text-sm sm:text-base">+82-010-5877-5512</span>
               </li>
               <li className="flex items-center">
                 <svg className="text-cyan-400 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                <span className="text-gray-400">info@linkasiatours.com</span>
+                <span className="text-gray-400 text-sm sm:text-base">infolinkasiatours@gmail.com</span>
               </li>
             </ul>
-
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Join Our Newsletter</h3>
-              <div className="flex">
-                <input 
-                  type="email" 
-                  placeholder="Your email address" 
-                  className="flex-1 bg-gray-900 border border-white/10 rounded-l-full px-5 py-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                />
-                <button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 rounded-r-full hover:opacity-90 transition-opacity">
-                  <ArrowRight size={20} />
-                </button>
-              </div>
             </div>
-          </div>
         </div>
 
         {/* Bottom Footer */}
-        <div className="border-t border-white/10 mt-16 pt-8 pb-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">
+        <div className="border-t border-white/10 mt-10 pt-6 pb-4 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-500 text-xs sm:text-sm">
             © {new Date().getFullYear()} Link Asia Tours. All rights reserved.
           </p>
-          <div className="flex space-x-8 mt-4 md:mt-0">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mt-3 md:mt-0">
             {[
               { label: "Privacy Policy", href: "#" },
               { label: "Terms of Service", href: "#" },
@@ -134,7 +119,7 @@ const Footer = () => {
               <a 
                 key={index}
                 href={link.href} 
-                className="text-gray-500 hover:text-cyan-400 text-sm transition-colors"
+                className="text-gray-500 hover:text-cyan-400 text-xs sm:text-sm transition-colors"
               >
                 {link.label}
               </a>
