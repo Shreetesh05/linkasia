@@ -7,13 +7,12 @@ const InternationalToursLight = () => {
   const [activePackage, setActivePackage] = useState<number | null>(null);
   
   const destinations = [
-    { id: 'cambodia', name: 'Cambodia', icon: '🇰🇭' },
-    { id: 'india', name: 'India', icon: '🇮🇳' },
-    { id: 'vietnam', name: 'Vietnam', icon: '🇻🇳' },
-    { id: 'thailand', name: 'Thailand', icon: '🇹🇭' },
-    { id: 'malaysia', name: 'Malaysia', icon: '🇲🇾' },
-    { id: 'singapore', name: 'Singapore', icon: '🇸🇬' },
-    { id: 'egypt', name: 'Egypt', icon: '🇪🇬' },
+    { id: 'cambodia', name: 'Cambodia',  },
+    { id: 'india', name: 'India',  },
+    { id: 'vietnam', name: 'Vietnam',  },
+    { id: 'thailand', name: 'Thailand',  },
+    { id: 'malaysia', name: 'Malaysia',  },
+    { id: 'singapore', name: 'Singapore', },
   ];
 
   const tourPackages = [
@@ -27,38 +26,403 @@ const InternationalToursLight = () => {
       highlights: ["Sunrise at Angkor Wat", "Boat tour on Tonlé Sap", "Phnom Penh city tour"],
       image: "/images/cambodia.jpg",
     },
+    // India Religious Packages
     {
       id: 2,
-      name: "Golden Triangle Experience",
+      name: "Kedarnath Pilgrimage",
       country: "india",
       price: 1899,
-      duration: "10 days",
-      description: "Journey through Delhi, Agra, and Jaipur to experience India's rich history.",
-      highlights: ["Taj Mahal at sunrise", "Amber Fort elephant ride", "Delhi street food tour"],
-      image: "/images/india.jpg",
+      duration: "5 days",
+      description: "Sacred journey to Kedarnath temple dedicated to Lord Shiva in the Himalayas.",
+      highlights: ["16 km trek from Gaurikund", "One of the 12 Jyotirlingas", "Helicopter darshan options", "Breathtaking Himalayan scenery"],
+      image: "/images/kedarnath.jpg",
     },
     {
       id: 3,
-      name: "Halong Bay Cruise",
-      country: "vietnam",
-      price: 1299,
-      duration: "5 days",
-      description: "Luxury cruise through Vietnam's breathtaking Halong Bay with cave explorations.",
-      highlights: ["Overnight junk boat", "Kayaking in hidden lagoons", "Cooking class with locals"],
-      image: "/images/vietnam.jpg",
+      name: "Varanasi Spiritual Experience",
+      country: "india",
+      price: 1599,
+      duration: "4 days",
+      description: "Immerse in spirituality at one of the oldest living cities on Earth.",
+      highlights: ["Evening Ganga Aarti", "Sunrise boat rides on Ganges", "Ancient alleyways exploration", "Temples and rituals"],
+      image: "/images/varanasi.jpg",
     },
     {
       id: 4,
-      name: "Thai Island Hopper",
-      country: "thailand",
-      price: 1599,
-      duration: "8 days",
-      description: "White sand beaches and crystal waters of Phuket, Phi Phi, and Krabi.",
-      highlights: ["James Bond Island tour", "Scuba diving in Similan", "Full moon party experience"],
-      image: "/images/thailand.jpg",
+      name: "Rishikesh & Haridwar Yoga Retreat",
+      country: "india",
+      price: 1799,
+      duration: "6 days",
+      description: "Blend of yoga, devotion and adventure on the banks of the Ganges.",
+      highlights: ["Yoga retreats & teacher training", "River rafting on Ganges", "Ganga Aarti at Har Ki Pauri", "Spiritual ashram visits"],
+      image: "/images/rishikesh.jpg",
     },
     {
       id: 5,
+      name: "Vrindavan Sacred Journey",
+      country: "india",
+      price: 1699,
+      duration: "5 days",
+      description: "Experience the divine love of Radha and Krishna in this holy town.",
+      highlights: ["Banke Bihari Temple darshan", "Prem Mandir light show", "ISKCON Temple kirtans", "Radha Raman Temple visit"],
+      image: "/images/vrindavan.jpg",
+    },
+    {
+      id: 6,
+      name: "Shirdi Sai Baba Pilgrimage",
+      country: "india",
+      price: 1499,
+      duration: "4 days",
+      description: "Visit the home of Sai Baba, respected by people of all faiths.",
+      highlights: ["Samadhi Mandir darshan", "Dwarkamai visit", "Devotional songs and prayers", "Chavadi procession"],
+      image: "/images/shirdi.jpg",
+    },
+    {
+      id: 7,
+      name: "Vaishno Devi Yatra",
+      country: "india",
+      price: 1999,
+      duration: "5 days",
+      description: "Trek to the sacred shrine of Goddess Vaishno Devi in the Trikuta Mountains.",
+      highlights: ["13 km trek or helicopter service", "Darshan inside natural cave", "Bhairon Temple visit", "Scenic mountain views"],
+      image: "/images/vaishnodevi.jpg",
+    },
+    {
+      id: 8,
+      name: "Tirupati Balaji Darshan",
+      country: "india",
+      price: 2199,
+      duration: "5 days",
+      description: "Visit one of the richest and most visited temples in the world.",
+      highlights: ["Darshan of Lord Venkateswara", "Pilgrimage up Tirumala Hills", "Free meals (annadanam)", "Tonsuring ritual experience"],
+      image: "/images/tirupati.jpg",
+    },
+    {
+      id: 9,
+      name: "Golden Temple Pilgrimage",
+      country: "india",
+      price: 1899,
+      duration: "4 days",
+      description: "Experience the spiritual heart of Sikhism at the holiest Gurudwara.",
+      highlights: ["Golden Dome & Sarovar", "Community meals (Langar)", "Non-stop prayers & hymns", "Akal Takht visit"],
+      image: "/images/goldentemple.jpg",
+    },
+    {
+      id: 10,
+      name: "Somnath Jyotirlinga Darshan",
+      country: "india",
+      price: 1799,
+      duration: "4 days",
+      description: "Visit the first of the 12 Jyotirlingas, standing proudly near the Arabian Sea.",
+      highlights: ["Temple by the sea", "Jyotirlinga darshan", "Light and sound show", "Prabhas Patan Museum"],
+      image: "/images/somnath.jpg",
+    },
+    // Vietnam Packages
+    {
+      id: 11,
+      name: "Ha Long Bay Cruise",
+      country: "vietnam",
+      price: 1299,
+      duration: "3 days",
+      description: "Luxury cruise through Vietnam's breathtaking Halong Bay with cave explorations.",
+      highlights: ["Overnight cruise", "Limestone karst landscapes", "Kayaking in lagoons", "Sunset photography"],
+      image: "/images/halong.jpg",
+    },
+    {
+      id: 12,
+      name: "Hanoi Cultural Immersion",
+      country: "vietnam",
+      price: 1399,
+      duration: "4 days",
+      description: "Explore Vietnam's capital blending old-world charm with vibrant street life.",
+      highlights: ["Hoan Kiem Lake", "Old Quarter street food", "Ho Chi Minh Mausoleum", "Water puppet shows"],
+      image: "/images/hanoi.jpg",
+    },
+    {
+      id: 13,
+      name: "Da Nang Coastal Escape",
+      country: "vietnam",
+      price: 1499,
+      duration: "4 days",
+      description: "Experience clean beaches, modern cityscapes, and mountain temples.",
+      highlights: ["Golden Bridge", "My Khe Beach relaxation", "Marble Mountains", "Han River nightlife"],
+      image: "/images/danang.jpg",
+    },
+    {
+      id: 14,
+      name: "Hoi An Ancient Town",
+      country: "vietnam",
+      price: 1599,
+      duration: "4 days",
+      description: "Discover this beautiful UNESCO town full of lanterns and history.",
+      highlights: ["Ancient streets exploration", "Lantern Festival", "Custom tailoring", "Thu Bon River boat ride"],
+      image: "/images/hoian.jpg",
+    },
+    {
+      id: 15,
+      name: "Nha Trang Beach Paradise",
+      country: "vietnam",
+      price: 1499,
+      duration: "5 days",
+      description: "Lively beach city known for water sports and island hopping.",
+      highlights: ["Hon Mun Island snorkeling", "Po Nagar Cham Towers", "Mud baths experience", "Long Beach relaxation"],
+      image: "/images/nhatrang.jpg",
+    },
+    {
+      id: 16,
+      name: "Sapa Mountain Trekking",
+      country: "vietnam",
+      price: 1699,
+      duration: "5 days",
+      description: "Explore terraced rice fields and ethnic villages in northern Vietnam.",
+      highlights: ["Terraced rice fields", "Mount Fansipan trek", "Hmong village visit", "Love Waterfall"],
+      image: "/images/sapa.jpg",
+    },
+    {
+      id: 17,
+      name: "Hue Imperial City",
+      country: "vietnam",
+      price: 1399,
+      duration: "3 days",
+      description: "Discover Vietnam's former imperial capital full of royal architecture.",
+      highlights: ["Imperial Citadel", "Royal tombs exploration", "Perfume River cruise", "Thien Mu Pagoda"],
+      image: "/images/hue.jpg",
+    },
+    {
+      id: 18,
+      name: "Ho Chi Minh City Adventure",
+      country: "vietnam",
+      price: 1499,
+      duration: "4 days",
+      description: "Experience Vietnam's biggest city full of energy and contrast.",
+      highlights: ["Bitexco Tower skyline", "Ben Thanh Market", "War Remnants Museum", "Notre-Dame Cathedral"],
+      image: "/images/saigon.jpg",
+    },
+    {
+      id: 19,
+      name: "Cu Chi Tunnels Experience",
+      country: "vietnam",
+      price: 1199,
+      duration: "1 day",
+      description: "Explore the vast underground tunnel system used during the Vietnam War.",
+      highlights: ["Crawl through war tunnels", "War traps demonstration", "Shooting range", "Guided historical tour"],
+      image: "/images/cuchi.jpg",
+    },
+    {
+      id: 20,
+      name: "Mekong Delta Exploration",
+      country: "vietnam",
+      price: 1599,
+      duration: "3 days",
+      description: "Discover Vietnam's lush river region with floating markets and canals.",
+      highlights: ["Boat tours through canals", "Floating markets visit", "Coconut candy making", "River village homestay"],
+      image: "/images/mekong.jpg",
+    },
+    // Thailand Packages
+    {
+      id: 21,
+      name: "Bangkok Adventure",
+      country: "thailand",
+      price: 1499,
+      duration: "5 days",
+      description: "Experience Thailand's vibrant capital with golden temples and bustling markets.",
+      highlights: ["Grand Palace & Wat Phra Kaew", "Chatuchak Weekend Market", "Khao San Road street food", "Chao Phraya river cruise"],
+      image: "/images/bangkok.jpg",
+    },
+    {
+      id: 22,
+      name: "Phuket Island Paradise",
+      country: "thailand",
+      price: 1699,
+      duration: "6 days",
+      description: "Thailand's largest island with stunning beaches and vibrant nightlife.",
+      highlights: ["Patong, Kata & Karon beaches", "Phi Phi Island tour", "Big Buddha viewpoint", "Beach clubs and nightlife"],
+      image: "/images/phuket.jpg",
+    },
+    {
+      id: 23,
+      name: "Krabi Nature Escape",
+      country: "thailand",
+      price: 1599,
+      duration: "5 days",
+      description: "Dramatic limestone cliffs and crystal-clear waters in southern Thailand.",
+      highlights: ["Railay Beach & Phra Nang Cave", "4 Island Tour", "Emerald Pool & Hot Springs", "Rock climbing adventures"],
+      image: "/images/krabi.jpg",
+    },
+    {
+      id: 24,
+      name: "Chiang Mai Cultural Journey",
+      country: "thailand",
+      price: 1599,
+      duration: "5 days",
+      description: "Northern Thailand's cultural capital surrounded by mountains and temples.",
+      highlights: ["Doi Suthep Temple", "Ethical elephant sanctuaries", "Night Bazaar shopping", "Yi Peng Lantern Festival (Nov)"],
+      image: "/images/chiangmai.jpg",
+    },
+    {
+      id: 25,
+      name: "Chiang Rai Temple Tour",
+      country: "thailand",
+      price: 1499,
+      duration: "4 days",
+      description: "Discover unique modern temples in Thailand's mystical northern region.",
+      highlights: ["Wat Rong Khun (White Temple)", "Black House Museum", "Golden Triangle viewpoint", "Tea plantation visits"],
+      image: "/images/chiangrai.jpg",
+    },
+    {
+      id: 26,
+      name: "Ayutthaya Historical Exploration",
+      country: "thailand",
+      price: 1399,
+      duration: "3 days",
+      description: "UNESCO World Heritage Site with ancient temple ruins near Bangkok.",
+      highlights: ["Wat Mahathat (Buddha head in tree)", "Bicycle tour of ruins", "Historical river cruise", "Photo opportunities at sunset"],
+      image: "/images/ayutthaya.jpg",
+    },
+    {
+      id: 27,
+      name: "Pattaya Beach Getaway",
+      country: "thailand",
+      price: 1499,
+      duration: "4 days",
+      description: "Beach destination with family fun and vibrant nightlife near Bangkok.",
+      highlights: ["Jomtien Beach & Coral Island", "Walking Street nightlife", "Nong Nooch Tropical Garden", "Tiffany Cabaret Show"],
+      image: "/images/pattaya.jpg",
+    },
+    {
+      id: 28,
+      name: "Pai Mountain Retreat",
+      country: "thailand",
+      price: 1399,
+      duration: "4 days",
+      description: "Peaceful mountain town in Northern Thailand loved by backpackers.",
+      highlights: ["Pai Canyon exploration", "Bamboo Bridge walk", "Hot springs relaxation", "Scooter tours to viewpoints"],
+      image: "/images/pai.jpg",
+    },
+    {
+      id: 29,
+      name: "Sukhothai Historical Park",
+      country: "thailand",
+      price: 1499,
+      duration: "4 days",
+      description: "Explore the ruins of Thailand's first capital at this UNESCO site.",
+      highlights: ["Sukhothai Historical Park temples", "Bike through ancient city", "Light and Sound show", "Golden hour photography"],
+      image: "/images/sukhothai.jpg",
+    },
+    {
+      id: 30,
+      name: "Koh Samui Luxury Escape",
+      country: "thailand",
+      price: 1999,
+      duration: "6 days",
+      description: "Stylish island known for luxury resorts and wellness retreats.",
+      highlights: ["Spa & wellness experiences", "Chaweng & Lamai beaches", "Big Buddha Temple", "Ang Thong Marine Park tour"],
+      image: "/images/kohsamui.jpg",
+    },
+    // Singapore Packages
+    {
+      id: 31,
+      name: "Gardens by the Bay Experience",
+      country: "singapore",
+      price: 1299,
+      duration: "3 days",
+      description: "Iconic nature park with futuristic Supertrees and stunning domes.",
+      highlights: ["Supertree Grove light show", "Flower Dome greenhouse", "Cloud Forest indoor waterfall", "Spectra night show"],
+      image: "/images/gardensbythebay.jpg",
+    },
+    {
+      id: 32,
+      name: "Marina Bay Sands Luxury",
+      country: "singapore",
+      price: 1899,
+      duration: "4 days",
+      description: "World-famous hotel and lifestyle destination with spectacular views.",
+      highlights: ["SkyPark Observation Deck", "Infinity pool (hotel guests)", "The Shoppes at Marina Bay", "Evening light show"],
+      image: "/images/marinabaysands.jpg",
+    },
+    {
+      id: 33,
+      name: "Chinatown Cultural Tour",
+      country: "singapore",
+      price: 1199,
+      duration: "3 days",
+      description: "Colorful district packed with culture, temples, and amazing food.",
+      highlights: ["Sri Mariamman Temple", "Buddha Tooth Relic Temple", "Maxwell Food Centre chicken rice", "Chinese New Year lanterns"],
+      image: "/images/chinatown.jpg",
+    },
+    {
+      id: 34,
+      name: "Little India Exploration",
+      country: "singapore",
+      price: 1199,
+      duration: "3 days",
+      description: "Vibrant neighborhood filled with Indian culture, temples, and markets.",
+      highlights: ["Sri Veeramakaliamman Temple", "Tekka Centre shopping", "Spice and garland markets", "Colorful street art"],
+      image: "/images/littleindia.jpg",
+    },
+    {
+      id: 35,
+      name: "Singapore Zoo Adventure",
+      country: "singapore",
+      price: 1399,
+      duration: "3 days",
+      description: "World-class zoo with natural enclosures and immersive experiences.",
+      highlights: ["Breakfast with Orangutans", "Rainforest KidzWorld", "Tram rides through zones", "Animal shows and encounters"],
+      image: "/images/singaporezoo.jpg",
+    },
+    {
+      id: 36,
+      name: "Sentosa Island Fun",
+      country: "singapore",
+      price: 1599,
+      duration: "4 days",
+      description: "Entertainment island with beaches, theme parks, and attractions.",
+      highlights: ["Universal Studios Singapore", "Siloso & Palawan beaches", "SkyHelix panoramic ride", "Cable car from Mount Faber"],
+      image: "/images/sentosa.jpg",
+    },
+    {
+      id: 37,
+      name: "S.E.A. Aquarium Discovery",
+      country: "singapore",
+      price: 1299,
+      duration: "2 days",
+      description: "One of the world's largest aquariums with incredible marine life.",
+      highlights: ["Open Ocean Tank with sharks", "Underwater tunnel walks", "Touch pools for kids", "Rare marine species displays"],
+      image: "/images/seaquarium.jpg",
+    },
+    {
+      id: 38,
+      name: "Clarke Quay Nightlife",
+      country: "singapore",
+      price: 1399,
+      duration: "3 days",
+      description: "Buzzing riverside area with restaurants, bars, and nightlife.",
+      highlights: ["Singapore River cruise", "Rooftop bars with live music", "International dining options", "Nightclubs and parties"],
+      image: "/images/clarkequay.jpg",
+    },
+    {
+      id: 39,
+      name: "Bird Paradise Adventure",
+      country: "singapore",
+      price: 1199,
+      duration: "2 days",
+      description: "Singapore's newest bird park with immersive aviaries and exhibits.",
+      highlights: ["Walk-through global bird zones", "Penguin Cove experience", "Bird feeding sessions", "Educational tropical exhibits"],
+      image: "/images/birdparadise.jpg",
+    },
+    {
+      id: 40,
+      name: "National Museum Journey",
+      country: "singapore",
+      price: 1099,
+      duration: "2 days",
+      description: "Singapore's oldest museum showcasing the nation's history and culture.",
+      highlights: ["Gallery of Singapore's independence", "Light and sound installations", "Immersive historical exhibits", "Stunning architectural photo spots"],
+      image: "/images/nationalmuseum.jpg",
+    },
+    // Other packages
+    {
+      id: 41,
       name: "Malaysian Adventure",
       country: "malaysia",
       price: 1699,
@@ -68,27 +432,7 @@ const InternationalToursLight = () => {
       image: "/images/malaysia.jpg",
     },
     {
-      id: 6,
-      name: "Singapore City Explorer",
-      country: "singapore",
-      price: 1399,
-      duration: "4 days",
-      description: "Ultimate city experience with Gardens by the Bay, Sentosa, and culinary delights.",
-      highlights: ["Marina Bay Sands SkyPark", "Universal Studios", "Night safari adventure"],
-      image: "/images/singapore.jpg",
-    },
-    {
-      id: 7,
-      name: "Nile River Expedition",
-      country: "egypt",
-      price: 1999,
-      duration: "12 days",
-      description: "From the pyramids of Giza to Luxor's temples with a Nile cruise.",
-      highlights: ["Great Sphinx private tour", "Hot air balloon over Valley of Kings", "Red Sea snorkeling"],
-      image: "/images/egypt.jpg",
-    },
-    {
-      id: 8,
+      id: 43,
       name: "Southeast Asia Grand Tour",
       country: "all",
       price: 3499,
@@ -173,7 +517,7 @@ const InternationalToursLight = () => {
               }`}
               onClick={() => setSelectedDestination(dest.id)}
             >
-              <span className="text-xl">{dest.icon}</span>
+              <span className="text-xl"></span>
               {dest.name}
             </motion.button>
           ))}
@@ -205,7 +549,6 @@ const InternationalToursLight = () => {
                   <h3 className="text-2xl font-bold text-gray-900">{pkg.name}</h3>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-blue-700 font-medium">
-                      {destinations.find(d => d.id === pkg.country)?.icon} 
                       {destinations.find(d => d.id === pkg.country)?.name}
                     </span>
                     <span className="text-gray-400">•</span>
@@ -304,9 +647,37 @@ const InternationalToursLight = () => {
                     </ul>
                     
                     <div className="mt-4 flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Cultural Experience</span>
-                      <span className="px-3 py-1 bg-cyan-100 text-cyan-800 rounded-full text-sm">Local Cuisine</span>
-                      <span className="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-sm">Adventure</span>
+                      {pkg.country === 'india' ? (
+                        <>
+                          <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Spiritual Journey</span>
+                          <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">Pilgrimage</span>
+                          <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Cultural Experience</span>
+                        </>
+                      ) : pkg.country === 'vietnam' ? (
+                        <>
+                          <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Nature</span>
+                          <span className="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm">Adventure</span>
+                          <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Cultural</span>
+                        </>
+                      ) : pkg.country === 'thailand' ? (
+                        <>
+                          <span className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">Beaches</span>
+                          <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Culture</span>
+                          <span className="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-sm">Adventure</span>
+                        </>
+                      ) : pkg.country === 'singapore' ? (
+                        <>
+                          <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Urban</span>
+                          <span className="px-3 py-1 bg-cyan-100 text-cyan-800 rounded-full text-sm">Family</span>
+                          <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Modern</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Cultural Experience</span>
+                          <span className="px-3 py-1 bg-cyan-100 text-cyan-800 rounded-full text-sm">Local Cuisine</span>
+                          <span className="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-sm">Adventure</span>
+                        </>
+                      )}
                     </div>
                   </motion.div>
                 )}
@@ -332,22 +703,40 @@ const InternationalToursLight = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                name: "Sarah Johnson",
-                tour: "Angkor Wat Discovery",
-                comment: "The sunrise at Angkor Wat was absolutely magical. Our guide was incredibly knowledgeable about the history. Would do it again in a heartbeat!",
-                rating: 5
-              },
-              {
-                name: "Michael Chen",
-                tour: "Nile River Expedition",
-                comment: "Hot air ballooning over the Valley of the Kings was a once-in-a-lifetime experience. The whole trip was perfectly organized.",
+                name: "Rajesh Kumar",
+                tour: "Kedarnath Pilgrimage",
+                comment: "The trek to Kedarnath was challenging but spiritually rewarding. The helicopter option made it accessible for my elderly parents.",
                 rating: 5
               },
               {
                 name: "Priya Sharma",
-                tour: "Golden Triangle Experience",
-                comment: "Seeing the Taj Mahal at sunrise brought tears to my eyes. The food experiences throughout the tour were exceptional.",
-                rating: 4
+                tour: "Varanasi Spiritual Experience",
+                comment: "The Ganga Aarti at Dashashwamedh Ghat was a transcendental experience. Our guide helped us understand the deep spiritual significance.",
+                rating: 5
+              },
+              {
+                name: "Michael Chen",
+                tour: "Halong Bay Cruise",
+                comment: "The limestone karsts at sunset were breathtaking. Kayaking through hidden lagoons was the highlight of our Vietnam trip!",
+                rating: 5
+              },
+              {
+                name: "Thomas Müller",
+                tour: "Bangkok Adventure",
+                comment: "The blend of temples, markets, and street food made Bangkok unforgettable. The Grand Palace was truly magnificent!",
+                rating: 5
+              },
+              {
+                name: "Emma Wilson",
+                tour: "Gardens by the Bay Experience",
+                comment: "The Supertree Grove light show was magical. The Cloud Forest dome felt like stepping into another world - absolutely stunning!",
+                rating: 5
+              },
+              {
+                name: "David Kim",
+                tour: "Chiang Mai Cultural Journey",
+                comment: "The ethical elephant sanctuary experience touched my heart. Doi Suthep temple at sunset was the perfect ending to each day.",
+                rating: 5
               }
             ].map((testimonial, index) => (
               <motion.div 
