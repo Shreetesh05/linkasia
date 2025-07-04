@@ -7,12 +7,12 @@ const InternationalToursLight = () => {
   const [activePackage, setActivePackage] = useState<number | null>(null);
   
   const destinations = [
-    { id: 'cambodia', name: 'Cambodia',  },
-    { id: 'india', name: 'India',  },
-    { id: 'vietnam', name: 'Vietnam',  },
-    { id: 'thailand', name: 'Thailand',  },
-    { id: 'malaysia', name: 'Malaysia',  },
-    { id: 'singapore', name: 'Singapore', },
+    { id: 'cambodia', name: 'Cambodia' },
+    { id: 'india', name: 'India' },
+    { id: 'vietnam', name: 'Vietnam' },
+    { id: 'thailand', name: 'Thailand' },
+    { id: 'malaysia', name: 'Malaysia' },
+    { id: 'singapore', name: 'Singapore' },
   ];
 
   const tourPackages = [
@@ -26,7 +26,6 @@ const InternationalToursLight = () => {
       highlights: ["Sunrise at Angkor Wat", "Boat tour on Tonlé Sap", "Phnom Penh city tour"],
       image: "/images/cambodia.jpg",
     },
-    // India Religious Packages
     {
       id: 2,
       name: "Kedarnath Pilgrimage",
@@ -35,7 +34,7 @@ const InternationalToursLight = () => {
       duration: "5 days",
       description: "Sacred journey to Kedarnath temple dedicated to Lord Shiva in the Himalayas.",
       highlights: ["16 km trek from Gaurikund", "One of the 12 Jyotirlingas", "Helicopter darshan options", "Breathtaking Himalayan scenery"],
-      image: "/images/kedarnath.jpg",
+      image: "/images/Kedarnath.jpg",
     },
     {
       id: 3,
@@ -45,7 +44,7 @@ const InternationalToursLight = () => {
       duration: "4 days",
       description: "Immerse in spirituality at one of the oldest living cities on Earth.",
       highlights: ["Evening Ganga Aarti", "Sunrise boat rides on Ganges", "Ancient alleyways exploration", "Temples and rituals"],
-      image: "/images/varanasi.jpg",
+      image: "/images/india/varanasi.jpg",
     },
     {
       id: 4,
@@ -55,7 +54,7 @@ const InternationalToursLight = () => {
       duration: "6 days",
       description: "Blend of yoga, devotion and adventure on the banks of the Ganges.",
       highlights: ["Yoga retreats & teacher training", "River rafting on Ganges", "Ganga Aarti at Har Ki Pauri", "Spiritual ashram visits"],
-      image: "/images/rishikesh.jpg",
+      image: "/images/india/Rishikesh.jpg",
     },
     {
       id: 5,
@@ -65,7 +64,7 @@ const InternationalToursLight = () => {
       duration: "5 days",
       description: "Experience the divine love of Radha and Krishna in this holy town.",
       highlights: ["Banke Bihari Temple darshan", "Prem Mandir light show", "ISKCON Temple kirtans", "Radha Raman Temple visit"],
-      image: "/images/vrindavan.jpg",
+      image: "/images/india/vrindawan.jpg",
     },
     {
       id: 6,
@@ -75,7 +74,7 @@ const InternationalToursLight = () => {
       duration: "4 days",
       description: "Visit the home of Sai Baba, respected by people of all faiths.",
       highlights: ["Samadhi Mandir darshan", "Dwarkamai visit", "Devotional songs and prayers", "Chavadi procession"],
-      image: "/images/shirdi.jpg",
+      image: "/images/india/Shirdi .jpg",
     },
     {
       id: 7,
@@ -85,7 +84,7 @@ const InternationalToursLight = () => {
       duration: "5 days",
       description: "Trek to the sacred shrine of Goddess Vaishno Devi in the Trikuta Mountains.",
       highlights: ["13 km trek or helicopter service", "Darshan inside natural cave", "Bhairon Temple visit", "Scenic mountain views"],
-      image: "/images/vaishnodevi.jpg",
+      image: "/images/india/Vaishnodevi.jpg",
     },
     {
       id: 8,
@@ -95,7 +94,7 @@ const InternationalToursLight = () => {
       duration: "5 days",
       description: "Visit one of the richest and most visited temples in the world.",
       highlights: ["Darshan of Lord Venkateswara", "Pilgrimage up Tirumala Hills", "Free meals (annadanam)", "Tonsuring ritual experience"],
-      image: "/images/tirupati.jpg",
+      image: "/images/india/Tirupatibalaji .jpg",
     },
     {
       id: 9,
@@ -105,7 +104,7 @@ const InternationalToursLight = () => {
       duration: "4 days",
       description: "Experience the spiritual heart of Sikhism at the holiest Gurudwara.",
       highlights: ["Golden Dome & Sarovar", "Community meals (Langar)", "Non-stop prayers & hymns", "Akal Takht visit"],
-      image: "/images/goldentemple.jpg",
+      image: "/images/india/Goldentemple.jpg",
     },
     {
       id: 10,
@@ -115,9 +114,9 @@ const InternationalToursLight = () => {
       duration: "4 days",
       description: "Visit the first of the 12 Jyotirlingas, standing proudly near the Arabian Sea.",
       highlights: ["Temple by the sea", "Jyotirlinga darshan", "Light and sound show", "Prabhas Patan Museum"],
-      image: "/images/somnath.jpg",
+      image: "/images/india/Somnat.jpg",
     },
-    // Vietnam Packages
+    // Vetnam
     {
       id: 11,
       name: "Ha Long Bay Cruise",
@@ -126,7 +125,7 @@ const InternationalToursLight = () => {
       duration: "3 days",
       description: "Luxury cruise through Vietnam's breathtaking Halong Bay with cave explorations.",
       highlights: ["Overnight cruise", "Limestone karst landscapes", "Kayaking in lagoons", "Sunset photography"],
-      image: "/images/halong.jpg",
+      image: "/images/vetnam/halong.jpg",
     },
     {
       id: 12,
@@ -136,7 +135,7 @@ const InternationalToursLight = () => {
       duration: "4 days",
       description: "Explore Vietnam's capital blending old-world charm with vibrant street life.",
       highlights: ["Hoan Kiem Lake", "Old Quarter street food", "Ho Chi Minh Mausoleum", "Water puppet shows"],
-      image: "/images/hanoi.jpg",
+      image: "/images/vetnam/Hanoi .jpg",
     },
     {
       id: 13,
@@ -146,7 +145,7 @@ const InternationalToursLight = () => {
       duration: "4 days",
       description: "Experience clean beaches, modern cityscapes, and mountain temples.",
       highlights: ["Golden Bridge", "My Khe Beach relaxation", "Marble Mountains", "Han River nightlife"],
-      image: "/images/danang.jpg",
+      image: "/images/vetnam/danang.jpg",
     },
     {
       id: 14,
@@ -156,7 +155,7 @@ const InternationalToursLight = () => {
       duration: "4 days",
       description: "Discover this beautiful UNESCO town full of lanterns and history.",
       highlights: ["Ancient streets exploration", "Lantern Festival", "Custom tailoring", "Thu Bon River boat ride"],
-      image: "/images/hoian.jpg",
+      image: "/images/vetnam/hoian.jpg",
     },
     {
       id: 15,
@@ -166,7 +165,7 @@ const InternationalToursLight = () => {
       duration: "5 days",
       description: "Lively beach city known for water sports and island hopping.",
       highlights: ["Hon Mun Island snorkeling", "Po Nagar Cham Towers", "Mud baths experience", "Long Beach relaxation"],
-      image: "/images/nhatrang.jpg",
+      image: "/images/vetnam/nhatrang.jpg",
     },
     {
       id: 16,
@@ -176,7 +175,7 @@ const InternationalToursLight = () => {
       duration: "5 days",
       description: "Explore terraced rice fields and ethnic villages in northern Vietnam.",
       highlights: ["Terraced rice fields", "Mount Fansipan trek", "Hmong village visit", "Love Waterfall"],
-      image: "/images/sapa.jpg",
+      image: "/images/vetnam/Sapa.jpg",
     },
     {
       id: 17,
@@ -186,7 +185,7 @@ const InternationalToursLight = () => {
       duration: "3 days",
       description: "Discover Vietnam's former imperial capital full of royal architecture.",
       highlights: ["Imperial Citadel", "Royal tombs exploration", "Perfume River cruise", "Thien Mu Pagoda"],
-      image: "/images/hue.jpg",
+      image: "/images/vetnam/Hue .jpg",
     },
     {
       id: 18,
@@ -196,7 +195,7 @@ const InternationalToursLight = () => {
       duration: "4 days",
       description: "Experience Vietnam's biggest city full of energy and contrast.",
       highlights: ["Bitexco Tower skyline", "Ben Thanh Market", "War Remnants Museum", "Notre-Dame Cathedral"],
-      image: "/images/saigon.jpg",
+      image: "/images/vetnam/hochimin.jpg",
     },
     {
       id: 19,
@@ -216,9 +215,8 @@ const InternationalToursLight = () => {
       duration: "3 days",
       description: "Discover Vietnam's lush river region with floating markets and canals.",
       highlights: ["Boat tours through canals", "Floating markets visit", "Coconut candy making", "River village homestay"],
-      image: "/images/mekong.jpg",
+      image: "/images/vetnam/mekong.jpg",
     },
-    // Thailand Packages
     {
       id: 21,
       name: "Bangkok Adventure",
@@ -319,7 +317,6 @@ const InternationalToursLight = () => {
       highlights: ["Spa & wellness experiences", "Chaweng & Lamai beaches", "Big Buddha Temple", "Ang Thong Marine Park tour"],
       image: "/images/kohsamui.jpg",
     },
-    // Singapore Packages
     {
       id: 31,
       name: "Gardens by the Bay Experience",
@@ -420,7 +417,6 @@ const InternationalToursLight = () => {
       highlights: ["Gallery of Singapore's independence", "Light and sound installations", "Immersive historical exhibits", "Stunning architectural photo spots"],
       image: "/images/nationalmuseum.jpg",
     },
-    // Other packages
     {
       id: 41,
       name: "Malaysian Adventure",
@@ -540,7 +536,6 @@ const InternationalToursLight = () => {
               layout
             >
               <div className="relative h-60 overflow-hidden">
-                {/* Placeholder for image */}
                 <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent z-10" />
                 <div className="absolute top-4 right-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1 rounded-full font-bold text-sm z-20">
                   ${pkg.price}
@@ -555,7 +550,13 @@ const InternationalToursLight = () => {
                     <span className="text-cyan-600 font-medium">{pkg.duration}</span>
                   </div>
                 </div>
-                <div className="w-full h-full bg-gradient-to-br from-blue-200/30 to-cyan-200/30" />
+                {/* Fixed image rendering */}
+                <img 
+                  src={pkg.image} 
+                  alt={pkg.name}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
               
               <div className="p-6">

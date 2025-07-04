@@ -19,6 +19,7 @@ import NationalParksPage from "./pages/NationalParks";
 import Explorektm from "./pages/Explorektm";
 import InternationalTours from "./Nav pages/International";
 import CustomizeTour from "./pages/CustomizeTours";
+import Trekking from "./Nav pages/Trekking";
 
 
 const App: React.FC = () => {
@@ -37,6 +38,7 @@ const App: React.FC = () => {
           <Route path="/destinations" element={<Destinations />} />
           <Route path="/tours" element={<Tours />} />
           <Route path="domestic" element={<TourPackages/>}/>
+          <Route path="trekking" element={<Trekking/>}/>
           <Route path="international" element={<InternationalTours/>}/>
           <Route path="customizetours" element={<CustomizeTour/>}/>
           <Route path="explorektm" element={<Explorektm/>}/>

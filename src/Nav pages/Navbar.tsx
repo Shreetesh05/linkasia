@@ -58,6 +58,7 @@ const tourDropdownItems = [
   { label: "Korea Tours", path: "/korea#tour" },
   { label: "Domestic Tours", path: "/domestic#tours" },
   { label: "International", path: "/international#tour" },
+  { label: "Trekking", path:"/trekking#tour"}
 ];
 
 const Navbar: React.FC = () => {
