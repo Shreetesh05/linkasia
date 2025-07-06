@@ -41,7 +41,7 @@ const Trekking: React.FC = () => {
       description: "Experience the world's most iconic trek through the heart of the Khumbu region, culminating at the base of the world's highest peak.",
       bestSeason: "Mar-May, Sep-Nov",
       maxAltitude: "5,545m (Kala Patthar)",
-      image: "everest",
+      image: "/images/everest.jpeg",
       colorClass: "from-blue-600 to-cyan-500",
       itinerary: [
         { day: 1, title: "Arrival in Kathmandu", description: "Arrival at Tribhuvan International Airport, transfer to hotel, and trek briefing", altitude: "1,400m", trekkingTime: "N/A" },
@@ -66,7 +66,7 @@ const Trekking: React.FC = () => {
       description: "Journey through diverse landscapes from rice terraces to alpine meadows, culminating in the spectacular Annapurna Sanctuary.",
       bestSeason: "Mar-May, Sep-Nov",
       maxAltitude: "4,130m (ABC)",
-      image: "annapurna",
+      image: "https://images.unsplash.com/photo-1599661049650-2b978108a1d9?auto=format&fit=crop&w=1770&q=80",
       colorClass: "from-emerald-500 to-teal-600",
       itinerary: [
         { day: 1, title: "Arrival in Kathmandu", description: "Arrival at Tribhuvan International Airport, transfer to hotel, and trek briefing", altitude: "1,400m", trekkingTime: "N/A" },
@@ -91,7 +91,7 @@ const Trekking: React.FC = () => {
       description: "Explore the beautiful Langtang valley just north of Kathmandu, known as the 'valley of glaciers' with rich Tamang culture.",
       bestSeason: "Mar-May, Sep-Nov",
       maxAltitude: "5,000m (Tserko Ri)",
-      image: "langtang",
+      image: "/images/langtang.jpg",
       colorClass: "from-amber-500 to-orange-600",
       itinerary: [
         { day: 1, title: "Arrival in Kathmandu", description: "Arrival at Tribhuvan International Airport, transfer to hotel, and trek briefing", altitude: "1,400m", trekkingTime: "N/A" },
@@ -116,7 +116,7 @@ const Trekking: React.FC = () => {
       description: "Traverse around the world's eighth highest mountain through remote trails, Tibetan-influenced villages, and over the challenging Larkya La pass.",
       bestSeason: "Mar-May, Sep-Nov",
       maxAltitude: "5,106m (Larkya La)",
-      image: "manaslu",
+      image: "https://images.unsplash.com/photo-1600003254382-5b6bdaa5f7c1?auto=format&fit=crop&w=1770&q=80",
       colorClass: "from-violet-600 to-purple-700",
       itinerary: [
         { day: 1, title: "Arrival in Kathmandu", description: "Arrival at Tribhuvan International Airport, transfer to hotel, and trek briefing", altitude: "1,400m", trekkingTime: "N/A" },
@@ -196,9 +196,16 @@ const Trekking: React.FC = () => {
 
         {/* Detailed Trek Display */}
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden mb-16">
-          <div className={`h-64 md:h-80 relative ${activePackage.colorClass.replace('from', 'bg-gradient-to-r from')}`}>
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-end">
-              <div className="p-6 md:p-8 text-white">
+          {/* Fixed Header Section - Now using actual image */}
+          <div className="h-64 md:h-80 relative">
+            <img 
+              src={activePackage.image} 
+              alt={activePackage.name} 
+              className="w-full h-full object-cover absolute inset-0"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70" />
+            <div className="relative z-10 h-full flex items-end p-6 md:p-8">
+              <div className="text-white">
                 <h2 className="text-3xl md:text-4xl font-bold">{activePackage.name}</h2>
                 <p className="text-xl mt-2 max-w-2xl">{activePackage.highlight}</p>
               </div>

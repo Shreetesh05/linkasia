@@ -130,20 +130,23 @@ const Home: React.FC = () => {
               Unforgettable travel experiences tailored to your dreams. Let's explore new horizons together.
             </p>
            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-  <Button
+  {/* <Button
     size="lg"
     variant="glow"
     className="flex items-center justify-center gap-2 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
   >
     Get Started <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-  </Button>
+  </Button> */}
+  
+ <a href="https://dev.mazzakotrip.com/" target="_blank" rel="noopener noreferrer">
   <Button
     size="lg"
     variant="outline"
-    className="text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
+    className="text-sm  sm:text-base px-5 sm:px-7 py-2.5 sm:py-3 border-blue-500 text-black hover:bg-blue-500 hover:text-white transition-colors duration-200"
   >
-    Learn More
+    ✈️ Book Your International Flights
   </Button>
+</a>
 </div>
 
 
@@ -185,7 +188,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* === DESTINATIONS SECTION === */}
-      <div className="py-16 sm:py-20 px-4 sm:px-6 bg-white">
+     <div className="py-16 sm:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
             className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 sm:mb-12 text-center"
@@ -246,7 +249,6 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
-
       {/* === FEATURES SECTION === */}
       <section className="py-16 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
