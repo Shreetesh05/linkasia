@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, type MotionProps } from "framer-motion";
-import { ArrowRight, Globe, Sparkles, MapPin, Star } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowRight, Sparkles, MapPin, Star } from "lucide-react";
 
 // === Local utility ===
 const cn = (...classes: (string | false | undefined | null)[]) =>
@@ -56,6 +55,225 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
+// === Destination Carousel Component ===
+type Direction = 'left' | 'right' | null;
+
+const DestinationCarousel = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState<Direction>(null);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  
+  const destinations = [
+    {
+      title: "Mystic Mountains",
+      image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      description: "Adventure into snow-capped beauty and local culture.",
+    },
+    {
+      title: "Island Escape",
+      image: "https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1633&q=80",
+      description: "Relax under palm trees with turquoise water views.",
+    },
+    {
+      title: "Cultural Odyssey",
+      image: "/images/pashupati.jpeg",
+      description: "Dive deep into heritage, rituals, and flavors.",
+    },
+    {
+      title: "Desert Adventure",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      description: "Explore vast dunes and ancient desert civilizations.",
+    },
+    {
+      title: "Urban Exploration",
+      image: "https://images.unsplash.com/photo-1485872299829-c673f5194813?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1458&q=80",
+      description: "Discover vibrant city life and modern architecture.",
+    }
+  ];
+
+  // Auto-advance the carousel
+  useEffect(() => {
+  let interval: number; // Changed from NodeJS.Timeout
+  if (isAutoPlaying) {
+    interval = window.setInterval(() => { // Added window. prefix
+      nextSlide();
+    }, 5000);
+  }
+  return () => clearInterval(interval);
+}, [isAutoPlaying, activeIndex]);
+  const nextSlide = () => {
+    setDirection('right');
+    setActiveIndex((prev) => (prev + 1) % destinations.length);
+  };
+
+  const prevSlide = () => {
+    setDirection('left');
+    setActiveIndex((prev) => (prev - 1 + destinations.length) % destinations.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setDirection(index > activeIndex ? 'right' : 'left');
+    setActiveIndex(index);
+  };
+
+  const variants = {
+    enter: (direction: Direction) => ({
+      x: direction === 'right' ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: Direction) => ({
+      x: direction === 'right' ? -1000 : 1000,
+      opacity: 0
+    })
+  };
+
+  return (
+    <div className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-sky-50 to-white">
+      <div className="max-w-7xl mx-auto">
+        <motion.h2 
+          className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 sm:mb-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          🌍 Explore Our Top Destinations
+        </motion.h2>
+
+        {/* Carousel Container */}
+        <div className="relative overflow-hidden w-full max-w-6xl mx-auto h-[480px] rounded-2xl">
+          {/* Navigation Buttons */}
+          <button 
+            className="absolute top-1/2 left-4 z-10 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300"
+            onClick={prevSlide}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <button 
+            className="absolute top-1/2 right-4 z-10 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300"
+            onClick={nextSlide}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          
+          {/* Auto-play toggle */}
+          <button 
+            className="absolute top-4 right-4 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300"
+            onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+          >
+            {isAutoPlaying ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-800" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-800" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+              </svg>
+            )}
+          </button>
+          
+          {/* Slides */}
+          <motion.div
+            key={activeIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <div className="relative h-full w-full">
+              <img
+                src={destinations[activeIndex].image}
+                alt={destinations[activeIndex].title}
+                className="w-full h-full object-cover brightness-90"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white">
+                <motion.h3 
+                  className="text-2xl sm:text-3xl font-bold mb-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  {destinations[activeIndex].title}
+                </motion.h3>
+                <motion.p 
+                  className="text-lg sm:text-xl max-w-md"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  {destinations[activeIndex].description}
+                </motion.p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+        
+        {/* Thumbnails */}
+        <div className="flex justify-center mt-6 space-x-3">
+          {destinations.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === activeIndex ? 'bg-sky-600 w-8' : 'bg-gray-300'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+        
+        {/* Destination Cards */}
+        <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 mt-12">
+          {destinations.slice(0, 3).map((card, i) => (
+            <motion.div
+              key={i}
+              className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <img
+                src={card.image}
+                alt={card.title}
+                className="h-48 sm:h-52 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">
+                  {card.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600">{card.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        
+        <div className="text-center mt-8 sm:mt-10">
+          <Button 
+            variant="glow" 
+            className="mx-auto text-sm sm:text-base"
+          >
+            Discover More Destinations
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // === Main Home Component ===
 const Home: React.FC = () => {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
@@ -77,7 +295,6 @@ const Home: React.FC = () => {
 
     return () => clearInterval(interval);
   }, [isHovered]);
-
 
   return (
     <>
@@ -150,9 +367,9 @@ const Home: React.FC = () => {
 </div>
 
 
-            <div className="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto">
+            <div className="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto">
               {[
-                { icon: <Globe size={20} className="sm:w-6 sm:h-6 text-blue-600" />, text: "100+ Destinations" },
+                // { icon: <Globe size={20} className="sm:w-6 sm:h-6 text-blue-600" />, text: "100+ Destinations" },
                 { icon: <Sparkles size={20} className="sm:w-6 sm:h-6 text-blue-600" />, text: "Premium Experiences" },
                 { icon: <MapPin size={20} className="sm:w-6 sm:h-6 text-blue-600" />, text: "Local Experts" },
                 { icon: <Star size={20} className="sm:w-6 sm:h-6 text-blue-600" />, text: "5-Star Reviews" },
@@ -188,67 +405,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* === DESTINATIONS SECTION === */}
-     <div className="py-16 sm:py-20 px-4 sm:px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2 
-            className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 sm:mb-12 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            🌍 Explore Our Top Destinations
-          </motion.h2>
+      <DestinationCarousel />
 
-          <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                title: "Mystic Mountains",
-                image: "/images/mountains.jpg",
-                description: "Adventure into snow-capped beauty and local culture.",
-              },
-              {
-                title: "Island Escape",
-                image: "/images/Island.jpg",
-                description: "Relax under palm trees with turquoise water views.",
-              },
-              {
-                title: "Cultural Odyssey",
-                image: "/images/mtfuji.jpeg",
-                description: "Dive deep into heritage, rituals, and flavors.",
-              },
-            ].map((card, i) => (
-              <motion.div
-                key={i}
-                className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className="h-48 sm:h-52 w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="p-4 sm:p-6">
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">
-                    {card.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-600">{card.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          <div className="text-center mt-8 sm:mt-10">
-            <Link to="/destinations">
-              <Button variant="glow" className="mx-auto text-sm sm:text-base">
-                Discover More Destinations
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
       {/* === FEATURES SECTION === */}
       <section className="py-16 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">

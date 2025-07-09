@@ -7,12 +7,13 @@ const InternationalToursLight = () => {
   const [activePackage, setActivePackage] = useState<number | null>(null);
   
   const destinations = [
-    { id: 'cambodia', name: 'Cambodia' },
+   
     { id: 'india', name: 'India' },
     { id: 'vietnam', name: 'Vietnam' },
     { id: 'thailand', name: 'Thailand' },
     { id: 'malaysia', name: 'Malaysia' },
     { id: 'singapore', name: 'Singapore' },
+     { id: 'cambodia', name: 'Cambodia' },
   ];
 
   const tourPackages = [
@@ -293,6 +294,7 @@ const InternationalToursLight = () => {
       highlights: ["Spa & wellness experiences", "Chaweng & Lamai beaches", "Big Buddha Temple", "Ang Thong Marine Park tour"],
       image: "/images/thailand/Kohsamui.jpg",
     },
+    // singapore
     {
       id: 31,
       name: "Gardens by the Bay Experience",
@@ -301,7 +303,7 @@ const InternationalToursLight = () => {
       duration: "3 days",
       description: "Iconic nature park with futuristic Supertrees and stunning domes.",
       highlights: ["Supertree Grove light show", "Flower Dome greenhouse", "Cloud Forest indoor waterfall", "Spectra night show"],
-      image: "/images/gardensbythebay.jpg",
+      image: "/images/singapore/Gardensbythebay.jpg",
     },
     {
       id: 32,
@@ -311,7 +313,7 @@ const InternationalToursLight = () => {
       duration: "4 days",
       description: "World-famous hotel and lifestyle destination with spectacular views.",
       highlights: ["SkyPark Observation Deck", "Infinity pool (hotel guests)", "The Shoppes at Marina Bay", "Evening light show"],
-      image: "/images/marinabaysands.jpg",
+      image: "/images/singapore/Marinabaysands.jpg",
     },
     {
       id: 33,
@@ -320,7 +322,7 @@ const InternationalToursLight = () => {
       duration: "3 days",
       description: "Colorful district packed with culture, temples, and amazing food.",
       highlights: ["Sri Mariamman Temple", "Buddha Tooth Relic Temple", "Maxwell Food Centre chicken rice", "Chinese New Year lanterns"],
-      image: "/images/chinatown.jpg",
+      image: "/images/singapore/Chinatown.jpg",
     },
     {
       id: 34,
@@ -329,7 +331,7 @@ const InternationalToursLight = () => {
       duration: "3 days",
       description: "Vibrant neighborhood filled with Indian culture, temples, and markets.",
       highlights: ["Sri Veeramakaliamman Temple", "Tekka Centre shopping", "Spice and garland markets", "Colorful street art"],
-      image: "/images/littleindia.jpg",
+      image: "/images/singapore/littleindia.jpg",
     },
     {
       id: 35,
@@ -338,7 +340,7 @@ const InternationalToursLight = () => {
       duration: "3 days",
       description: "World-class zoo with natural enclosures and immersive experiences.",
       highlights: ["Breakfast with Orangutans", "Rainforest KidzWorld", "Tram rides through zones", "Animal shows and encounters"],
-      image: "/images/singaporezoo.jpg",
+      image: "/images/singapore/Singaporezoo.jpg",
     },
     {
       id: 36,
@@ -347,7 +349,7 @@ const InternationalToursLight = () => {
       duration: "4 days",
       description: "Entertainment island with beaches, theme parks, and attractions.",
       highlights: ["Universal Studios Singapore", "Siloso & Palawan beaches", "SkyHelix panoramic ride", "Cable car from Mount Faber"],
-      image: "/images/sentosa.jpg",
+      image: "/images/singapore/Sentosaisland.jpg",
     },
     {
       id: 37,
@@ -356,7 +358,7 @@ const InternationalToursLight = () => {
       duration: "2 days",
       description: "One of the world's largest aquariums with incredible marine life.",
       highlights: ["Open Ocean Tank with sharks", "Underwater tunnel walks", "Touch pools for kids", "Rare marine species displays"],
-      image: "/images/seaquarium.jpg",
+      image: "/images/singapore/seaquarium.jpg",
     },
     {
       id: 38,
@@ -365,7 +367,7 @@ const InternationalToursLight = () => {
       duration: "3 days",
       description: "Buzzing riverside area with restaurants, bars, and nightlife.",
       highlights: ["Singapore River cruise", "Rooftop bars with live music", "International dining options", "Nightclubs and parties"],
-      image: "/images/clarkequay.jpg",
+      image: "/images/singapore/Clarkequay.jpg",
     },
     {
       id: 39,
@@ -374,7 +376,7 @@ const InternationalToursLight = () => {
       duration: "2 days",
       description: "Singapore's newest bird park with immersive aviaries and exhibits.",
       highlights: ["Walk-through global bird zones", "Penguin Cove experience", "Bird feeding sessions", "Educational tropical exhibits"],
-      image: "/images/birdparadise.jpg",
+      image: "/images/singapore/birdparadise.jpg",
     },
     {
       id: 40,
@@ -383,7 +385,7 @@ const InternationalToursLight = () => {
       duration: "2 days",
       description: "Singapore's oldest museum showcasing the nation's history and culture.",
       highlights: ["Gallery of Singapore's independence", "Light and sound installations", "Immersive historical exhibits", "Stunning architectural photo spots"],
-      image: "/images/nationalmuseum.jpg",
+      image: "/images/singapore/Nationalmuseum.jpg",
     },
     {
       id: 41,
@@ -743,25 +745,35 @@ const InternationalToursLight = () => {
         
         {/* CTA */}
         <motion.div 
-          className="mt-24 text-center"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Ready for Your Next Adventure?</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            Join thousands of travelers who've experienced unforgettable journeys with Global Explorer Tours
-          </p>
-          <motion.button
-            className="px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-700 rounded-xl font-bold text-lg text-white shadow-lg shadow-cyan-500/30 hover:from-cyan-500 hover:to-blue-600 transition-all"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Book Your Dream Vacation Now
-          </motion.button>
-          <p className="mt-4 text-gray-500">Flexible booking options • 24/7 customer support</p>
-        </motion.div>
+  className="mt-24 text-center"
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+>
+  <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+    Ready for Your Next Adventure?
+  </h2>
+  <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+    Join thousands of travelers who've experienced unforgettable journeys with Global Explorer Tours
+  </p>
+
+  {/* Download Link Styled as a Button */}
+  <motion.a
+    href="/images/brochure.pdf" // Make sure brochure.pdf is inside your `public` folder
+    download="Global_Explorer_Brochure.pdf"
+    className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-700 rounded-xl font-bold text-lg text-white shadow-lg shadow-cyan-500/30 hover:from-cyan-500 hover:to-blue-600 transition-all"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    Download Brochures
+  </motion.a>
+
+  <p className="mt-4 text-gray-500">
+    Flexible booking options • 24/7 customer support
+  </p>
+</motion.div>
+
       </div>
     </div>
   );

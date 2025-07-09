@@ -1,703 +1,400 @@
-// App.tsx
-import React, { useState, useEffect, useRef } from 'react';
+// src/components/korea/KoreaItinerary.tsx
+import  { useState } from 'react';
+import { motion } from 'framer-motion';
 
-type Destination = {
-  id: number;
-  title: string;
-  tagline: string;
-  description: string;
-  planningTip: string;
-  imageUrl: string;
-  category: string;
-};
-
-type CulturePoint = {
-  id: number;
-  title: string;
-  description: string;
-  icon: string;
-};
-
-type FoodItem = {
-  id: number;
-  title: string;
-  description: string;
-  imageUrl: string;
-};
-
-type AdventurePlace = {
-  id: number;
-  title: string;
-  tagline: string;
-  description: string;
-  highlights: string[];
-  imageUrl: string;
-};
-
-const App: React.FC = () => {
-  const [, setDestinations] = useState<Destination[]>([]);
-  const [, setFilteredDestinations] = useState<Destination[]>([]);
-  const [] = useState<string>('all');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const [activeSection, setActiveSection] = useState('culture');
+const KoreaItinerary = () => {
+  const [activeDay, setActiveDay] = useState(1);
   
-
-  // Cultural points data
-  const culturePoints: CulturePoint[] = [
+  const itinerary = [
     {
-      id: 1,
-      title: "Confucian Values and Respect for Elders",
-      description: "South Korean society is heavily influenced by Confucianism, which emphasizes respect, loyalty, and hierarchy. Elders are deeply respected—people bow to greet them, use honorific language, and often give up seats for them in public places.",
-      icon: "👴"
+      day: 1,
+      title: "Arrival in Seoul & Modern Exploration",
+      description: "Begin your Korean adventure in the vibrant capital city of Seoul",
+      activities: [
+        "Arrive at Incheon International Airport",
+        "Transfer to your luxury hotel in Gangnam",
+        "Explore Starfield COEX Mall - Asia's largest underground mall",
+        "Visit Bongeunsa Temple amidst skyscrapers",
+        "Evening at Seoul Sky Observatory (Lotte World Tower)"
+      ],
+      food: [
+        "Welcome dinner: Korean BBQ at upscale restaurant",
+        "Street food tasting at Banpo Bridge Rainbow Fountain"
+      ],
+      image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
     },
     {
-      id: 2,
-      title: "Traditional Clothing – Hanbok",
-      description: "The Hanbok is South Korea's national dress, worn on important holidays. Known for its bright colors, flowing lines, and symbolic patterns. Today, modernized hanboks are also worn during weddings and photoshoots.",
-      icon: "👘"
+      day: 2,
+      title: "Historical Seoul & Cultural Immersion",
+      description: "Experience the perfect blend of ancient traditions and modern innovation",
+      activities: [
+        "Gyeongbokgung Palace - Royal Guard Changing Ceremony",
+        "Bukchon Hanok Village - traditional Korean houses",
+        "Insadong cultural street - art galleries and teahouses",
+        "National Museum of Korea",
+        "Namsan Seoul Tower with love locks"
+      ],
+      food: [
+        "Traditional royal cuisine lunch",
+        "Korean cooking class with bibimbap making",
+        "Noryangjin Fish Market dinner experience"
+      ],
+      image: "https://images.unsplash.com/photo-1560843430-8a4d5c3b9b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
     },
     {
-      id: 3,
-      title: "Festivals and Traditional Celebrations",
-      description: "South Korea's major festivals reflect seasonal changes, family bonding, and ancestral rituals. Key festivals include Seollal (Lunar New Year), Chuseok (Harvest Festival), and Buddha's Birthday.",
-      icon: "🎎"
+      day: 3,
+      title: "DMZ Tour & Hongdae Culture",
+      description: "Witness the unique geopolitical situation and vibrant youth culture",
+      activities: [
+        "DMZ Tour - Third Tunnel of Aggression",
+        "Dora Observatory overlooking North Korea",
+        "Dorasan Station - symbol of hope for reunification",
+        "Hongdae Free Market and street performances",
+        "Virtual reality experience at Samsung D'light"
+      ],
+      food: [
+        "Army base stew (Budae Jjigae) for lunch",
+        "Hongdae street food tour: hotteok, tteokbokki",
+        "Craft cocktail experience at speakeasy bar"
+      ],
+      image: "https://images.unsplash.com/photo-1621423055731-8a5d7b9b3b3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
     },
     {
-      id: 4,
-      title: "Religion and Spiritual Practices",
-      description: "South Korea has a mix of Buddhism, Christianity, and traditional Shamanism. Buddhist temples are found all over the country and are often visited for meditation, tea ceremonies, or temple stays.",
-      icon: "🙏"
+      day: 4,
+      title: "Busan Coastal Adventure",
+      description: "Discover Korea's stunning southern coastal city",
+      activities: [
+        "KTX high-speed train to Busan (2.5 hours)",
+        "Gamcheon Culture Village - colorful hillside houses",
+        "Jagalchi Fish Market - Korea's largest seafood market",
+        "Haeundae Beach relaxation",
+        "Haedong Yonggungsa Temple - seaside sanctuary"
+      ],
+      food: [
+        "Fresh seafood lunch at Jagalchi Market",
+        "Busan-style milmyeon (cold wheat noodles)",
+        "Gwangalli Beach dinner with bridge light show"
+      ],
+      image: "https://images.unsplash.com/photo-1597212619409-6fd9b04d2a6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
     },
     {
-      id: 5,
-      title: "Traditional Arts and Craftsmanship",
-      description: "Korean pottery (celadon), calligraphy, paper art (hanji), and Korean painting (minhwa) are all important traditional crafts. UNESCO has recognized several Korean cultural practices like pansori and kimjang.",
-      icon: "🎨"
+      day: 5,
+      title: "Gyeongju Cultural Exploration",
+      description: "Step back in time to ancient Silla Kingdom",
+      activities: [
+        "Bulguksa Temple - UNESCO World Heritage site",
+        "Seokguram Grotto - ancient stone Buddha",
+        "Daereungwon Tomb Complex - Cheonmachong Tomb",
+        "Anapji Pond - royal palace gardens",
+        "Gyeongju National Museum"
+      ],
+      food: [
+        "Traditional Silla Kingdom royal lunch",
+        "Gyeongju bread (Hwangnam-ppang) tasting",
+        "Bulgogi dinner with local makgeolli rice wine"
+      ],
+      image: "https://images.unsplash.com/photo-1628588542185-235c0c0f0d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
     },
     {
-      id: 6,
-      title: "Language and Script – Hangul",
-      description: "The Korean language uses the script Hangul, created by King Sejong in the 15th century. Hangul is known for its scientific design and simplicity, making it one of the easiest scripts to learn.",
-      icon: "📜"
+      day: 6,
+      title: "Jeonju Hanok Village & Food Journey",
+      description: "Experience traditional Korea and culinary delights",
+      activities: [
+        "Jeonju Hanok Village - over 800 traditional houses",
+        "Hanbok wearing experience and photoshoot",
+        "Traditional paper (hanji) making workshop",
+        "Jeondong Catholic Church - historical site",
+        "Omokdae Pavilion panoramic view"
+      ],
+      food: [
+        "Bibimbap lunch at famous Gogung restaurant",
+        "Street food tour: choco pies, kongnamul gukbap",
+        "Makgeolli tasting at traditional brewery"
+      ],
+      image: "https://images.unsplash.com/photo-1571330735066-03aaa9429d89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
     },
     {
-      id: 7,
-      title: "Modern Pop Culture K-pop and K-drama",
-      description: "K-pop is a global sensation with bands like BTS and Blackpink. Korean dramas and movies are hugely popular worldwide, showing Korean creativity at its best.",
-      icon: "🎤"
-    },
-    {
-      id: 8,
-      title: "Dining Culture and Etiquette",
-      description: "Meals are social. Koreans sit together, share dishes, and often eat from the same bowls. There's a proper way to eat: elders eat first, and chopsticks and spoons are placed neatly.",
-      icon: "🍽️"
-    },
-    {
-      id: 9,
-      title: "Hanok – Traditional Houses",
-      description: "Hanok are traditional Korean houses made with natural materials like wood, clay, and stone. They are built around courtyards and use a heating system called ondol, where heat travels under the floor.",
-      icon: "🏯"
-    },
-    {
-      id: 10,
-      title: "Cultural Preservation and Innovation",
-      description: "Despite modernization, South Korea works hard to protect its cultural heritage. Schools teach cultural values, and many young Koreans still participate in tea ceremonies, calligraphy, and martial arts like Taekwondo.",
-      icon: "🛡️"
+      day: 7,
+      title: "Seoul Finale & Departure",
+      description: "Last day of shopping and cultural experiences",
+      activities: [
+        "Myeongdong shopping district",
+        "Namdaemun Market for souvenirs",
+        "Korean beauty experience and facial treatment",
+        "Traditional tea ceremony in Insadong",
+        "Transfer to Incheon Airport"
+      ],
+      food: [
+        "Samgyetang (ginseng chicken soup) lunch",
+        "Farewell dinner: fine dining Korean fusion"
+      ],
+      image: "https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
     }
   ];
 
-  // Food items data
-  const foodItems: FoodItem[] = [
-    {
-      id: 1,
-      title: "Kimchi – The Heart of Every Meal",
-      description: "Kimchi is Korea's signature food—spicy, fermented vegetables seasoned with chili, garlic, and fish sauce. It's served at nearly every meal and is so culturally important that its preparation process (Kimjang) is recognized by UNESCO.",
-      imageUrl: "https://images.unsplash.com/photo-1620293534390-7c1d9e3f1b9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: 2,
-      title: "Korean BBQ (Samgyeopsal)",
-      description: "A must-try experience in Korea. Samgyeopsal is grilled pork belly cooked right at your table. Diners wrap pieces in lettuce with garlic, chili paste, and sometimes rice.",
-      imageUrl: "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: 3,
-      title: "Bibimbap – The Balanced Bowl",
-      description: "A classic mixed rice dish with vegetables, gochujang (chili paste), egg, and sometimes meat or tofu. It's colorful, healthy, and served in both regular bowls and hot stone bowls.",
-      imageUrl: "https://images.unsplash.com/photo-1597047084897-51e81819a499?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: 4,
-      title: "Street Food Culture",
-      description: "Korea's street food is vibrant and affordable. Favorites include Tteokbokki (chewy rice cakes in spicy sauce), Hotteok (warm, filled pancakes), Odeng (fish cake skewers), and Kimbap (seaweed rice rolls).",
-      imageUrl: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: 5,
-      title: "Soups and Stews (Guk & Jjigae)",
-      description: "Kimchi jjigae (kimchi stew) and doenjang jjigae (soybean paste stew) are everyday favorites. Samgyetang (ginseng chicken soup) is eaten during summer to restore energy.",
-      imageUrl: "https://images.unsplash.com/photo-1620293534390-7c1d9e3f1b9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: 6,
-      title: "Temple Food – Simple and Spiritual",
-      description: "At Buddhist temples, food is vegan and clean, avoiding garlic, onions, and animal products. Ingredients are seasonal and locally sourced, focusing on natural flavor and harmony with nature.",
-      imageUrl: "https://images.unsplash.com/photo-1633617477281-c0c65a0d8b96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    }
-  ];
-
-  // Adventure places data
-  const adventurePlaces: AdventurePlace[] = [
-    {
-      id: 1,
-      title: "Gyeongbokgung Palace",
-      tagline: "Step into South Korea's royal past",
-      description: "Built in 1395, this palace once served as the heart of the Joseon Dynasty. As you walk through its beautifully preserved courtyards, majestic gates, and wooden halls, you'll feel like you've been transported to another era.",
-      highlights: [
-        "Built in 1395, it's the most iconic royal palace from the Joseon Dynasty",
-        "Features include traditional wooden halls, majestic gates, and quiet courtyards",
-        "Don't miss the Royal Guard Changing Ceremony, held multiple times daily",
-        "Surrounded by modern Seoul, it reflects Korea's blend of past and present"
-      ],
-      imageUrl: "https://images.unsplash.com/photo-1560843430-8a4d5c3b9b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      id: 2,
-      title: "Jeju Island",
-      tagline: "Nature's Gift",
-      description: "Jeju Island is a natural wonder that feels like a world of its own. Known for its peaceful atmosphere, clean air, and beautiful landscapes, it's a favorite escape for nature lovers and peace seekers.",
-      highlights: [
-        "Known for peaceful nature, volcanic craters, and black-sand beaches",
-        "Home to Hallasan Mountain, Korea's tallest peak",
-        "Visit Seongsan Ilchulbong (Sunrise Peak) for breathtaking views",
-        "Explore lava tubes, waterfalls, and Dolhareubang stone statues"
-      ],
-      imageUrl: "https://images.unsplash.com/photo-1571330735066-03aaa9429d89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      id: 3,
-      title: "Busan",
-      tagline: "Beach and Urban Charm",
-      description: "Busan is a vibrant blend of beach life, city energy, and rich culture. With Haeundae Beach's golden sands and summer festivals, Jagalchi Fish Market's fresh catches, and Gamcheon Culture Village's colorful art-covered alleyways.",
-      highlights: [
-        "South Korea's second-largest city",
-        "Highlights include Haeundae Beach, Jagalchi Fish Market, and Gamcheon Culture Village",
-        "Visit Haedong Yonggungsa Temple, set on a cliffside by the sea",
-        "Experience street food, coastal walks, and local festivals"
-      ],
-      imageUrl: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      id: 4,
-      title: "N Seoul Tower",
-      tagline: "Panoramic City Views",
-      description: "Rising high above the city on Namsan Mountain, N Seoul Tower offers one of the best panoramic views of Seoul. You can hike or take a scenic cable car ride to the top.",
-      highlights: [
-        "Located atop Namsan Mountain with views over the entire city",
-        "Access via cable car or hiking trails",
-        "Known for its love locks, romantic atmosphere, and night views",
-        "Ideal for couples, friends, and families wanting a top-down view of Seoul"
-      ],
-      imageUrl: "https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      id: 5,
-      title: "Gangwon-do",
-      tagline: "Four-Season Adventure",
-      description: "Gangwon-do is a year-round adventure destination filled with mountains, beaches, and outdoor fun. In winter, ski or snowboard at top resorts. In warmer seasons, hike through Seoraksan National Park or relax in Sokcho by the sea.",
-      highlights: [
-        "Offers four-season adventure: skiing in winter, hiking in summer",
-        "Top ski resorts: Yongpyong, Alpensia, High1",
-        "Nature highlights: Seoraksan National Park, beaches in Sokcho",
-        "Known for fall foliage, fresh air, and peaceful getaways"
-      ],
-      imageUrl: "https://images.unsplash.com/photo-1605283176568-9b41fde3672e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      id: 6,
-      title: "Andong",
-      tagline: "Cultural Soul of South Korea",
-      description: "Andong is known as the cultural soul of South Korea, where tradition and heritage are carefully preserved. The city's most iconic site, Hahoe Folk Village, is a UNESCO World Heritage location.",
-      highlights: [
-        "Cultural heart of Korea with deep-rooted traditions",
-        "Visit Hahoe Folk Village (UNESCO site) and watch mask dance performances",
-        "Try local food like jjimdak and traditional soju",
-        "Explore Dosan Seowon, a historic Confucian academy"
-      ],
-      imageUrl: "https://images.unsplash.com/photo-1628588542185-235c0c0f0d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      id: 7,
-      title: "Gwangju",
-      tagline: "History and Vibrant Arts",
-      description: "Gwangju is known for its rich history and strong cultural heritage. The city played a significant role in South Korea's democracy movement, especially during the 1980 Gwangju Uprising.",
-      highlights: [
-        "Known for the 1980 Democracy Movement and vibrant arts scene",
-        "Try local dishes like spicy kimchi and Korean fried chicken",
-        "Visit art museums, festivals, and open parks",
-        "Hosts the international Gwangju Biennale"
-      ],
-      imageUrl: "https://images.unsplash.com/photo-1571330735066-03aaa9429d89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      id: 8,
-      title: "DMZ (Demilitarized Zone)",
-      tagline: "History and Reflection",
-      description: "The DMZ is unlike any other destination—it's a place of tension, reflection, and hope. As the border zone between North and South Korea, it offers a powerful look into the peninsula's complex past and present.",
-      highlights: [
-        "A border zone between North and South Korea—a place of history and reflection",
-        "Visit observation posts, war tunnels, and Panmunjom Truce Village",
-        "Learn about Korea's division and ongoing hopes for peace",
-        "Guided tours provide deep historical context"
-      ],
-      imageUrl: "https://images.unsplash.com/photo-1621423055731-8a5d7b9b3b3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      id: 9,
-      title: "Nami Island",
-      tagline: "Storybook Escape",
-      description: "Just a short drive from Seoul, Nami Island is a quiet, storybook-like escape. Known for its beautiful tree-lined paths, the island is especially stunning in spring and autumn.",
-      highlights: [
-        "Famous for its tree-lined paths, especially beautiful in spring and autumn",
-        "Popular for romantic getaways, nature walks, and bike rides",
-        "Once a filming site for Korean dramas",
-        "Accessible from Seoul via ferry or zipline"
-      ],
-      imageUrl: "https://images.unsplash.com/photo-1597212619409-6fd9b04d2a6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      id: 10,
-      title: "Traditional Spas (Jjimjilbang)",
-      tagline: "Korean Bathhouse Culture",
-      description: "A visit to South Korea isn't complete without spending time in a Jjimjilbang, the country's unique and beloved bathhouse culture. These traditional spas are open 24/7 and offer much more than hot baths.",
-      highlights: [
-        "Open 24/7, offering hot baths, dry saunas, steam rooms, and more",
-        "Popular spas include Dragon Hill Spa (Seoul) and Spa Land (Busan)",
-        "Locals come to relax, nap, and socialize",
-        "Includes snack bars, entertainment zones, and health treatments"
-      ],
-      imageUrl: "https://images.unsplash.com/photo-1608889476518-738c9b1dcb40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      id: 11,
-      title: "Bukchon Hanok Village",
-      tagline: "Traditional Korean Houses",
-      description: "A peaceful pocket of tradition nestled in the center of busy Seoul. Here, you'll walk among hundreds of well-preserved hanok homes with curved rooftops, wooden frames, and stone paths.",
-      highlights: [
-        "A preserved traditional neighborhood in the heart of Seoul",
-        "Features hundreds of hanok (Korean houses) with curved roofs and stone lanes",
-        "Home to tea houses, calligraphy workshops, and Hanbok rentals",
-        "Still inhabited by real families—living heritage"
-      ],
-      imageUrl: "https://images.unsplash.com/photo-1628588542180-235c0c0f0d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-    }
-  ];
-
-  useEffect(() => {
-    // Fetch destination data
-    const destinationsData: Destination[] = [
-      {
-        id: 1,
-        title: 'Seoul',
-        tagline: 'Best for nightlife',
-        description: 'Home to half of South Korea\'s population, Seoul is the electric capital where revelers can seek out low-key watering holes, high-end cocktail lounges, and always-fun noraebang (karaoke bars) at any hour.',
-        planningTip: 'Planning tip: Gangnam has the most expensive clubs, Hongdae is budget-friendly, and Itaewon draws an international crowd.',
-        imageUrl: 'https://images.unsplash.com/photo-1560843430-8a4d5c3b9b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        category: 'urban'
-      },
-      {
-        id: 2,
-        title: 'Gyeongju',
-        tagline: 'Best for ancient treasures',
-        description: 'Once the capital of the Silla kingdom, Gyeongju is a treasure trove of ancient relics. Known as Korea\'s "Museum Without Walls," explore royal tombs at Tumuli-gongwon, the ancient Cheomseongdae observatory, the Buddhist grotto of Seokguram, and the stunning covered bridge of Woljeonggyo.',
-        planningTip: 'Don\'t miss: Visit the Gyeongju National Museum to see ornate jewelry, earthenware, and Buddha statues.',
-        imageUrl: 'https://images.unsplash.com/photo-1628588542179-4f4d3d3b1b1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        category: 'history'
-      },
-      {
-        id: 3,
-        title: 'Busan',
-        tagline: 'Best for maritime culture',
-        description: 'South Korea\'s vibrant port city overflows with maritime culture. Visit the bustling Port of Busan, explore beautiful beaches, parks, and the oceanside Haedong Yonggungsa temple. Experience Jagalchi, Korea\'s largest fish market, where you can select fresh seafood and have it prepared on the spot.',
-        planningTip: 'Food tip: Try jogae gui (grilled shellfish) with various dipping sauces at beachside restaurants.',
-        imageUrl: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        category: 'culture'
-      },
-      {
-        id: 4,
-        title: 'Jeju-do',
-        tagline: 'Best for beaches & waterfalls',
-        description: 'Blessed with a subtropical climate, Jeju-do is Korea\'s most popular vacation destination. Enjoy glittering beaches with white or black sand, crystal clear waters, and dramatic volcanic landscapes.',
-        planningTip: 'Adventure tip: Try rafting in a traditional tewoo boat at the Soesokkak Estuary.',
-        imageUrl: 'https://images.unsplash.com/photo-1571330735066-03aaa9429d89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        category: 'nature'
-      },
-      {
-        id: 5,
-        title: 'Gangwon-do',
-        tagline: 'Best for winter sports',
-        description: 'Home to South Korea\'s best ski resorts and host of the 2018 Winter Olympics, Gangwon-do is a winter paradise. Ski or snowboard at top-rated resorts like YongPyong or High1.',
-        planningTip: 'Festival tip: Visit during the Hwacheon Sancheoneo Ice Festival or Taebaeksan Snow Festival.',
-        imageUrl: 'https://images.unsplash.com/photo-1605283176568-9b41fde3672e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        category: 'adventure'
-      },
-      {
-        id: 6,
-        title: 'Andong',
-        tagline: 'Best for folk traditions',
-        description: 'Known as the "Capital of Korean Spirit," Andong is Korea\'s Confucian culture capital. Visit the UNESCO-listed Hahoe Folk Village to experience Joseon-era life.',
-        planningTip: 'Cultural tip: Book an overnight stay in a traditional choga guesthouse at Hahoe Village.',
-        imageUrl: 'https://images.unsplash.com/photo-1628588542185-235c0c0f0d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        category: 'culture'
-      },
-      {
-        id: 7,
-        title: 'Gwangju',
-        tagline: 'Best for contemporary history',
-        description: 'Regarded as the birthplace of Korean democracy, Gwangju was the site of the pivotal May 18 Democratic Uprising of 1980.',
-        planningTip: 'Historical insight: The uprising marked a turning point in South Korea\'s struggle for democracy.',
-        imageUrl: 'https://images.unsplash.com/photo-1571330735066-03aaa9429d89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        category: 'history'
-      }
-    ];
-    
-    setDestinations(destinationsData);
-    setFilteredDestinations(destinationsData);
-    
-    // Animate subtitle after a delay
-    const timer = setTimeout(() => {
-      if (subtitleRef.current) {
-        subtitleRef.current.classList.add('opacity-100', 'translate-y-0');
-      }
-    }, 300);
-    
-    return () => clearTimeout(timer);
-  }, []);
+  const currentDay = itinerary.find(day => day.day === activeDay);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-hidden relative">
-      {/* Futuristic background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-100"></div>
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
-      
-      {/* Grid pattern background */}
-      <div className="absolute inset-0 opacity-10" style={{
-        backgroundImage: `linear-gradient(to right, #e5e7eb 1px, transparent 1px), linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)`,
-        backgroundSize: '40px 40px'
-      }}></div>
-      
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white/95 backdrop-blur-lg z-50 flex flex-col items-center justify-center">
-          <button 
-            className="absolute top-6 right-6 text-cyan-600"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
-          
-          <div className="flex flex-col items-center space-y-8 text-xl">
-            {['Destinations', 'Experiences', 'Itineraries', 'About', 'Contact'].map((item) => (
-              <a 
-                key={item}
-                href="#" 
-                className="text-cyan-600 hover:text-cyan-800 transition-colors font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item}
-              </a>
-            ))}
-            <button className="mt-6 px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold hover:opacity-90 transition-opacity shadow-lg">
-              Book Now
-            </button>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-100 py-12 px-4">
+      {/* Header */}
+      <div className="max-w-7xl mx-auto text-center mb-16">
+        <motion.h1 
+          className="text-4xl md:text-6xl font-bold text-gray-900 mb-4"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
+            FUTURISTIC KOREA
+          </span> TOUR
+        </motion.h1>
+        <motion.p 
+          className="text-xl text-gray-700 max-w-3xl mx-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+        >
+          6 Nights / 7 Days Journey Through Tradition & Innovation
+        </motion.p>
+      </div>
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Day Navigation */}
+        <div className="lg:col-span-1">
+          <div className="bg-white rounded-2xl shadow-xl p-6">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Tour Itinerary</h2>
+            
+            <div className="space-y-3">
+              {itinerary.map((day) => (
+                <motion.div
+                  key={day.day}
+                  whileHover={{ scale: 1.02 }}
+                  className={`p-4 rounded-xl cursor-pointer transition-all ${
+                    activeDay === day.day
+                      ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg'
+                      : 'bg-blue-50 hover:bg-blue-100'
+                  }`}
+                  onClick={() => setActiveDay(day.day)}
+                >
+                  <div className="flex items-center">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-4 ${
+                      activeDay === day.day ? 'bg-white text-blue-600' : 'bg-blue-500 text-white'
+                    }`}>
+                      <span className="font-bold">{day.day}</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Day {day.day}</h3>
+                      <p className={`text-sm ${activeDay === day.day ? 'text-blue-100' : 'text-gray-600'}`}>
+                        {day.title}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            <div className="mt-8 bg-blue-50 rounded-xl p-5 border border-blue-200">
+              <h3 className="font-bold text-gray-800 mb-3">Tour Highlights</h3>
+              <ul className="space-y-2">
+                {[
+                  "Luxury accommodation in 5-star hotels",
+                  "All transfers in premium vehicles",
+                  "Daily breakfast & 5 gourmet dinners",
+                  "Expert local guides",
+                  "KTX bullet train experience",
+                  "Hanbok wearing & cultural activities",
+                  "24/7 dedicated support"
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center mr-2 mt-0.5">
+                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </div>
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-      )}
-      
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        {/* Header */}
-        <header className="text-center pt-8 md:pt-16">
-          <div className="relative inline-block">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 via-purple-600 to-pink-600 animate-gradient">
-              FUTURE KOREA
-            </h1>
-            <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"></div>
-          </div>
-          
-          <p 
-            ref={subtitleRef}
-            className="mt-6 text-lg md:text-xl text-gray-600 opacity-0 max-w-2xl mx-auto transform translate-y-4 transition-all duration-700"
-          >
-            Discover the fusion of ancient tradition and cutting-edge innovation across South Korea's most captivating destinations
-          </p>
-          
-          <div className="mt-12 flex justify-center">
-            <button className="relative px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg font-bold text-lg text-white transition-all hover:opacity-90 shadow-lg hover:shadow-xl hover:shadow-cyan-500/30">
-              START YOUR JOURNEY
-              <span className="absolute inset-0 rounded-lg bg-white opacity-0 hover:opacity-10 transition-opacity"></span>
-            </button>
-          </div>
-        </header>
         
-        <main className="mt-16">
-          {/* Section Navigation */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {['culture', 'food', 'nature', 'adventure'].map(section => (
-              <button
-                key={section}
-                onClick={() => setActiveSection(section)}
-                className={`px-5 py-2.5 rounded-full font-medium transition-all transform hover:scale-105 ${
-                  activeSection === section
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-md shadow-cyan-500/20'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+        {/* Day Details */}
+        <div className="lg:col-span-2">
+          <motion.div 
+            key={activeDay}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-2xl shadow-xl overflow-hidden"
+          >
+            {/* Image Header */}
+            <div className="h-64 md:h-80 relative">
+              <div 
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${currentDay?.image})` }}
+              ></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h2 className="text-2xl md:text-3xl font-bold text-white">
+                  Day {currentDay?.day}: {currentDay?.title}
+                </h2>
+                <p className="text-blue-200 mt-2">{currentDay?.description}</p>
+              </div>
+            </div>
+            
+            <div className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Activities */}
+                <div>
+                  <div className="flex items-center mb-4">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-800">Activities</h3>
+                  </div>
+                  
+                  <ul className="space-y-3">
+                    {currentDay?.activities.map((activity, index) => (
+                      <motion.li 
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex items-start"
+                      >
+                        <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        </div>
+                        <span className="text-gray-700">{activity}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+                
+                {/* Food Experiences */}
+                <div>
+                  <div className="flex items-center mb-4">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-800">Culinary Experiences</h3>
+                  </div>
+                  
+                  <ul className="space-y-3">
+                    {currentDay?.food.map((food, index) => (
+                      <motion.li 
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex items-start"
+                      >
+                        <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        </div>
+                        <span className="text-gray-700">{food}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              
+              {/* Additional Info */}
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <h3 className="text-xl font-bold text-gray-800 mb-4">Travel Essentials</h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="bg-blue-50 p-4 rounded-xl">
+                    <div className="text-blue-600 font-bold mb-2">Accommodation</div>
+                    <div className="text-sm">
+                      {activeDay === 4 ? "Busan - Paradise Hotel" : 
+                       activeDay === 5 ? "Gyeongju - Hilton Hotel" : 
+                       "Seoul - Signiel Seoul"}
+                    </div>
+                  </div>
+                  
+                  <div className="bg-blue-50 p-4 rounded-xl">
+                    <div className="text-blue-600 font-bold mb-2">Transport</div>
+                    <div className="text-sm">
+                      {activeDay === 4 ? "KTX Bullet Train (Seoul to Busan)" : 
+                       "Premium Private Vehicle"}
+                    </div>
+                  </div>
+                  
+                  <div className="bg-blue-50 p-4 rounded-xl">
+                    <div className="text-blue-600 font-bold mb-2">Travel Time</div>
+                    <div className="text-sm">
+                      {activeDay === 4 ? "2.5 hours" : 
+                       activeDay === 5 ? "1 hour" : 
+                       "Minimal travel within city"}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* Highlights Carousel */}
+          <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { title: "K-Pop Experience", icon: "🎤" },
+              { title: "Hanbok Photoshoot", icon: "👘" },
+              { title: "Tech Showcase", icon: "📱" },
+              { title: "Temple Stay", icon: "🛕" }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -5 }}
+                className="bg-white p-4 rounded-xl shadow-md text-center"
               >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </button>
+                <div className="text-3xl mb-2">{item.icon}</div>
+                <div className="font-medium text-gray-800">{item.title}</div>
+              </motion.div>
             ))}
           </div>
-          
-          {/* Culture Section */}
-          {activeSection === 'culture' && (
-            <section className="py-12">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">South Korean Culture: A Blend of Tradition and Modernity</h2>
-                <div className="h-1 w-32 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto mb-6"></div>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  Rooted in thousands of years of history, Korean culture blends deep traditional values with a highly modern lifestyle.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {culturePoints.map((point) => (
-                  <div 
-                    key={point.id}
-                    className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-cyan-300"
-                  >
-                    <div className="p-6">
-                      <div className="text-4xl mb-4 text-cyan-600">{point.icon}</div>
-                      <h3 className="text-xl font-bold mb-3 text-gray-800">
-                        {point.title}
-                      </h3>
-                      <p className="text-gray-600">{point.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-          
-          {/* Food Section */}
-          {activeSection === 'food' && (
-            <section className="py-12">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">South Korean Food: Flavorful, Communal, and Full of Culture</h2>
-                <div className="h-1 w-32 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto mb-6"></div>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  Korean food is more than just something to eat—it's a deeply cultural experience.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {foodItems.map((food) => (
-                  <div 
-                    key={food.id}
-                    className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 group"
-                  >
-                    <div className="relative h-56 overflow-hidden">
-                      <img 
-                        src={food.imageUrl} 
-                        alt={food.title} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                      <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
-                        {food.title}
-                      </h3>
-                    </div>
-                    <div className="p-6">
-                      <p className="text-gray-600">{food.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-          
-          {/* Nature Section */}
-          {activeSection === 'nature' && (
-            <section className="py-12">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Nature of South Korea: Mountains, Islands & Harmony with the Earth</h2>
-                <div className="h-1 w-32 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto mb-6"></div>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  South Korea may be famous for its cities and culture, but what truly takes your breath away is its diverse and peaceful natural landscapes.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
-                  <h3 className="text-xl font-bold mb-4 text-gray-800">
-                    Mountain Ranges and National Parks
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    About 70% of Korea is mountainous, making it a paradise for hikers, nature photographers, and anyone seeking peaceful views.
-                  </p>
-                  <ul className="list-disc list-inside text-gray-600 space-y-2">
-                    <li>Seoraksan National Park in Gangwon Province is the most iconic</li>
-                    <li>Bukhansan, just outside Seoul, is perfect for day hikes</li>
-                    <li>Jirisan, Songnisan, and Hallasan offer unique plants and wildlife</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
-                  <h3 className="text-xl font-bold mb-4 text-gray-800">
-                    Jeju Island – Nature's Gift
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Jeju-do is a volcanic island off the southern coast, known for its lava tubes, waterfalls, beaches, and Mount Hallasan—the tallest mountain in South Korea.
-                  </p>
-                  <ul className="list-disc list-inside text-gray-600 space-y-2">
-                    <li>UNESCO-listed sites like Manjanggul Cave</li>
-                    <li>Seongsan Ilchulbong (Sunrise Peak)</li>
-                    <li>Gotjawal forests and Olle Trails</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
-                  <h3 className="text-xl font-bold mb-4 text-gray-800">
-                    Beautiful Beaches and Coastal Scenery
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Busan is Korea's beach city, with Haeundae and Gwangalli Beach offering sun, sand, and sea—with the city skyline in view.
-                  </p>
-                  <ul className="list-disc list-inside text-gray-600 space-y-2">
-                    <li>Eastern coast has clear blue water and calm beaches</li>
-                    <li>Southern coast has quiet bays and seafood villages</li>
-                    <li>Perfect for relaxing and trying fresh catch</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
-                  <h3 className="text-xl font-bold mb-4 text-gray-800">
-                    Wildlife and Eco-Parks
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Despite its size, Korea is home to rare species, birds, and plants. The Demilitarized Zone (DMZ) has become a haven for wildlife due to its untouched nature.
-                  </p>
-                  <ul className="list-disc list-inside text-gray-600 space-y-2">
-                    <li>Wetlands like Suncheon Bay for birdwatching</li>
-                    <li>Upo Wetlands for biking, walking, and photography</li>
-                    <li>Forest bathing in Jangtaesan or Bijarim Forest</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-          )}
-          
-          {/* Adventure Places Section */}
-          {activeSection === 'adventure' && (
-            <section className="py-12">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Adventure Places in South Korea: Thrill, Nature, and Unforgettable Experiences</h2>
-                <div className="h-1 w-32 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto mb-6"></div>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  South Korea is full of exciting places for every kind of traveler.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {adventurePlaces.map((place) => (
-                  <div 
-                    key={place.id}
-                    className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 group"
-                  >
-                    <div className="relative h-56 overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
-                      <div className="absolute top-4 right-4 z-20">
-                        <span className="px-3 py-1 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold rounded-full text-xs">
-                          {place.tagline}
-                        </span>
-                      </div>
-                      <img 
-                        src={place.imageUrl} 
-                        alt={place.title} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                    </div>
-                    
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2 text-gray-800">
-                        {place.title}
-                      </h3>
-                      <p className="text-gray-600 mb-4">{place.description}</p>
-                      
-                      <div className="mt-4 p-4 bg-cyan-50 rounded-lg border-l-4 border-cyan-500">
-                        <h4 className="text-sm font-bold text-cyan-700 mb-2">KEY HIGHLIGHTS</h4>
-                        <ul className="space-y-1">
-                          {place.highlights.map((highlight, idx) => (
-                            <li key={idx} className="text-sm text-gray-700 flex items-start">
-                              <span className="mr-2 text-cyan-500">•</span> {highlight}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-        </main>
-         </div>
-      
-      {/* Floating particles */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <div 
-            key={i}
-            className="absolute rounded-full bg-cyan-500 opacity-10"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 8 + 2}px`,
-              height: `${Math.random() * 8 + 2}px`,
-              animation: `float ${Math.random() * 10 + 10}s infinite ease-in-out`,
-              animationDelay: `${Math.random() * 5}s`
-            }}
-          ></div>
-        ))}
+        </div>
       </div>
       
-      {/* Custom styles */}
-      <style >{`
-        @keyframes gradient-shift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes float {
-          0% {
-            transform: translateY(0) translateX(0) rotate(0deg);
-            opacity: 0.1;
-          }
-          50% {
-            transform: translateY(-15px) translateX(10px) rotate(180deg);
-            opacity: 0.2;
-          }
-          100% {
-            transform: translateY(0) translateX(0) rotate(360deg);
-            opacity: 0.1;
-          }
-        }
-      `}</style>
+      {/* Booking CTA */}
+      <div className="max-w-7xl mx-auto mt-16 text-center">
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 md:p-12 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full opacity-20 transform translate-x-32 -translate-y-32"></div>
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-500 rounded-full opacity-20 transform -translate-x-24 translate-y-24"></div>
+          
+          <div className="relative z-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Ready for Your Korean Adventure?</h2>
+            <p className="text-blue-100 max-w-2xl mx-auto mb-8">
+              Book our premium 6N/7D Korea Tour Package and experience the perfect blend of tradition and innovation
+            </p>
+            
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-white text-blue-600 font-bold rounded-full shadow-lg"
+            >
+              Customize Your Tour 
+            </motion.button>
+            
+            <div className="mt-6 flex flex-wrap justify-center gap-4">
+              {[" Luxury Accommodation", " All Transfers", " Expert Guides", " Unique Experiences"].map((item, index) => (
+                <div key={index} className="text-blue-100 flex items-center">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default App;
+export default KoreaItinerary;

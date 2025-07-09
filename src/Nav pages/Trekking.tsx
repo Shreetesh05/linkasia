@@ -1,4 +1,5 @@
 // src/components/Trekking.tsx
+import { Phone, Mail } from 'lucide-react';
 import React, { useState } from 'react';
 
 type Difficulty = 'Easy' | 'Moderate' | 'Challenging' | 'Strenuous';
@@ -36,12 +37,13 @@ const Trekking: React.FC = () => {
       name: "Everest Base Camp Trek",
       duration: "14 Days",
       difficulty: "Challenging",
-      price: "$1,499",
+      price: "",
       highlight: "Walk in the footsteps of legends",
       description: "Experience the world's most iconic trek through the heart of the Khumbu region, culminating at the base of the world's highest peak.",
       bestSeason: "Mar-May, Sep-Nov",
       maxAltitude: "5,545m (Kala Patthar)",
-      image: "/images/everest.jpeg",
+      // FIXED: Corrected image URL
+      image: "https://images.unsplash.com/photo-1621784563330-caee0e1e1c01?auto=format&fit=crop&w=1770&q=80",
       colorClass: "from-blue-600 to-cyan-500",
       itinerary: [
         { day: 1, title: "Arrival in Kathmandu", description: "Arrival at Tribhuvan International Airport, transfer to hotel, and trek briefing", altitude: "1,400m", trekkingTime: "N/A" },
@@ -58,27 +60,34 @@ const Trekking: React.FC = () => {
     },
     {
       id: 2,
-      name: "Annapurna Base Camp Trek",
-      duration: "12 Days",
-      difficulty: "Moderate",
-      price: "$1,199",
-      highlight: "360° mountain sanctuary",
-      description: "Journey through diverse landscapes from rice terraces to alpine meadows, culminating in the spectacular Annapurna Sanctuary.",
+      name: "Annapurna Circuit Trek",
+      duration: "17 Days",
+      difficulty: "Challenging",
+      price: "",
+      highlight: "Thorong La Pass (5,416m)",
+      description: "Classic Himalayan trek circling the Annapurna Massif, crossing high mountain passes, and experiencing diverse cultures from Hindu villages to Tibetan-influenced highlands.",
       bestSeason: "Mar-May, Sep-Nov",
-      maxAltitude: "4,130m (ABC)",
-      image: "https://images.unsplash.com/photo-1599661049650-2b978108a1d9?auto=format&fit=crop&w=1770&q=80",
-      colorClass: "from-emerald-500 to-teal-600",
+      maxAltitude: "5,416m (Thorong La Pass)",
+      image: "https://images.unsplash.com/photo-1621786038268-0e3d1e5e4a8d?auto=format&fit=crop&w=1770&q=80",
+      colorClass: "from-blue-500 to-indigo-600",
       itinerary: [
         { day: 1, title: "Arrival in Kathmandu", description: "Arrival at Tribhuvan International Airport, transfer to hotel, and trek briefing", altitude: "1,400m", trekkingTime: "N/A" },
-        { day: 2, title: "Fly to Pokhara", description: "Scenic flight to Pokhara, transfer to hotel with free time to explore lakeside", altitude: "823m", trekkingTime: "N/A" },
-        { day: 3, title: "Drive to Nayapul, trek to Tikhedhunga", description: "Drive to Nayapul, trek through villages and rice terraces to Tikhedhunga", altitude: "1,570m", trekkingTime: "4-5 hours" },
-        { day: 4, title: "Ghorepani via Ulleri", description: "Steep climb to Ulleri village, continue through rhododendron forests to Ghorepani", altitude: "2,860m", trekkingTime: "6-7 hours" },
-        { day: 5, title: "Poon Hill Sunrise, trek to Tadapani", description: "Early hike to Poon Hill (3,210m) for sunrise, then trek to Tadapani", altitude: "2,630m", trekkingTime: "6-7 hours" },
-        { day: 6, title: "Chhomrong", description: "Descend through forests, cross river, climb to Chhomrong village", altitude: "2,170m", trekkingTime: "5-6 hours" },
-        { day: 7, title: "Bamboo to Dovan", description: "Steep descent to Bamboo, then gradual climb through forests to Dovan", altitude: "2,600m", trekkingTime: "5-6 hours" },
-        { day: 8, title: "Machhapuchhre Base Camp", description: "Trek through Himalayan bamboo forest to Machhapuchhre Base Camp", altitude: "3,700m", trekkingTime: "5-6 hours" },
-        { day: 9, title: "Annapurna Base Camp", description: "Short trek to Annapurna Base Camp surrounded by towering peaks", altitude: "4,130m", trekkingTime: "2-3 hours" },
-        { day: 10, title: "Return to Bamboo", description: "Descend through Modi Khola valley back to Bamboo", altitude: "2,310m", trekkingTime: "6-7 hours" },
+        { day: 2, title: "Drive to Besisahar & Bhulbhule", description: "Scenic drive through foothills to trek starting point", altitude: "840m", trekkingTime: "7-8 hours drive" },
+        { day: 3, title: "Trek to Jagat", description: "Follow Marsyangdi River through subtropical forests and rice terraces", altitude: "1,300m", trekkingTime: "5-6 hours" },
+        { day: 4, title: "Trek to Dharapani", description: "Enter Manang district, passing waterfalls and suspension bridges", altitude: "1,960m", trekkingTime: "6-7 hours" },
+        { day: 5, title: "Trek to Chame", description: "First views of Annapurna II and Lamjung Himal", altitude: "2,710m", trekkingTime: "5-6 hours" },
+        { day: 6, title: "Trek to Pisang", description: "Enter alpine zone with dramatic valley views", altitude: "3,300m", trekkingTime: "5-6 hours" },
+        { day: 7, title: "Trek to Manang", description: "High route via Ghyaru village with panoramic Himalayan views", altitude: "3,540m", trekkingTime: "6-7 hours" },
+        { day: 8, title: "Acclimatization in Manang", description: "Explore Gangapurna Lake, ice cave, and practice altitude adjustment", altitude: "3,540m", trekkingTime: "3-4 hours" },
+        { day: 9, title: "Trek to Yak Kharka", description: "Gradual ascent through juniper forests", altitude: "4,110m", trekkingTime: "4-5 hours" },
+        { day: 10, title: "Trek to Thorong Phedi", description: "Base camp preparation for pass crossing", altitude: "4,450m", trekkingTime: "3-4 hours" },
+        { day: 11, title: "Cross Thorong La Pass", description: "Early start to summit pass (5,416m), descend to Muktinath", altitude: "5,416m / 3,800m", trekkingTime: "8-10 hours" },
+        { day: 12, title: "Trek to Marpha", description: "Descend through Kali Gandaki Valley to apple capital", altitude: "2,670m", trekkingTime: "5-6 hours" },
+        { day: 13, title: "Trek to Ghasa", description: "Enter subtropical zone with waterfalls and cliffside trails", altitude: "2,010m", trekkingTime: "5-6 hours" },
+        { day: 14, title: "Trek to Tatopani", description: "Relax in natural hot springs", altitude: "1,190m", trekkingTime: "5-6 hours" },
+        { day: 15, title: "Trek to Ghorepani", description: "Steep climb through rhododendron forests", altitude: "2,860m", trekkingTime: "7-8 hours" },
+        { day: 16, title: "Poon Hill Sunrise & Drive to Pokhara", description: "Morning hike to Poon Hill (3,210m), descend to Nayapul, drive to Pokhara", altitude: "1,400m", trekkingTime: "3-4 hours trek + 2hr drive" },
+        { day: 17, title: "Fly to Kathmandu", description: "Scenic flight return to Kathmandu", altitude: "1,400m", trekkingTime: "N/A" }
       ]
     },
     {
@@ -86,12 +95,13 @@ const Trekking: React.FC = () => {
       name: "Langtang Valley Trek",
       duration: "10 Days",
       difficulty: "Moderate",
-      price: "$899",
+      price: "",
       highlight: "Himalayan hidden gem",
       description: "Explore the beautiful Langtang valley just north of Kathmandu, known as the 'valley of glaciers' with rich Tamang culture.",
       bestSeason: "Mar-May, Sep-Nov",
       maxAltitude: "5,000m (Tserko Ri)",
-      image: "/images/langtang.jpg",
+      // FIXED: Corrected image URL
+      image: "https://images.unsplash.com/photo-1596443972211-0d3bc5555d5e?auto=format&fit=crop&w=1770&q=80",
       colorClass: "from-amber-500 to-orange-600",
       itinerary: [
         { day: 1, title: "Arrival in Kathmandu", description: "Arrival at Tribhuvan International Airport, transfer to hotel, and trek briefing", altitude: "1,400m", trekkingTime: "N/A" },
@@ -111,7 +121,7 @@ const Trekking: React.FC = () => {
       name: "Manaslu Circuit Trek",
       duration: "16 Days",
       difficulty: "Strenuous",
-      price: "$1,799",
+      price: "",
       highlight: "Forbidden kingdom adventure",
       description: "Traverse around the world's eighth highest mountain through remote trails, Tibetan-influenced villages, and over the challenging Larkya La pass.",
       bestSeason: "Mar-May, Sep-Nov",
@@ -145,6 +155,18 @@ const Trekking: React.FC = () => {
 
   const activePackage = trekPackages.find(trek => trek.id === activeTrek) || trekPackages[0];
 
+  // FIXED: Added type for active border classes
+  type ActiveBorderClasses = {
+    [key: number]: string;
+  };
+
+  const activeBorderClasses: ActiveBorderClasses = {
+    1: 'border-blue-600 ring-blue-200',
+    2: 'border-blue-500 ring-blue-200',
+    3: 'border-amber-500 ring-amber-200',
+    4: 'border-violet-600 ring-violet-200'
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -165,7 +187,7 @@ const Trekking: React.FC = () => {
               onClick={() => setActiveTrek(trek.id)}
               className={`bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform transition-all duration-300 hover:-translate-y-2 border-2 ${
                 activeTrek === trek.id 
-                  ? `border-${trek.colorClass.split('-')[1]}-500 shadow-xl ring-4 ring-${trek.colorClass.split('-')[1]}-200` 
+                  ? `${activeBorderClasses[trek.id]} shadow-xl ring-4` 
                   : 'border-gray-100'
               }`}
             >
@@ -280,63 +302,49 @@ const Trekking: React.FC = () => {
               </div>
               
               <div>
-                <div className="sticky top-24">
+                <div className="sticky top-6 space-y-6">
                   <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">Book This Trek</h3>
-                    
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">Contact Details</h3>
+
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-gray-700 text-sm font-medium mb-2">Departure Date</label>
-                        <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                          <option>September 15, 2025</option>
-                          <option>October 5, 2025</option>
-                          <option>October 20, 2025</option>
-                          <option>November 10, 2025</option>
-                        </select>
+                        <label className="block text-gray-700 text-sm font-medium mb-2">Phone</label>
+                        <input
+                          type="tel"
+                          placeholder="+977-9841234567"
+                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        />
                       </div>
-                      
+
                       <div>
-                        <label className="block text-gray-700 text-sm font-medium mb-2">Group Size</label>
-                        <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                          <option>1 Person</option>
-                          <option>2 People</option>
-                          <option>3-5 People</option>
-                          <option>6-10 People</option>
-                          <option>11+ People</option>
-                        </select>
+                        <label className="block text-gray-700 text-sm font-medium mb-2">Email</label>
+                        <input
+                          type="email"
+                          placeholder="you@example.com"
+                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        />
                       </div>
-                      
-                      <div className="pt-4 border-t border-gray-200">
-                        <div className="flex justify-between mb-2">
-                          <span className="text-gray-600">Trek Price</span>
-                          <span className="font-medium">{activePackage.price}</span>
-                        </div>
-                        <div className="flex justify-between mb-2">
-                          <span className="text-gray-600">Permits & Fees</span>
-                          <span className="font-medium">$150</span>
-                        </div>
-                        <div className="flex justify-between mb-2">
-                          <span className="text-gray-600">Equipment Rental</span>
-                          <span className="font-medium">$75</span>
-                        </div>
-                        <div className="flex justify-between font-bold text-lg mt-3 pt-3 border-t border-gray-200">
-                          <span>Total</span>
-                          <span>$1,724</span>
-                        </div>
+
+                      <div>
+                        <label className="block text-gray-700 text-sm font-medium mb-2">Address</label>
+                        <input
+                          type="text"
+                          placeholder="Kathmandu, Nepal"
+                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        />
                       </div>
-                      
-                      <button className={`w-full py-3 px-4 rounded-xl font-bold text-white shadow-lg transform transition hover:scale-[1.02] mt-6 ${activePackage.colorClass.replace('from', 'bg-gradient-to-r from')}`}>
-                        Reserve Your Spot
+
+                      <button className="w-full py-3 px-4 rounded-xl font-bold text-white shadow-lg bg-gradient-to-r from-blue-500 to-blue-600 transform transition hover:scale-[1.02] mt-4">
+                        Submit Details
                       </button>
-                      
+
                       <div className="text-center text-sm text-gray-500 mt-4">
-                        <p>Flexible booking • 24/7 support</p>
-                        <p>Certified guides • Eco-friendly practices</p>
+                        <p>We’ll contact you shortly after submission.</p>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="mt-6 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                  <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-6 shadow-sm">
                     <h3 className="text-xl font-bold text-gray-900 mb-4">What's Included</h3>
                     <ul className="space-y-3">
                       <li className="flex items-center">
@@ -377,6 +385,35 @@ const Trekking: React.FC = () => {
                       </li>
                     </ul>
                   </div>
+                   <div className="border-t border-b border-dashed border-gray-300 py-6 px-4 text-center space-y-4">
+      <div className="bg-gray-100 py-2 rounded">
+        <h3 className="text-lg font-semibold text-gray-900">Got a Question?</h3>
+      </div>
+
+      <p className="text-gray-700 text-sm">
+        Do not hesitate to give us a call. We are an expert team and we are happy to talk to you.
+      </p>
+      <ul className="space-y-3">
+        <li className='font-bold text-blue-900'>
+          <span>Nepal Office</span>
+          <div className="flex items-center justify-center gap-2 text-blue-600 font-semibold">
+            <Phone size={18} />
+            <span>+977-01-5912660</span>
+          </div>
+        </li>
+        <li className='font-bold text-blue-900'>
+          <span>Korea Office </span>
+          <div className="flex items-center justify-center gap-2 text-blue-600 font-semibold">
+            <Phone size={18} />
+            <span>+82-010-5877-5512</span>
+          </div>
+        </li>
+      </ul>
+      <div className="flex items-center justify-center gap-2 text-blue-600 font-semibold">
+        <Mail size={18} />
+        <span>infolinkasiatours@gmail.com</span>
+      </div>
+    </div>
                 </div>
               </div>
             </div>

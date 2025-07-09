@@ -1,5 +1,6 @@
 // ContactPage.tsx
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -11,27 +12,37 @@ const ContactPage = () => {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
+  const [activeMap, setActiveMap] = useState('korea'); 
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitSuccess(false), 5000);
-    }, 1500);
-  };
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitError(false);
 
+  const { name, email, subject, message } = formData;
+  
+  // Create mailto link with form data
+  const mailtoLink = `mailto:infolinkasiatours@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+  )}`;
+  
+  // Open mailto in a new tab
+  window.open(mailtoLink, '_blank');
+  
+  setIsSubmitting(false);
+  setSubmitSuccess(true);
+  setFormData({ name: '', email: '', subject: '', message: '' });
+  
+  // Reset success message after 5 seconds
+  setTimeout(() => setSubmitSuccess(false), 5000);
+};
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
@@ -66,7 +77,12 @@ const ContactPage = () => {
             ) : (
               <>
                 <h2 className="text-xl font-medium text-gray-800 mb-6">Send us a message</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                {submitError && (
+                  <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-lg">
+                    <p>Failed to send message. Please try again.</p>
+                  </div>
+                )}
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                     <input
@@ -205,26 +221,76 @@ const ContactPage = () => {
               </div>
             </div>
             
-            {/* Map Section */}
+            {/* Map Section with Tabs */}
             <div className="bg-white rounded-xl shadow-lg p-8">
               <h2 className="text-xl font-medium text-gray-800 mb-6">Visit Us</h2>
-              <div className="relative h-64 rounded-lg overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-100 to-blue-100 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
-                      <svg className="w-8 h-8 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                      </svg>
-                    </div>
-                    <h3 className="font-medium text-gray-800 mb-1">Korea Office </h3>
-                    <p className="text-sm text-gray-600">suwon station gate-10s</p>
-                  </div>
-                </div>
-                <div className="absolute top-4 right-4 bg-white px-3 py-2 rounded-lg shadow-sm text-sm font-medium text-cyan-600">
-                  Get Directions
-                </div>
+              
+              {/* Map Tabs */}
+              <div className="flex mb-4 border-b border-gray-200">
+                <button
+                  onClick={() => setActiveMap('korea')}
+                  className={`py-2 px-4 font-medium text-sm ${
+                    activeMap === 'korea'
+                      ? 'text-cyan-600 border-b-2 border-cyan-600'
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  Korea Office
+                </button>
+                <button
+                  onClick={() => setActiveMap('nepal')}
+                  className={`py-2 px-4 font-medium text-sm ${
+                    activeMap === 'nepal'
+                      ? 'text-cyan-600 border-b-2 border-cyan-600'
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  Nepal Headquarters
+                </button>
               </div>
+              
+              {/* Maps Container */}
+              <div className="relative h-80 rounded-lg overflow-hidden">
+                {/* Korea Office Map */}
+                {activeMap === 'korea' && (
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1577.163732865179!2d127.00102722906468!3d37.26520888827529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b43fd8afb4e73%3A0x74b430c375db9e4b!2sLink%20Asia%20Tours!5e1!3m2!1sen!2snp!4v1751966215539!5m2!1sen!2snp"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    title="Korea Office Map"
+                  ></iframe>
+                )}
+                
+                {/* Nepal Headquarters Map */}
+                {activeMap === 'nepal' && (
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d473.10746260096073!2d85.35096772638512!3d27.70130832597168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1900103cabf5%3A0x76f3535530a19824!2sLINK%20ASIA%20TOURS!5e1!3m2!1sen!2snp!4v1752035154488!5m2!1sen!2snp"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    title="Nepal Headquarters Map"
+                  ></iframe>
+                )}
+              </div>
+              
+              {/* Directions Link */}
+              <a
+                href={
+                  activeMap === 'korea'
+                    ? 'https://maps.google.com/?q=Suwon+Station+Gate+10'
+                    : 'https://maps.google.com/?q=Airport+Gate,+Ashram+Marga,+KTM-9,+Hotel+Namasker'
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-block text-sm font-medium text-cyan-600 hover:text-cyan-800"
+              >
+                Get Directions
+              </a>
             </div>
           </div>
         </div>
@@ -262,3 +328,5 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
+        
+  

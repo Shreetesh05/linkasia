@@ -24,7 +24,7 @@ const NepalAdventures: React.FC = () => {
       title: "Everest Base Camp Trek",
       description: "Conquer the world's highest mountain trails with sherpa guides through the legendary Khumbu Valley.",
       highlights: ["Kala Patthar viewpoint", "Tengboche Monastery", "Namche Bazaar"],
-      image: "/images/everest.jpeg",
+      image: "/images/adventure/Everestbasecamp.jpg",
       difficulty: "Challenging",
       elevation: "5,364m"
     },
@@ -33,7 +33,7 @@ const NepalAdventures: React.FC = () => {
       title: "Annapurna Circuit",
       description: "Journey through diverse landscapes from lush rice terraces to the majestic Thorong La pass.",
       highlights: ["Poon Hill sunrise", "Muktinath Temple", "Marpha village"],
-      image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
+      Image: "/images/adventure/annapurnacircuit.jpg",
       difficulty: "Moderate to Challenging",
       elevation: "5,416m"
     },
@@ -42,7 +42,7 @@ const NepalAdventures: React.FC = () => {
       title: "Skydiving over Himalayas",
       description: "Experience the ultimate adrenaline rush with a tandem skydive above the world's highest peaks.",
       highlights: ["15,000ft freefall", "Panoramic mountain views", "Professional instructors"],
-      image: "https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
+      image:"/images/adventure/skydiving.jpg",
       difficulty: "Extreme",
       elevation: "15,000ft"
     },
@@ -51,7 +51,7 @@ const NepalAdventures: React.FC = () => {
       title: "Chitwan Jungle Safari",
       description: "Spot rhinos, tigers and crocodiles in Nepal's first national park on thrilling jungle excursions.",
       highlights: ["Elephant safari", "Tharu cultural show", "Bird watching"],
-      image: "https://images.unsplash.com/photo-1598890777037-a5d24d1bbf1c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
+      Image:"/images/adventure/chitwanjunglesafari.jpg",
       difficulty: "Easy",
       elevation: "415m"
     },
@@ -60,7 +60,7 @@ const NepalAdventures: React.FC = () => {
       title: "Pokhara Paragliding",
       description: "Soar above Phewa Lake with panoramic Himalayan views on a tandem paragliding adventure.",
       highlights: ["30min flight", "Professional pilots", "GoPro footage included"],
-      image: "https://images.unsplash.com/photo-1630431346178-9d5d3b5d1b3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
+      images:"/images/adventure/pokharaparagliding.jpg",
       difficulty: "Moderate",
       elevation: "1,600m"
     },
@@ -69,7 +69,7 @@ const NepalAdventures: React.FC = () => {
       title: "Bhote Koshi Bungee",
       description: "Plunge 160m into the Bhote Koshi gorge on one of the world's highest bungee jumps.",
       highlights: ["160m freefall", "Spectacular gorge views", "Professional safety"],
-      image: "https://images.unsplash.com/photo-1605548230624-8d2e0412b98b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
+      image:"/images/adventure/bhotekoshibungeejump.jpg",
       difficulty: "Extreme",
       elevation: "1,600m"
     },
@@ -78,7 +78,7 @@ const NepalAdventures: React.FC = () => {
       title: "Upper Mustang Trek",
       description: "Explore the forbidden kingdom with its unique Tibetan culture and lunar landscapes.",
       highlights: ["Lo Manthang", "Ancient monasteries", "Cave dwellings"],
-      image: "https://images.unsplash.com/photo-1612296272124-8a1e5c1b12b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
+      Image:"/images/adventure/uppermustang.jpg",
       difficulty: "Moderate",
       elevation: "3,840m"
     },
@@ -87,10 +87,19 @@ const NepalAdventures: React.FC = () => {
       title: "Trishuli River Rafting",
       description: "Navigate thrilling rapids through scenic gorges on Nepal's most popular rafting river.",
       highlights: ["Class III-IV rapids", "Riverside camping", "Jungle scenery"],
-      image: "https://images.unsplash.com/photo-1602001219425-587e3d5a5e3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
       difficulty: "Moderate",
+      Image:"/image/adventure/trishuli.jpg",
       elevation: "415m"
+    },
+     {
+      id: 8,
+      title: "Pokhara Hot air Ballon ",
+      description: "Navigate thrilling rapids through scenic gorges on Nepal's most popular rafting river.",
+      highlights: ["Class III-IV rapids", "", "Mountain scenery"],
+      difficulty: "Moderate",
+      Image:"/image/adventure/hotairballon.jpg",
     }
+    
   ];
 
   return (

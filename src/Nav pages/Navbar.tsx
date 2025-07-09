@@ -46,10 +46,11 @@ Button.displayName = "Button";
 
 const navItems = [
   { label: "Home", path: "/" },
-  { label: "About us", path: "/about" },
+
   { label: "Destinations", path: "/destinations" },
   { label: "Tours", path: "/tours" },
   { label: "Blog", path: "/blog" },
+    { label: "About us", path: "/about" },
   { label: "Contact", path: "/contact" },
 ];
 
