@@ -29,7 +29,7 @@ const destinations = [
   },
   {
     id: 4,
-    name: "Paris, France",
+    name: "Paris, Singapoor",
     description: "Enjoy world-class art, architecture, and romantic ambiance.",
     longDescription: "The City of Light offers iconic landmarks like the Eiffel Tower and Louvre Museum. Stroll along the Seine, explore charming Montmartre, and indulge in exquisite French cuisine at local bistros and patisseries.",
     image: "/images/france.jpg",
@@ -37,7 +37,7 @@ const destinations = [
   },
   {
     id: 5,
-    name: "Santorini, Greece",
+    name: "Santorini, India",
     description: "Iconic white-washed buildings and stunning sunsets over the Aegean Sea.",
     longDescription: "This volcanic island is famous for its dramatic caldera views. Explore Oia's blue-domed churches, taste Assyrtiko wines from local vineyards, and relax on unique black and red sand beaches formed by volcanic activity.",
     image: "/images/greece.jpg",
@@ -45,7 +45,7 @@ const destinations = [
   },
   {
     id: 6,
-    name: "Machu Picchu, Peru",
+    name: "Machu Picchu, Pokhara",
     description: "Ancient Incan city nestled high in the Andes Mountains.",
     longDescription: "This 15th-century citadel sits at 7,970 ft elevation. Hike the Inca Trail through cloud forests, witness the precision of ancient stonework, and experience the spiritual energy of this UNESCO World Heritage site.",
     image: "/images/peru.jpg",
@@ -53,7 +53,7 @@ const destinations = [
   },
   {
     id: 7,
-    name: "Safari, Serengeti",
+    name: "Safari, Lumbini",
     description: "Witness the great migration and see the big five in their natural habitat.",
     longDescription: "Experience the world's largest mammal migration across Tanzania's plains. Stay in luxury tented camps, track lions and elephants on game drives, and visit Maasai villages to learn about indigenous cultures.",
     image: "/images/serengeti.jpg",
@@ -61,7 +61,55 @@ const destinations = [
   },
   {
     id: 8,
-    name: "New York, USA",
+    name: "New York,Chitwan",
+    description: "The city that never sleeps, with iconic landmarks and diverse culture.",
+    longDescription: "From Broadway shows to Central Park, NYC offers endless experiences. Visit the Statue of Liberty, explore diverse neighborhoods from Chinatown to Harlem, and enjoy world-class dining and shopping in Manhattan.",
+    image: "/images/nyc.jpg",
+    color: "from-gray-100 to-slate-100"
+  },
+  {
+    id: 9,
+    name: "New York Pashupatinath",
+    description: "The city that never sleeps, with iconic landmarks and diverse culture.",
+    longDescription: "From Broadway shows to Central Park, NYC offers endless experiences. Visit the Statue of Liberty, explore diverse neighborhoods from Chinatown to Harlem, and enjoy world-class dining and shopping in Manhattan.",
+    image: "/images/nyc.jpg",
+    color: "from-gray-100 to-slate-100"
+  },
+  {
+    id: 10,
+    name: "New York,Muktinath",
+    description: "The city that never sleeps, with iconic landmarks and diverse culture.",
+    longDescription: "From Broadway shows to Central Park, NYC offers endless experiences. Visit the Statue of Liberty, explore diverse neighborhoods from Chinatown to Harlem, and enjoy world-class dining and shopping in Manhattan.",
+    image: "/images/nyc.jpg",
+    color: "from-gray-100 to-slate-100"
+  },
+  {
+    id: 11,
+    name: "New York,Chitwan",
+    description: "The city that never sleeps, with iconic landmarks and diverse culture.",
+    longDescription: "From Broadway shows to Central Park, NYC offers endless experiences. Visit the Statue of Liberty, explore diverse neighborhoods from Chinatown to Harlem, and enjoy world-class dining and shopping in Manhattan.",
+    image: "/images/nyc.jpg",
+    color: "from-gray-100 to-slate-100"
+  },
+  {
+    id: 12,
+    name: "New York,Kathmandu",
+    description: "The city that never sleeps, with iconic landmarks and diverse culture.",
+    longDescription: "From Broadway shows to Central Park, NYC offers endless experiences. Visit the Statue of Liberty, explore diverse neighborhoods from Chinatown to Harlem, and enjoy world-class dining and shopping in Manhattan.",
+    image: "/images/nyc.jpg",
+    color: "from-gray-100 to-slate-100"
+  },
+  {
+    id: 13,
+    name: "New York,Bhaktapur",
+    description: "The city that never sleeps, with iconic landmarks and diverse culture.",
+    longDescription: "From Broadway shows to Central Park, NYC offers endless experiences. Visit the Statue of Liberty, explore diverse neighborhoods from Chinatown to Harlem, and enjoy world-class dining and shopping in Manhattan.",
+    image: "/images/nyc.jpg",
+    color: "from-gray-100 to-slate-100"
+  },
+  {
+    id: 14,
+    name: "New York,Patan",
     description: "The city that never sleeps, with iconic landmarks and diverse culture.",
     longDescription: "From Broadway shows to Central Park, NYC offers endless experiences. Visit the Statue of Liberty, explore diverse neighborhoods from Chinatown to Harlem, and enjoy world-class dining and shopping in Manhattan.",
     image: "/images/nyc.jpg",

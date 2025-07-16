@@ -22,7 +22,7 @@ type Tour = {
 const tours: Tour[] = [
   {
     id: "explorektm",
-    title: "Bhaktapur - Kathmandu – Lalitpur Heritage Journey",
+    title: "Bhaktapur - Kathmandu - Lalitpur Heritage Journey",
     country: "Nepal",
     location: "Kathmandu Valley",
     duration: "4 Days",

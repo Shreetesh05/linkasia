@@ -387,7 +387,6 @@ const Home: React.FC = () => {
               ))}
             </div>
           </motion.div>
-
           {/* Slider control */}
           <div className="flex justify-center mt-6 sm:mt-8 space-x-2">
             {backgroundImages.map((_, index) => (
@@ -417,15 +416,6 @@ const Home: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <motion.div
-              className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 sm:px-6 py-1 sm:py-2 rounded-full mb-3 sm:mb-4 text-sm sm:text-base"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Why Choose Us
-            </motion.div>
             <motion.h2 
               className="text-3xl sm:text-4xl font-bold text-gray-900"
               initial={{ opacity: 0, y: 20 }}
@@ -667,45 +657,6 @@ const Home: React.FC = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* === CTA SECTION === */}
-      <section className="py-16 sm:py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2 
-            className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Ready for Your Next Adventure?
-          </motion.h2>
-          <motion.p 
-            className="text-lg sm:text-xl mb-6 sm:mb-10 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Let us craft your perfect journey. Contact us today to start planning.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <Button
-  size="lg"
-  className="bg-white text-blue-700 hover:bg-gray-100 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
->
-  Start Planning
-  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-</Button>
-
-          </motion.div>
         </div>
       </section>
     </>

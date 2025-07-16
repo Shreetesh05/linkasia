@@ -761,7 +761,7 @@ const InternationalToursLight = () => {
   {/* Download Link Styled as a Button */}
   <motion.a
     href="/images/brochure.pdf" // Make sure brochure.pdf is inside your `public` folder
-    download="Global_Explorer_Brochure.pdf"
+    download="Brochure.pdf"
     className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-700 rounded-xl font-bold text-lg text-white shadow-lg shadow-cyan-500/30 hover:from-cyan-500 hover:to-blue-600 transition-all"
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
